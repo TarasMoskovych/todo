@@ -1,0 +1,333 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Work"
+    },
+    {
+      "id": 2,
+      "name": "Family"
+    },
+    {
+      "id": 3,
+      "name": "Education"
+    },
+    {
+      "id": 4,
+      "name": "Vacation"
+    },
+    {
+      "id": 5,
+      "name": "Sport"
+    },
+    {
+      "id": 6,
+      "name": "Food"
+    },
+    {
+      "id": 7,
+      "name": "Finance"
+    },
+    {
+      "id": 8,
+      "name": "Devices"
+    },
+    {
+      "id": 9,
+      "name": "Health"
+    },
+    {
+      "id": 10,
+      "name": "Car"
+    },
+    {
+      "id": 11,
+      "name": "Home"
+    }
+  ],
+  "priorities": [
+    {
+      "id": 1,
+      "title": "Low",
+      "color": "#e5e5e5"
+    },
+    {
+      "id": 2,
+      "title": "Medium",
+      "color": "#85D1B2"
+    },
+    {
+      "id": 3,
+      "title": "High",
+      "color": "#F1828D"
+    },
+    {
+      "id": 4,
+      "title": "Highest",
+      "color": "#F1128D"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Fill the gasoline tank full",
+      "priority": {
+        "id": 3,
+        "title": "High",
+        "color": "#F1828D"
+      },
+      "completed": false,
+      "category": {
+        "id": 10,
+        "name": "Car"
+      },
+      "date": "2020-04-10"
+    },
+    {
+      "id": 2,
+      "title": "Submit reports to the head of department",
+      "priority": {
+        "id": 1,
+        "title": "Low",
+        "color": "#e5e5e5"
+      },
+      "completed": false,
+      "category": {
+        "id": 1,
+        "name": "Work"
+      },
+      "date": "2020-04-11"
+    },
+    {
+      "id": 3,
+      "title": "Clean up the room, water the plants",
+      "priority": {
+        "id": 3,
+        "title": "High",
+        "color": "#F1828D"
+      },
+      "completed": true,
+      "category": {
+        "id": 2,
+        "name": "Family"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Go to the park with the family, invite friends",
+      "priority": {
+        "id": 2,
+        "title": "Medium",
+        "color": "#85D1B2"
+      },
+      "completed": false,
+      "category": {
+        "id": 2,
+        "name": "Family"
+      },
+      "date": "2020-08-17"
+    },
+    {
+      "id": 5,
+      "title": "Find and learn a quantum physics textbook",
+      "completed": false,
+      "category": {
+        "id": 3,
+        "name": "Education"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Go to a programming workshop",
+      "priority": {
+        "id": 2,
+        "title": "Medium",
+        "color": "#85D1B2"
+      },
+      "completed": true,
+      "category": {
+        "id": 3,
+        "name": "Education"
+      },
+      "date": "2020-06-11"
+    },
+    {
+      "id": 7,
+      "title": "Find tickets to Turkey, choose a hotel",
+      "priority": {
+        "id": 3,
+        "title": "High",
+        "color": "#F1828D"
+      },
+      "completed": false,
+      "category": {
+        "id": 4,
+        "name": "Vacation"
+      }
+    },
+    {
+      "id": 8,
+      "title": "Prepare dinner for the whole family (salmon with potatoes)",
+      "completed": false,
+      "category": {
+        "id": 6,
+        "name": "Food"
+      }
+    },
+    {
+      "id": 9,
+      "title": "Pull up 10 times",
+      "priority": {
+        "id": 3,
+        "title": "High",
+        "color": "#F1828D"
+      },
+      "completed": false,
+      "category": {
+        "id": 5,
+        "name": "Sport"
+      },
+      "date": "2020-03-12"
+    },
+    {
+      "id": 10,
+      "title": "Run 100m",
+      "priority": {
+        "id": 1,
+        "title": "Low",
+        "color": "#e5e5e5"
+      },
+      "completed": true,
+      "category": {
+        "id": 5,
+        "name": "Sport"
+      }
+    },
+    {
+      "id": 11,
+      "title": "Organize a children's party",
+      "completed": false
+    },
+    {
+      "id": 12,
+      "title": "Go to the lecture 'How to learn to program in JavaScript'",
+      "priority": {
+        "id": 2,
+        "title": "Medium",
+        "color": "#85D1B2"
+      },
+      "completed": false,
+      "category": {
+        "id": 3,
+        "name": "Education"
+      }
+    },
+    {
+      "id": 13,
+      "title": "Buy groceries for a week",
+      "priority": {
+        "id": 3,
+        "title": "High",
+        "color": "#F1828D"
+      },
+      "completed": false,
+      "category": {
+        "id": 6,
+        "name": "Food"
+      },
+      "date": "2020-05-11"
+    },
+    {
+      "id": 14,
+      "title": "Have a meeting about all projects",
+      "completed": true,
+      "category": {
+        "id": 1,
+        "name": "Work"
+      }
+    },
+    {
+      "id": 15,
+      "title": "Pass the JavaScript assesment",
+      "priority": {
+        "id": 4,
+        "title": "Highest",
+        "color": "#F1128D"
+      },
+      "completed": true
+    },
+    {
+      "id": 16,
+      "title": "Put 100,000 UAH in the bank for deposit",
+      "priority": {
+        "id": 4,
+        "title": "Highest",
+        "color": "#F1128D"
+      },
+      "completed": false,
+      "category": {
+        "id": 7,
+        "name": "Finance"
+      }
+    },
+    {
+      "id": 17,
+      "title": "Ask for an advance payment at work",
+      "priority": {
+        "id": 3,
+        "title": "High",
+        "color": "#F1828D"
+      },
+      "completed": false,
+      "category": {
+        "id": 7,
+        "name": "Finance"
+      }
+    },
+    {
+      "id": 18,
+      "title": "Get tested, check hemoglobin",
+      "priority": {
+        "id": 4,
+        "title": "Highest",
+        "color": "#F1128D"
+      },
+      "completed": false,
+      "category": {
+        "id": 9,
+        "name": "Health"
+      },
+      "date": "2020-12-11"
+    },
+    {
+      "id": 19,
+      "title": "Compare new iPad with Samsung",
+      "priority": {
+        "id": 1,
+        "title": "Low",
+        "color": "#e5e5e5"
+      },
+      "completed": false,
+      "category": {
+        "id": 8,
+        "name": "Devices"
+      },
+      "date": "2020-10-11"
+    },
+    {
+      "id": 20,
+      "title": "Play football with employees",
+      "priority": {
+        "id": 2,
+        "title": "Medium",
+        "color": "#85D1B2"
+      },
+      "completed": false,
+      "category": {
+        "id": 5,
+        "name": "Sport"
+      },
+      "date": "2020-03-17"
+    }
+  ]
+}
