@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { TasksComponent } from './tasks.component';
 import { TasksEffects, tasksReducer } from '../core/+store/tasks'
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [TasksComponent],
@@ -12,6 +13,7 @@ import { TasksEffects, tasksReducer } from '../core/+store/tasks'
     CommonModule,
     StoreModule.forFeature('tasks', tasksReducer),
     EffectsModule.forFeature([TasksEffects]),
+    MaterialModule,
   ],
   exports: [
     TasksComponent,

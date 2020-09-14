@@ -5,21 +5,23 @@
   <div class="card-body table-responsive">
     <table class="table table-hover">
       <thead class="text-warning">
-        <th>ID</th>
+        <th>#</th>
         <th>Name</th>
         <th>Category</th>
         <th>Priority</th>
-        <th>Status</th>
         <th>Date</th>
+        <th>Status</th>
       </thead>
       <tbody>
-        <tr *ngFor="let task of tasks">
-          <td>{{ task.id }}</td>
+        <tr *ngFor="let task of tasks; let idx = index">
+          <td>{{ idx + 1 }}</td>
           <td>{{ task.name }}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{ task.categoryId || '-' }}</td>
+          <td>{{ task.priority?.name || '-' }}</td>
+          <td>{{ (task.date | date:'mediumDate') || '-' }}</td>
+          <td>
+            <mat-checkbox [checked]="task.completed"></mat-checkbox>
+          </td>
         </tr>
       </tbody>
     </table>
