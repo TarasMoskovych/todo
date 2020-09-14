@@ -53,6 +53,15 @@ export function categoriesReducer(state = initialCategoriesState, action: Catego
       };
     }
 
+    case CategoriesActionTypes.SELECT_CATEGORY: {
+      const selected = action.payload;
+
+      return {
+        ...state,
+        selected,
+      }
+    }
+
     default:
       return state;
   }

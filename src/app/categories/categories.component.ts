@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Category } from '../models';
 
-import { categoriesSelector, GetCategories } from '../core/+store';
+import { categoriesSelector, GetCategories, SelectCategory } from '../core/+store';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -18,6 +18,10 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
+  }
+
+  onSortByCategory(category: Category) {
+    this.store.dispatch(new SelectCategory(category));
   }
 
   private getCategories() {

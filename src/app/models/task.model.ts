@@ -6,6 +6,6 @@ export interface Task {
   name: string;
   completed: boolean;
   prioriry?: Priority;
-  category?: Category;
+  categoryId?: number;
   date?: Date;
 }

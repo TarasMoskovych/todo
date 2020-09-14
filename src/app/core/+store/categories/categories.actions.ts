@@ -18,6 +18,8 @@ export enum CategoriesActionTypes {
   REMOVE_CATEGORY         = '[Categories] REMOVE_CATEGORY',
   REMOVE_CATEGORY_SUCCESS = '[Categories] REMOVE_CATEGORY_SUCCESS',
   REMOVE_CATEGORY_ERROR   = '[Categories] REMOVE_CATEGORY_ERROR',
+
+  SELECT_CATEGORY         = '[Categories] SELECT_CATEGORY',
 }
 
 export class GetCategories implements Action {
@@ -79,6 +81,11 @@ export class RemoveCategoryError implements Action {
   constructor(public payload: Error | string) { }
 }
 
+export class SelectCategory implements Action {
+  readonly type = CategoriesActionTypes.SELECT_CATEGORY;
+  constructor(public payload: Category) { }
+}
+
 export type CategoriesActions
   = GetCategories
   | GetCategoriesSuccess
@@ -91,4 +98,5 @@ export type CategoriesActions
   | UpdateCategoryError
   | RemoveCategory
   | RemoveCategorySuccess
-  | RemoveCategoryError;
+  | RemoveCategoryError
+  | SelectCategory;
