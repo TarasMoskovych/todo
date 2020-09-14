@@ -1,4 +1,4 @@
-import { Category } from '../../../models';
+import { Category } from 'src/app/models';
 
 export interface CategoryEntity {
   [id: number]: Category;

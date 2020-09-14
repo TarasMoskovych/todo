@@ -48,32 +48,32 @@
   "priorities": [
     {
       "id": 1,
-      "title": "Low",
+      "name": "Low",
       "color": "#e5e5e5"
     },
     {
       "id": 2,
-      "title": "Medium",
+      "name": "Medium",
       "color": "#85D1B2"
     },
     {
       "id": 3,
-      "title": "High",
+      "name": "High",
       "color": "#F1828D"
     },
     {
       "id": 4,
-      "title": "Highest",
+      "name": "Highest",
       "color": "#F1128D"
     }
   ],
   "tasks": [
     {
       "id": 1,
-      "title": "Fill the gasoline tank full",
+      "name": "Fill the gasoline tank full",
       "priority": {
         "id": 3,
-        "title": "High",
+        "name": "High",
         "color": "#F1828D"
       },
       "completed": false,
@@ -85,10 +85,10 @@
     },
     {
       "id": 2,
-      "title": "Submit reports to the head of department",
+      "name": "Submit reports to the head of department",
       "priority": {
         "id": 1,
-        "title": "Low",
+        "name": "Low",
         "color": "#e5e5e5"
       },
       "completed": false,
@@ -100,10 +100,10 @@
     },
     {
       "id": 3,
-      "title": "Clean up the room, water the plants",
+      "name": "Clean up the room, water the plants",
       "priority": {
         "id": 3,
-        "title": "High",
+        "name": "High",
         "color": "#F1828D"
       },
       "completed": true,
@@ -114,10 +114,10 @@
     },
     {
       "id": 4,
-      "title": "Go to the park with the family, invite friends",
+      "name": "Go to the park with the family, invite friends",
       "priority": {
         "id": 2,
-        "title": "Medium",
+        "name": "Medium",
         "color": "#85D1B2"
       },
       "completed": false,
@@ -129,7 +129,7 @@
     },
     {
       "id": 5,
-      "title": "Find and learn a quantum physics textbook",
+      "name": "Find and learn a quantum physics textbook",
       "completed": false,
       "category": {
         "id": 3,
@@ -138,10 +138,10 @@
     },
     {
       "id": 6,
-      "title": "Go to a programming workshop",
+      "name": "Go to a programming workshop",
       "priority": {
         "id": 2,
-        "title": "Medium",
+        "name": "Medium",
         "color": "#85D1B2"
       },
       "completed": true,
@@ -153,10 +153,10 @@
     },
     {
       "id": 7,
-      "title": "Find tickets to Turkey, choose a hotel",
+      "name": "Find tickets to Turkey, choose a hotel",
       "priority": {
         "id": 3,
-        "title": "High",
+        "name": "High",
         "color": "#F1828D"
       },
       "completed": false,
@@ -167,7 +167,7 @@
     },
     {
       "id": 8,
-      "title": "Prepare dinner for the whole family (salmon with potatoes)",
+      "name": "Prepare dinner for the whole family (salmon with potatoes)",
       "completed": false,
       "category": {
         "id": 6,
@@ -176,10 +176,10 @@
     },
     {
       "id": 9,
-      "title": "Pull up 10 times",
+      "name": "Pull up 10 times",
       "priority": {
         "id": 3,
-        "title": "High",
+        "name": "High",
         "color": "#F1828D"
       },
       "completed": false,
@@ -191,10 +191,10 @@
     },
     {
       "id": 10,
-      "title": "Run 100m",
+      "name": "Run 100m",
       "priority": {
         "id": 1,
-        "title": "Low",
+        "name": "Low",
         "color": "#e5e5e5"
       },
       "completed": true,
@@ -205,15 +205,15 @@
     },
     {
       "id": 11,
-      "title": "Organize a children's party",
+      "name": "Organize a children's party",
       "completed": false
     },
     {
       "id": 12,
-      "title": "Go to the lecture 'How to learn to program in JavaScript'",
+      "name": "Go to the lecture 'How to learn to program in JavaScript'",
       "priority": {
         "id": 2,
-        "title": "Medium",
+        "name": "Medium",
         "color": "#85D1B2"
       },
       "completed": false,
@@ -224,10 +224,10 @@
     },
     {
       "id": 13,
-      "title": "Buy groceries for a week",
+      "name": "Buy groceries for a week",
       "priority": {
         "id": 3,
-        "title": "High",
+        "name": "High",
         "color": "#F1828D"
       },
       "completed": false,
@@ -239,7 +239,7 @@
     },
     {
       "id": 14,
-      "title": "Have a meeting about all projects",
+      "name": "Have a meeting about all projects",
       "completed": true,
       "category": {
         "id": 1,
@@ -248,20 +248,20 @@
     },
     {
       "id": 15,
-      "title": "Pass the JavaScript assesment",
+      "name": "Pass the JavaScript assesment",
       "priority": {
         "id": 4,
-        "title": "Highest",
+        "name": "Highest",
         "color": "#F1128D"
       },
       "completed": true
     },
     {
       "id": 16,
-      "title": "Put 100,000 UAH in the bank for deposit",
+      "name": "Put 100,000 UAH in the bank for deposit",
       "priority": {
         "id": 4,
-        "title": "Highest",
+        "name": "Highest",
         "color": "#F1128D"
       },
       "completed": false,
@@ -272,10 +272,10 @@
     },
     {
       "id": 17,
-      "title": "Ask for an advance payment at work",
+      "name": "Ask for an advance payment at work",
       "priority": {
         "id": 3,
-        "title": "High",
+        "name": "High",
         "color": "#F1828D"
       },
       "completed": false,
@@ -286,10 +286,10 @@
     },
     {
       "id": 18,
-      "title": "Get tested, check hemoglobin",
+      "name": "Get tested, check hemoglobin",
       "priority": {
         "id": 4,
-        "title": "Highest",
+        "name": "Highest",
         "color": "#F1128D"
       },
       "completed": false,
@@ -301,10 +301,10 @@
     },
     {
       "id": 19,
-      "title": "Compare new iPad with Samsung",
+      "name": "Compare new iPad with Samsung",
       "priority": {
         "id": 1,
-        "title": "Low",
+        "name": "Low",
         "color": "#e5e5e5"
       },
       "completed": false,
@@ -316,10 +316,10 @@
     },
     {
       "id": 20,
-      "title": "Play football with employees",
+      "name": "Play football with employees",
       "priority": {
         "id": 2,
-        "title": "Medium",
+        "name": "Medium",
         "color": "#85D1B2"
       },
       "completed": false,

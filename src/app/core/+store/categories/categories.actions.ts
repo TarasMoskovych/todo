@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Category } from '../../../models';
+import { Category } from 'src/app/models';
 
 export enum CategoriesActionTypes {
   GET_CATEGORIES          = '[Categories] GET_CATEGORIES',

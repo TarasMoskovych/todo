@@ -3,7 +3,7 @@ import { Category } from './category.model';
 
 export interface Task {
   id: number;
-  title: string;
+  name: string;
   completed: boolean;
   prioriry?: Priority;
   category?: Category;

@@ -5,18 +5,18 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { CoreModule } from '../core.module';
-import { Category } from 'src/app/models';
+import { Task } from 'src/app/models';
 
 @Injectable({
   providedIn: CoreModule
 })
-export class CategoriesService {
+export class TasksService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Category[]> {
+  getAll(): Observable<Task[]> {
     return this.http
-      .get<Category[]>(`/api/categories`)
+      .get<Task[]>(`/api/tasks`)
       .pipe(catchError((error: any) => throwError(error)));
   }
 }

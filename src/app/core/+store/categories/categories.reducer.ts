@@ -1,4 +1,4 @@
-import { Category } from '../../../models';
+import { Category } from 'src/app/models';
 import { CategoriesActionTypes, CategoriesActions } from './categories.actions';
 import { initialCategoriesState, CategoriesState, CategoryEntity, } from './categories.state';
 

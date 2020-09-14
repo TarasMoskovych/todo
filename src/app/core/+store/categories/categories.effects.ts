@@ -8,7 +8,7 @@ import * as categoriesActions from './categories.actions';
 import { Observable, of } from 'rxjs';
 import { switchMap, map, catchError, pluck } from 'rxjs/operators';
 
-import { Category } from '../../../models';
+import { Category } from 'src/app/models';
 import { CategoriesService } from '../../services';
 
 @Injectable()
