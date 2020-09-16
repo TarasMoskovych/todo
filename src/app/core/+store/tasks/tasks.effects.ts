@@ -31,4 +31,18 @@ export class TasksEffects {
         )
     })
   );
+
+  @Effect()
+  update$: Observable<Action> = this.actions$.pipe(
+    ofType<tasksActions.UpdateTask>(TasksActionTypes.UPDATE_TASK),
+    pluck('payload'),
+    switchMap((task: Task) => {
+      return this.tasksService
+        .update(task)
+        .pipe(
+          map((task: Task) => new tasksActions.UpdateTaskSuccess(task)),
+          catchError((err: any) => of(new tasksActions.UpdateTaskError(err)))
+        )
+    })
+  );
 }

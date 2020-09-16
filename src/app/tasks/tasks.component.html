@@ -13,14 +13,14 @@
         <th>Status</th>
       </thead>
       <tbody>
-        <tr *ngFor="let task of tasks; let idx = index">
+        <tr *ngFor="let task of tasks; let idx = index" [class.completed]="task.completed">
           <td>{{ idx + 1 }}</td>
           <td>{{ task.name }}</td>
-          <td>{{ task.categoryId || '-' }}</td>
-          <td>{{ task.priority?.name || '-' }}</td>
-          <td>{{ (task.date | date:'mediumDate') || '-' }}</td>
+          <td [class.empty]="!task.categoryId">{{ task.categoryId || 'no category' }}</td>
+          <td [class.empty]="!task.priority">{{ task.priority?.name || 'no priority' }}</td>
+          <td [class.empty]="!task.date">{{ (task.date | date:'mediumDate') || '-' }}</td>
           <td>
-            <mat-checkbox [checked]="task.completed"></mat-checkbox>
+            <mat-checkbox (change)="onTaskCheck($event, task)" [checked]="task.completed"></mat-checkbox>
           </td>
         </tr>
       </tbody>

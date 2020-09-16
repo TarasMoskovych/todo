@@ -1,22 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-
 import { CoreModule } from '../core.module';
 import { Task } from 'src/app/models';
+import { AbstractService } from './abstract.service'
 
 @Injectable({
   providedIn: CoreModule
 })
-export class TasksService {
+export class TasksService extends AbstractService<Task> {
 
-  constructor(private http: HttpClient) { }
-
-  getAll(): Observable<Task[]> {
-    return this.http
-      .get<Task[]>(`/api/tasks`)
-      .pipe(catchError((error: any) => throwError(error)));
+  constructor(http: HttpClient) {
+    super(http, '/api/tasks');
   }
 }
