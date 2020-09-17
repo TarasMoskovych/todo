@@ -3,17 +3,21 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { TasksComponent } from './tasks.component';
+import { SharedModule } from '../shared/shared.module';
 import { TasksEffects, tasksReducer } from '../core/+store/tasks'
-import { MaterialModule } from '../material/material.module';
+import { TasksComponent } from './tasks.component';
+import { TasksTableComponent } from './components';
 
 @NgModule({
-  declarations: [TasksComponent],
+  declarations: [
+    TasksComponent,
+    TasksTableComponent,
+  ],
   imports: [
     CommonModule,
     StoreModule.forFeature('tasks', tasksReducer),
     EffectsModule.forFeature([TasksEffects]),
-    MaterialModule,
+    SharedModule,
   ],
   exports: [
     TasksComponent,

@@ -1,10 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Task } from '../models';
-import { tasksSelector, GetTasks, UpdateTask } from '../core/+store/tasks';
+import { tasksSelector, GetTasks, UpdateTask, tasksLoadedSelector } from '../core/+store/tasks';
 
 @Component({
   selector: 'app-tasks',
@@ -13,6 +12,7 @@ import { tasksSelector, GetTasks, UpdateTask } from '../core/+store/tasks';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TasksComponent implements OnInit {
+  loaded$: Observable<boolean>;
   tasks$: Observable<Task[]>;
 
   constructor(private store: Store<Task>) { }
@@ -21,11 +21,12 @@ export class TasksComponent implements OnInit {
     this.getTasks();
   }
 
-  onTaskCheck({ checked }: MatCheckboxChange, task: Task) {
-    this.store.dispatch(new UpdateTask({ ...task, completed: checked }));
+  onTaskCheck(task: Task) {
+    this.store.dispatch(new UpdateTask(task));
   }
 
   private getTasks() {
+    this.loaded$ = this.store.select(tasksLoadedSelector);
     this.tasks$ = this.store.select(tasksSelector);
     this.store.dispatch(new GetTasks());
   }

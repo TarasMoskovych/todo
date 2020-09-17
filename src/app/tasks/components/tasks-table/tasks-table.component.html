@@ -1,0 +1,58 @@
+<ng-container *ngIf="tasks.length; else empty">
+  <table mat-table matSort [dataSource]="dataSource" class="w-100">
+
+    <ng-container matColumnDef="color">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let task" [style.background-color]="task.completed && '#F8F9FA' || task.priority?.color || '#fff'"></td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td class="text-center" mat-cell *matCellDef="let task; let idx = index">{{ idx + 1 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let task">{{ task.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>Date</th>
+      <td [class.empty]="!task.categoryId" mat-cell *matCellDef="let task">
+        {{ (task.date | date:'mediumDate') || '-' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="priority">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>Priority</th>
+      <td [class.empty]="!task.priority" mat-cell *matCellDef="let task">
+        {{ task.priority?.name || 'No priority' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef>Category</th>
+      <td [class.empty]="!task.categoryId" mat-cell *matCellDef="let task">
+        {{ task.categoryId || 'No category' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let task">
+        <mat-checkbox (change)="onTaskCheck($event, task)" [checked]="task.completed"></mat-checkbox>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns; let task" [class.completed]="task.completed"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 50, 100]" showFirstLastButtons></mat-paginator>
+</ng-container>
+
+<ng-template #empty>
+  <h4 class="text-center">
+    Task list is empty
+  </h4>
+</ng-template>

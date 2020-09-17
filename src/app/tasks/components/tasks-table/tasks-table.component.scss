@@ -1,0 +1,22 @@
+table {
+
+  .completed {
+    text-decoration: line-through;
+
+    td {
+      color: #797979;
+    }
+  }
+
+  .empty {
+    color: #b7b7b7;
+  }
+
+  td {
+    padding: 0 5px;
+
+    &:first-child {
+      width: 5px;
+    }
+  }
+}

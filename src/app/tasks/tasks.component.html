@@ -1,29 +1,16 @@
-<div class="card" *ngIf="tasks$ | async as tasks">
+<div class="card" *ngIf="{ loaded: loaded$ | async } as state">
   <div class="card-header card-header-warning">
     <h4 class="card-title">Tasks</h4>
   </div>
   <div class="card-body table-responsive">
-    <table class="table table-hover">
-      <thead class="text-warning">
-        <th>#</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Priority</th>
-        <th>Date</th>
-        <th>Status</th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let task of tasks; let idx = index" [class.completed]="task.completed">
-          <td>{{ idx + 1 }}</td>
-          <td>{{ task.name }}</td>
-          <td [class.empty]="!task.categoryId">{{ task.categoryId || 'no category' }}</td>
-          <td [class.empty]="!task.priority">{{ task.priority?.name || 'no priority' }}</td>
-          <td [class.empty]="!task.date">{{ (task.date | date:'mediumDate') || '-' }}</td>
-          <td>
-            <mat-checkbox (change)="onTaskCheck($event, task)" [checked]="task.completed"></mat-checkbox>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <app-tasks-table
+      *ngIf="state.loaded; else loader"
+      [tasks]="tasks$ | async"
+      (taskCheck)="onTaskCheck($event)"
+    ></app-tasks-table>
+
+    <ng-template #loader>
+      <app-loader></app-loader>
+    </ng-template>
   </div>
 </div>

@@ -2,17 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MaterialModule } from '../material/material.module';
+import { LoaderComponent } from './components';
 import { OrderByPipe } from './pipes';
 
 @NgModule({
   declarations: [
-    OrderByPipe
+    LoaderComponent,
+    OrderByPipe,
   ],
   imports: [
     CommonModule,
     MaterialModule,
   ],
   exports: [
+    MaterialModule,
+    LoaderComponent,
     OrderByPipe,
   ]
 })

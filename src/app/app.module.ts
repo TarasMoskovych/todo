@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from './core/core.module';
-import { MaterialModule } from './material/material.module';
+import { SharedModule } from './shared/shared.module';
 import { CategoriesModule } from './categories/categories.module';
 import { TasksModule } from './tasks/tasks.module';
 
@@ -19,7 +19,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
-    MaterialModule,
+    SharedModule,
     CategoriesModule,
     TasksModule,
   ],
