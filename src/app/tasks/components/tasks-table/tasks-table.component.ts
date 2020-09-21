@@ -13,7 +13,7 @@ import { Task } from 'src/app/models';
 })
 export class TasksTableComponent implements OnChanges, AfterViewInit {
   @Input() tasks: Task[];
-  @Output() taskCheck = new EventEmitter<Task>();
+  @Output() taskEdit = new EventEmitter<{ task: Task, openModal: boolean }>();
   @ViewChild(MatSort) private sort: MatSort;
   @ViewChild(MatPaginator) private paginator: MatPaginator;
 
@@ -47,8 +47,16 @@ export class TasksTableComponent implements OnChanges, AfterViewInit {
     };
   }
 
+  onTaskEdit(task: Task) {
+    this.dispatchEdit(task, true);
+  }
+
   onTaskCheck({ checked }: MatCheckboxChange, task: Task) {
-    this.taskCheck.emit({ ...task, completed: checked });
+    this.dispatchEdit({ ...task, completed: checked });
+  }
+
+  private dispatchEdit(task: Task, openModal = false) {
+    this.taskEdit.emit({ task, openModal });
   }
 
 }

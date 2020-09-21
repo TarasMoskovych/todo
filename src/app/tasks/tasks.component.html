@@ -6,7 +6,7 @@
     <app-tasks-table
       *ngIf="state.loaded; else loader"
       [tasks]="tasks$ | async"
-      (taskCheck)="onTaskCheck($event)"
+      (taskEdit)="onTaskEdit($event)"
     ></app-tasks-table>
 
     <ng-template #loader>

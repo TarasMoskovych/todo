@@ -6,11 +6,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from '../shared/shared.module';
 import { TasksEffects, tasksReducer } from '../core/+store/tasks'
 import { TasksComponent } from './tasks.component';
-import { TasksTableComponent } from './components';
+import { TaskEditComponent, TasksTableComponent } from './components';
 
 @NgModule({
   declarations: [
     TasksComponent,
+    TaskEditComponent,
     TasksTableComponent,
   ],
   imports: [
@@ -18,6 +19,9 @@ import { TasksTableComponent } from './components';
     StoreModule.forFeature('tasks', tasksReducer),
     EffectsModule.forFeature([TasksEffects]),
     SharedModule,
+  ],
+  entryComponents: [
+    TaskEditComponent,
   ],
   exports: [
     TasksComponent,

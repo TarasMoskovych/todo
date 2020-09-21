@@ -13,7 +13,7 @@
 
     <ng-container matColumnDef="name">
       <th mat-sort-header mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let task">{{ task.name }}</td>
+      <td (click)="onTaskEdit(task)" class="pointer" mat-cell *matCellDef="let task">{{ task.name }}</td>
     </ng-container>
 
     <ng-container matColumnDef="date">
