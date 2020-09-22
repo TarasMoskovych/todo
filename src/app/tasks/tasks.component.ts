@@ -5,8 +5,16 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { Task } from '../models';
-import { tasksSelector, GetTasks, UpdateTask, tasksLoadedSelector } from '../core/+store/tasks';
 import { TaskEditComponent } from './components';
+import {
+  tasksSelector,
+  tasksLoadedSelector,
+  categoriesEntitiesSelector,
+  AppState,
+  CategoryEntity,
+  GetTasks,
+  UpdateTask,
+} from '../core/+store';
 
 @Component({
   selector: 'app-tasks',
@@ -15,12 +23,13 @@ import { TaskEditComponent } from './components';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TasksComponent implements OnInit {
+  categories$: Observable<CategoryEntity> = this.store.select(categoriesEntitiesSelector);
   loaded$: Observable<boolean>;
   tasks$: Observable<Task[]>;
 
   constructor(
     private dialog: MatDialog,
-    private store: Store<Task>,
+    private store: Store<AppState>,
   ) { }
 
   ngOnInit(): void {

@@ -33,7 +33,12 @@
     <ng-container matColumnDef="category">
       <th mat-sort-header mat-header-cell *matHeaderCellDef>Category</th>
       <td [class.empty]="!task.categoryId" mat-cell *matCellDef="let task">
-        {{ task.categoryId || 'No category' }}
+        <ng-container *ngIf="categories[task.categoryId]; else noCategory">
+          {{ categories[task.categoryId].name }}
+        </ng-container>
+        <ng-template #noCategory>
+          No category
+        </ng-template>
       </td>
     </ng-container>
 

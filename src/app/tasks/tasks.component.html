@@ -5,6 +5,7 @@
   <div class="card-body table-responsive">
     <app-tasks-table
       *ngIf="state.loaded; else loader"
+      [categories]="categories$ | async"
       [tasks]="tasks$ | async"
       (taskEdit)="onTaskEdit($event)"
     ></app-tasks-table>

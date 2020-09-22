@@ -14,6 +14,18 @@
       </mat-error>
     </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>Select Category</mat-label>
+      <mat-select formControlName="categoryId">
+        <mat-option>No category</mat-option>
+        <ng-container *ngIf="categories$ | async | orderBy:'asc':'name' as categories">
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+
   </mat-dialog-content>
 
   <mat-dialog-actions>

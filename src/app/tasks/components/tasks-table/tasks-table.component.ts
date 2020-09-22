@@ -3,7 +3,9 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+
 import { Task } from 'src/app/models';
+import { CategoryEntity } from 'src/app/core/+store';
 
 @Component({
   selector: 'app-tasks-table',
@@ -12,6 +14,7 @@ import { Task } from 'src/app/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TasksTableComponent implements OnChanges, AfterViewInit {
+  @Input() categories: CategoryEntity = {};
   @Input() tasks: Task[];
   @Output() taskEdit = new EventEmitter<{ task: Task, openModal: boolean }>();
   @ViewChild(MatSort) private sort: MatSort;

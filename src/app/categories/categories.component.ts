@@ -2,7 +2,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Category } from '../models';
 
-import { categoriesSelector, GetCategories, SelectCategory, categoriesSelectedSelector } from '../core/+store';
+import {
+  GetCategories,
+  SelectCategory,
+  categoriesSelector,
+  categoriesSelectedSelector,
+  AppState,
+} from '../core/+store';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -15,7 +21,7 @@ export class CategoriesComponent implements OnInit {
   categories$: Observable<Category[]>;
   selected$: Observable<Category>;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.getCategories();
