@@ -3,9 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState, categoriesSelector } from 'src/app/core/+store';
+import { AppState, categoriesSelector, prioritiesSelector } from 'src/app/core/+store';
 
-import { Category, Task } from 'src/app/models';
+import { Category, Priority, Task } from 'src/app/models';
 import { Constants } from 'src/app/shared';
 
 @Component({
@@ -16,6 +16,7 @@ import { Constants } from 'src/app/shared';
 })
 export class TaskEditComponent implements OnInit {
   categories$: Observable<Category[]> = this.store.select(categoriesSelector);
+  priorities$: Observable<Priority[]> = this.store.select(prioritiesSelector);
   taskForm: FormGroup;
 
   constructor(
@@ -38,7 +39,7 @@ export class TaskEditComponent implements OnInit {
   }
 
   private buildForm() {
-    const { name, completed, categoryId } = this.task;
+    const { name, completed, categoryId, priorityId } = this.task;
 
     this.taskForm = new FormGroup({
       name: new FormControl(name, [
@@ -47,6 +48,7 @@ export class TaskEditComponent implements OnInit {
       ]),
       completed: new FormControl(completed),
       categoryId: new FormControl(categoryId),
+      priorityId: new FormControl(priorityId),
     });
   }
 

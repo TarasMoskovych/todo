@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { CategoriesModule } from './categories/categories.module';
 import { TasksModule } from './tasks/tasks.module';
+import { SettingsModule } from './settings/settings.module';
 
 import { AppComponent } from './app.component';
 
@@ -22,6 +23,7 @@ import { AppComponent } from './app.component';
     SharedModule,
     CategoriesModule,
     TasksModule,
+    SettingsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

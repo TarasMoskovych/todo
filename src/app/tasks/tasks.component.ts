@@ -14,6 +14,8 @@ import {
   CategoryEntity,
   GetTasks,
   UpdateTask,
+  PriorityEntity,
+  prioritiesEntitiesSelector,
 } from '../core/+store';
 
 @Component({
@@ -25,6 +27,7 @@ import {
 export class TasksComponent implements OnInit {
   categories$: Observable<CategoryEntity> = this.store.select(categoriesEntitiesSelector);
   loaded$: Observable<boolean>;
+  priorities$: Observable<PriorityEntity> = this.store.select(prioritiesEntitiesSelector);
   tasks$: Observable<Task[]>;
 
   constructor(

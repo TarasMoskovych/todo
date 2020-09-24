@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
-import { Task } from 'src/app/models';
+import { Priority, Task } from 'src/app/models';
 import { CategoryEntity } from 'src/app/core/+store';
 
 @Component({
@@ -15,6 +15,7 @@ import { CategoryEntity } from 'src/app/core/+store';
 })
 export class TasksTableComponent implements OnChanges, AfterViewInit {
   @Input() categories: CategoryEntity = {};
+  @Input() priorities: Priority[];
   @Input() tasks: Task[];
   @Output() taskEdit = new EventEmitter<{ task: Task, openModal: boolean }>();
   @ViewChild(MatSort) private sort: MatSort;
@@ -44,7 +45,7 @@ export class TasksTableComponent implements OnChanges, AfterViewInit {
       switch (sortHeaderId) {
         case 'name': return task.name;
         case 'date': return task.date;
-        case 'priority': return task.priority?.id;
+        case 'priority': return task.priorityId;
         case 'category': return task.categoryId;
       }
     };

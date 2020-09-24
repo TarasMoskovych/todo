@@ -26,6 +26,18 @@
       </mat-select>
     </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>Select Priority</mat-label>
+      <mat-select formControlName="priorityId">
+        <mat-option>No priority</mat-option>
+        <ng-container *ngIf="priorities$ | async | orderBy:'asc':'id' as priorities">
+          <mat-option *ngFor="let priority of priorities" [value]="priority.id">
+            {{ priority.name }}
+          </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+
   </mat-dialog-content>
 
   <mat-dialog-actions>
