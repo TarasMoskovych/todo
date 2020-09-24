@@ -14,6 +14,7 @@ import {
   CategoryEntity,
   GetTasks,
   UpdateTask,
+  RemoveTask,
   PriorityEntity,
   prioritiesEntitiesSelector,
 } from '../core/+store';
@@ -46,7 +47,7 @@ export class TasksComponent implements OnInit {
       dialogRef = this.dialog.open(TaskEditComponent, { data: task, width: '50%' });
       dialogRef.afterClosed()
         .pipe(take(1))
-        .subscribe((task: Task) => this.updateTask(task));
+        .subscribe(({ task, remove }) => task && this[remove ? 'removeTask' : 'updateTask'](task));
     } else {
       this.updateTask(task);
     }
@@ -59,7 +60,11 @@ export class TasksComponent implements OnInit {
   }
 
   private updateTask(task: Task) {
-    task && this.store.dispatch(new UpdateTask(task));
+    this.store.dispatch(new UpdateTask(task));
+  }
+
+  private removeTask(task: Task) {
+    this.store.dispatch(new RemoveTask(task));
   }
 
 }

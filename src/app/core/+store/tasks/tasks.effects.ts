@@ -45,4 +45,18 @@ export class TasksEffects {
         )
     })
   );
+
+  @Effect()
+  remove$: Observable<Action> = this.actions$.pipe(
+    ofType<tasksActions.RemoveTask>(TasksActionTypes.REMOVE_TASK),
+    pluck('payload'),
+    switchMap((task: Task) => {
+      return this.tasksService
+        .remove(task)
+        .pipe(
+          map((task: Task) => new tasksActions.RemoveTaskSuccess(task)),
+          catchError((err: any) => of(new tasksActions.RemoveTaskError(err)))
+        )
+    })
+  );
 }

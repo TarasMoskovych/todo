@@ -54,7 +54,7 @@
           (toggleChange)="onChange()"
         ></mat-slide-toggle>
       </ng-container>
-      <button class="ml-1" type="button" mat-button color="warn">Remove</button>
+      <button (click)="onRemove()" class="ml-1" type="button" mat-button color="warn">Remove</button>
     </div>
   </mat-dialog-actions>
 </form>

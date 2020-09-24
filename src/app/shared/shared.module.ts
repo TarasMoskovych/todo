@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
-import { LoaderComponent } from './components';
+import { ConfirmDialogComponent, LoaderComponent } from './components';
 import { OrderByPipe } from './pipes';
 
 @NgModule({
   declarations: [
+    ConfirmDialogComponent,
     LoaderComponent,
     OrderByPipe,
   ],
@@ -21,8 +22,12 @@ import { OrderByPipe } from './pipes';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    ConfirmDialogComponent,
     LoaderComponent,
     OrderByPipe,
+  ],
+  entryComponents: [
+    ConfirmDialogComponent,
   ]
 })
 export class SharedModule { }

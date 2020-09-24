@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 interface IGeneric {
   id: number;
@@ -20,9 +20,18 @@ export abstract class AbstractService<T> {
       .pipe(catchError((error: any) => throwError(error)));
   }
 
-  update<T extends IGeneric>(body: T): Observable<T> {
+  update<T extends IGeneric>(payload: T): Observable<T> {
     return this.http
-      .put<T>(`${this.url}/${body.id}`, body)
+      .put<T>(`${this.url}/${payload.id}`, payload)
       .pipe(catchError((error: any) => throwError(error)));
+  }
+
+  remove<T extends IGeneric>(payload: T): Observable<T> {
+    return this.http
+      .delete<T>(`${this.url}/${payload.id}`)
+      .pipe(
+        map(() => payload),
+        catchError((error: any) => throwError(error))
+      );
   }
 }

@@ -1,12 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { AppState, categoriesSelector, prioritiesSelector } from 'src/app/core/+store';
 
 import { Category, Priority, Task } from 'src/app/models';
-import { Constants } from 'src/app/shared';
+import { Constants, ConfirmDialogComponent } from 'src/app/shared';
 
 @Component({
   selector: 'app-task-edit',
@@ -21,6 +22,7 @@ export class TaskEditComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public task: Task,
+    private dialog: MatDialog,
     private dialogRef: MatDialogRef<TaskEditComponent>,
     private store: Store<AppState>,
   ) { }
@@ -34,8 +36,21 @@ export class TaskEditComponent implements OnInit {
     this.taskForm.patchValue({ completed: !completed });
   }
 
+  onRemove() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        message: `Do you want to remove "${this.task.name}" task?`
+      },
+      width: '40%',
+    });
+
+    dialogRef.afterClosed()
+      .pipe(take(1))
+      .subscribe((remove: boolean) => remove && this.closeEditDialog(this.task, remove));
+  }
+
   onSubmit() {
-    this.dialogRef.close({ ...this.task, ...this.taskForm.value });
+    this.closeEditDialog({ ...this.task, ...this.taskForm.value });
   }
 
   private buildForm() {
@@ -50,6 +65,10 @@ export class TaskEditComponent implements OnInit {
       categoryId: new FormControl(categoryId),
       priorityId: new FormControl(priorityId),
     });
+  }
+
+  private closeEditDialog(task: Task, remove = false) {
+    this.dialogRef.close({ task, remove });
   }
 
 }
