@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
-import { Priority, Task } from 'src/app/models';
+import { Category, Priority, Task } from 'src/app/models';
 import { CategoryEntity } from 'src/app/core/+store';
 
 @Component({
@@ -18,6 +18,8 @@ export class TasksTableComponent implements OnChanges, AfterViewInit {
   @Input() priorities: Priority[];
   @Input() tasks: Task[];
   @Output() taskEdit = new EventEmitter<{ task: Task, openModal: boolean }>();
+  @Output() taskRemove = new EventEmitter<Task>();
+  @Output() categorySelect = new EventEmitter<Category>();
   @ViewChild(MatSort) private sort: MatSort;
   @ViewChild(MatPaginator) private paginator: MatPaginator;
 
@@ -55,8 +57,16 @@ export class TasksTableComponent implements OnChanges, AfterViewInit {
     this.dispatchEdit(task, true);
   }
 
+  onTaskRemove(task: Task) {
+    this.taskRemove.emit(task);
+  }
+
   onTaskCheck({ checked }: MatCheckboxChange, task: Task) {
     this.dispatchEdit({ ...task, completed: checked });
+  }
+
+  onCategorySelect(category: Category) {
+    this.categorySelect.emit(category);
   }
 
   private dispatchEdit(task: Task, openModal = false) {

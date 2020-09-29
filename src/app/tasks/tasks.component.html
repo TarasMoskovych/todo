@@ -9,6 +9,8 @@
       [priorities]="priorities$ | async"
       [tasks]="tasks$ | async"
       (taskEdit)="onTaskEdit($event)"
+      (taskRemove)="onTaskRemove($event)"
+      (categorySelect)="onCategorySelect($event)"
     ></app-tasks-table>
 
     <ng-template #loader>

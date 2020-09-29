@@ -45,7 +45,7 @@
         *ngIf="taskForm.get('date').value"
         mat-icon-button matSuffix
         type="button"
-        [attr.aria-label]="'Clear date'"
+        aria-label="Clear date"
         (click)="onDateReset()"
       ><mat-icon>clear</mat-icon>
       </button>
@@ -58,7 +58,7 @@
   <mat-dialog-actions>
     <div>
       <button class="mr-1" mat-raised-button color="primary" [disabled]="taskForm.invalid">Save</button>
-      <button [mat-dialog-close]="true" type="button" mat-raised-button>Cancel</button>
+      <button mat-dialog-close type="button" mat-raised-button>Cancel</button>
     </div>
 
     <div *ngIf="task" class="d-flex align-items-center">

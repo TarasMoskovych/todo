@@ -4,7 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { Task } from '../models';
+import { Category, Task } from '../models';
 import { TaskEditComponent } from './components';
 import {
   tasksSelector,
@@ -15,9 +15,11 @@ import {
   GetTasks,
   UpdateTask,
   RemoveTask,
+  SelectCategory,
   PriorityEntity,
   prioritiesEntitiesSelector,
 } from '../core/+store';
+import { ConfirmDialogComponent } from '../shared';
 
 @Component({
   selector: 'app-tasks',
@@ -51,6 +53,23 @@ export class TasksComponent implements OnInit {
     } else {
       this.updateTask(task);
     }
+  }
+
+  onTaskRemove(task: Task) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        message: `Do you want to remove "${task.name}" task?`
+      },
+      width: '40%',
+    });
+
+    dialogRef.afterClosed()
+      .pipe(take(1))
+      .subscribe((remove: boolean) => remove && this.removeTask(task));
+  }
+
+  onCategorySelect(category: Category) {
+    this.store.dispatch(new SelectCategory(category));
   }
 
   private getTasks() {

@@ -39,7 +39,9 @@
       <th mat-sort-header mat-header-cell *matHeaderCellDef>Category</th>
       <td [class.empty]="!task.categoryId" mat-cell *matCellDef="let task">
         <ng-container *ngIf="categories[task.categoryId]; else noCategory">
-          {{ categories[task.categoryId].name }}
+          <span class="link" (click)="onCategorySelect(categories[task.categoryId])">
+            {{ categories[task.categoryId].name }}
+          </span>
         </ng-container>
         <ng-template #noCategory>
           No category
@@ -50,7 +52,27 @@
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let task">
-        <mat-checkbox (change)="onTaskCheck($event, task)" [checked]="task.completed"></mat-checkbox>
+        <div class="d-flex align-items-center">
+          <button
+            class="remove w-auto mr-2"
+            (click)="onTaskRemove(task)"
+            mat-icon-button
+            [attr.aria-label]="'Remove ' + task.name"
+          ><mat-icon>delete</mat-icon>
+          </button>
+          <button
+            class="edit w-auto mr-2"
+            (click)="onTaskEdit(task)"
+            mat-icon-button
+            [attr.aria-label]="'Edit ' + task.name"
+          ><mat-icon>edit</mat-icon>
+          </button>
+          <mat-checkbox
+            class="checkbox--no-margins"
+            (change)="onTaskCheck($event, task)"
+            [checked]="task.completed"
+          ></mat-checkbox>
+        </div>
       </td>
     </ng-container>
 

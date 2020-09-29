@@ -6,11 +6,12 @@
   </div>
   <div class="sidebar-wrapper" *ngIf="{value: selected$ | async} as selected">
     <ul class="nav" *ngIf="categories$ | async | orderBy:'asc':'name' as categories">
-      <li class="nav-item" [class.active]="!selected.value" (click)="onSortByCategory()">
+      <li class="nav-item mb-3" [class.active]="!selected.value" (click)="onSortByCategory()">
         <a class="nav-link">
           <p>All</p>
         </a>
       </li>
+      <mat-divider></mat-divider>
       <li
         *ngFor="let category of categories"
         class="nav-item"

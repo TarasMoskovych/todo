@@ -14,3 +14,21 @@ body {
 .pointer {
   cursor: pointer;
 }
+
+.checkbox--no-margins {
+  .mat-checkbox-layout {
+    margin: 0;
+  }
+}
+
+.w-auto {
+  width: auto !important;
+}
+
+.link {
+  &:hover {
+    cursor: pointer;
+    filter: brightness(.5);
+    text-decoration: underline;
+  }
+}
