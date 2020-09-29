@@ -49,12 +49,16 @@ export class TaskEditComponent implements OnInit {
       .subscribe((remove: boolean) => remove && this.closeEditDialog(this.task, remove));
   }
 
+  onDateReset() {
+    this.taskForm.patchValue({ date: null });
+  }
+
   onSubmit() {
     this.closeEditDialog({ ...this.task, ...this.taskForm.value });
   }
 
   private buildForm() {
-    const { name, completed, categoryId, priorityId } = this.task;
+    const { name, completed, categoryId, priorityId, date } = this.task;
 
     this.taskForm = new FormGroup({
       name: new FormControl(name, [
@@ -64,6 +68,7 @@ export class TaskEditComponent implements OnInit {
       completed: new FormControl(completed),
       categoryId: new FormControl(categoryId),
       priorityId: new FormControl(priorityId),
+      date: new FormControl(date),
     });
   }
 

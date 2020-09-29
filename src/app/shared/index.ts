@@ -1,2 +1,3 @@
-export * from './classes/constants';
+export * from './classes';
 export * from './components';
+export * from './pipes';

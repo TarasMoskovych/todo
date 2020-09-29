@@ -47,7 +47,7 @@ export class TasksComponent implements OnInit {
       dialogRef = this.dialog.open(TaskEditComponent, { data: task, width: '50%' });
       dialogRef.afterClosed()
         .pipe(take(1))
-        .subscribe(({ task, remove }) => task && this[remove ? 'removeTask' : 'updateTask'](task));
+        .subscribe(({ task, remove } = {}) => task && this[remove ? 'removeTask' : 'updateTask'](task));
     } else {
       this.updateTask(task);
     }

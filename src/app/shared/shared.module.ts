@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { ConfirmDialogComponent, LoaderComponent } from './components';
-import { OrderByPipe } from './pipes';
+import { OrderByPipe, SmartDatePipe } from './pipes';
 
 @NgModule({
   declarations: [
     ConfirmDialogComponent,
     LoaderComponent,
     OrderByPipe,
+    SmartDatePipe,
   ],
   imports: [
     CommonModule,
@@ -25,6 +26,7 @@ import { OrderByPipe } from './pipes';
     ConfirmDialogComponent,
     LoaderComponent,
     OrderByPipe,
+    SmartDatePipe,
   ],
   entryComponents: [
     ConfirmDialogComponent,

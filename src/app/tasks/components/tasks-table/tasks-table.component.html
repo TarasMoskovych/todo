@@ -19,7 +19,7 @@
     <ng-container matColumnDef="date">
       <th mat-sort-header mat-header-cell *matHeaderCellDef>Date</th>
       <td [class.empty]="!task.categoryId" mat-cell *matCellDef="let task">
-        {{ (task.date | date:'mediumDate') || '-' }}
+        {{ task.date | smartDate }}
       </td>
     </ng-container>
 
