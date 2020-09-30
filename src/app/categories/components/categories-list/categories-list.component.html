@@ -1,0 +1,25 @@
+<ul class="nav">
+  <li class="nav-item mb-3" [class.active]="!selected" (click)="onSortByCategory(null)">
+    <a class="nav-link">
+      <p>All</p>
+    </a>
+  </li>
+  <mat-divider></mat-divider>
+  <li
+    *ngFor="let category of categories | orderBy:'asc':'name'"
+    class="nav-item"
+    [class.active]="selected?.id === category.id"
+    (click)="onSortByCategory(category)">
+
+    <a class="nav-link d-flex align-items-center justify-content-between">
+      <p>{{ category.name }}</p>
+      <button
+        (click)="onCategoryEdit($event, category)"
+        class="edit-category w-auto h-auto lh-initial"
+        mat-icon-button
+        [attr.aria-label]="'Edit ' + category.name"
+      ><mat-icon>edit</mat-icon>
+      </button>
+    </a>
+  </li>
+</ul>

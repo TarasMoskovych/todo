@@ -5,23 +5,11 @@
     </a>
   </div>
   <div class="sidebar-wrapper" *ngIf="{value: selected$ | async} as selected">
-    <ul class="nav" *ngIf="categories$ | async | orderBy:'asc':'name' as categories">
-      <li class="nav-item mb-3" [class.active]="!selected.value" (click)="onSortByCategory()">
-        <a class="nav-link">
-          <p>All</p>
-        </a>
-      </li>
-      <mat-divider></mat-divider>
-      <li
-        *ngFor="let category of categories"
-        class="nav-item"
-        [class.active]="selected.value?.id === category.id"
-        (click)="onSortByCategory(category)">
-
-        <a class="nav-link">
-          <p>{{ category.name }}</p>
-        </a>
-      </li>
-    </ul>
+    <app-categories-list
+      [categories]="categories$ | async"
+      [selected]="selected.value"
+      (sortByCategory)="onSortByCategory($event)"
+      (categoryEdit)="onCategoryEdit($event)"
+    ></app-categories-list>
   </div>
 </div>

@@ -3,6 +3,6 @@ export interface Task {
   name: string;
   completed: boolean;
   priorityId?: number;
-  categoryId?: number;
+  category?: number;
   date?: Date;
 }

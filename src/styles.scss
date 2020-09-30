@@ -25,10 +25,22 @@ body {
   width: auto !important;
 }
 
+.h-auto {
+  height: auto !important;
+}
+
+.lh-initial {
+  line-height: initial !important;
+}
+
 .link {
   &:hover {
     cursor: pointer;
     filter: brightness(.5);
     text-decoration: underline;
   }
+}
+
+mat-form-field {
+  width: 100%;
 }

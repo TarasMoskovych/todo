@@ -73,7 +73,7 @@
       "name": "Fill the gasoline tank full",
       "priorityId": 3,
       "completed": false,
-      "categoryId": 10,
+      "category": 10,
       "date": "2020-04-10"
     },
     {
@@ -81,7 +81,7 @@
       "name": "Submit reports to the head of department",
       "priorityId": 1,
       "completed": false,
-      "categoryId": 1,
+      "category": 1,
       "date": "2020-04-11"
     },
     {
@@ -89,28 +89,28 @@
       "name": "Clean up the room, water the plants",
       "priorityId": 3,
       "completed": true,
-      "categoryId": 2
+      "category": 2
     },
     {
       "id": 4,
       "name": "Go to the park with the family, invite friends",
       "priorityId": 2,
       "completed": false,
-      "categoryId": 2,
+      "category": 2,
       "date": "2020-08-17"
     },
     {
       "id": 5,
       "name": "Find and learn a quantum physics textbook",
       "completed": false,
-      "categoryId": 3
+      "category": 3
     },
     {
       "id": 6,
       "name": "Go to a programming workshop",
       "priorityId": 2,
       "completed": true,
-      "categoryId": 3,
+      "category": 3,
       "date": "2020-06-11"
     },
     {
@@ -118,20 +118,20 @@
       "name": "Find tickets to Turkey, choose a hotel",
       "priorityId": 3,
       "completed": false,
-      "categoryId": 4
+      "category": 4
     },
     {
       "id": 8,
       "name": "Prepare dinner for the whole family (salmon with potatoes)",
       "completed": false,
-      "categoryId": 6
+      "category": 6
     },
     {
       "id": 9,
       "name": "Pull up 10 times",
       "priorityId": 3,
       "completed": false,
-      "categoryId": 5,
+      "category": 5,
       "date": "2020-03-12"
     },
     {
@@ -139,7 +139,7 @@
       "name": "Run 100m",
       "priorityId": 1,
       "completed": true,
-      "categoryId": 5
+      "category": 5
     },
     {
       "id": 11,
@@ -151,21 +151,21 @@
       "name": "Go to the lecture 'How to learn to program in JavaScript'",
       "priorityId": 2,
       "completed": false,
-      "categoryId": 3
+      "category": 3
     },
     {
       "id": 13,
       "name": "Buy groceries for a week",
       "priorityId": 3,
       "completed": false,
-      "categoryId": 6,
+      "category": 6,
       "date": "2020-05-11"
     },
     {
       "id": 14,
       "name": "Have a meeting about all projects",
       "completed": true,
-      "categoryId": 1
+      "category": 1
     },
     {
       "id": 15,
@@ -178,21 +178,21 @@
       "name": "Put 100,000 UAH in the bank for deposit",
       "priorityId": 4,
       "completed": false,
-      "categoryId": 7
+      "category": 7
     },
     {
       "id": 17,
       "name": "Ask for an advance payment at work",
       "priorityId": 3,
       "completed": false,
-      "categoryId": 7
+      "category": 7
     },
     {
       "id": 18,
       "name": "Get tested, check hemoglobin",
       "priorityId": 4,
       "completed": false,
-      "categoryId": 9,
+      "category": 9,
       "date": "2020-12-11"
     },
     {
@@ -200,7 +200,7 @@
       "name": "Compare new iPad with Samsung",
       "priorityId": 1,
       "completed": false,
-      "categoryId": 8,
+      "category": 8,
       "date": "2020-10-11"
     },
     {
@@ -208,7 +208,7 @@
       "name": "Play football with employees",
       "priorityId": 2,
       "completed": false,
-      "categoryId": 5,
+      "category": 5,
       "date": "2020-03-17"
     }
   ]

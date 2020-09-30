@@ -48,7 +48,7 @@ export class TasksTableComponent implements OnChanges, AfterViewInit {
         case 'name': return task.name;
         case 'date': return task.date;
         case 'priority': return task.priorityId;
-        case 'category': return task.categoryId;
+        case 'category': return task.category;
       }
     };
   }

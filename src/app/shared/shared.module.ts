@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
-import { ConfirmDialogComponent, LoaderComponent } from './components';
+import { ConfirmDialogComponent, LoaderComponent, FormDialogComponent } from './components';
 import { OrderByPipe, SmartDatePipe } from './pipes';
 
 @NgModule({
   declarations: [
     ConfirmDialogComponent,
+    FormDialogComponent,
     LoaderComponent,
     OrderByPipe,
     SmartDatePipe,
@@ -24,12 +25,14 @@ import { OrderByPipe, SmartDatePipe } from './pipes';
     FormsModule,
     ReactiveFormsModule,
     ConfirmDialogComponent,
+    FormDialogComponent,
     LoaderComponent,
     OrderByPipe,
     SmartDatePipe,
   ],
   entryComponents: [
     ConfirmDialogComponent,
+    FormDialogComponent,
   ]
 })
 export class SharedModule { }

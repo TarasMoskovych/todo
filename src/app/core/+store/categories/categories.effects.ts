@@ -31,4 +31,32 @@ export class CategoriesEffects {
         )
     })
   );
+
+  @Effect()
+  update$: Observable<Action> = this.actions$.pipe(
+    ofType<categoriesActions.UpdateCategory>(CategoriesActionTypes.UPDATE_CATEGORY),
+    pluck('payload'),
+    switchMap((category: Category) => {
+      return this.categoriesService
+        .update(category)
+        .pipe(
+          map((category: Category) => new categoriesActions.UpdateCategorySuccess(category)),
+          catchError((err: any) => of(new categoriesActions.UpdateCategorySuccess(err)))
+        )
+    })
+  );
+
+  @Effect()
+  remove$: Observable<Action> = this.actions$.pipe(
+    ofType<categoriesActions.RemoveCategory>(CategoriesActionTypes.REMOVE_CATEGORY),
+    pluck('payload'),
+    switchMap((category: Category) => {
+      return this.categoriesService
+        .remove(category)
+        .pipe(
+          map((category: Category) => new categoriesActions.RemoveCategorySuccess(category)),
+          catchError((err: any) => of(new categoriesActions.RemoveCategoryError(err)))
+        )
+    })
+  );
 }

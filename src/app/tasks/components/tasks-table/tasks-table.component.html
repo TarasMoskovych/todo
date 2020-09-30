@@ -18,7 +18,7 @@
 
     <ng-container matColumnDef="date">
       <th mat-sort-header mat-header-cell *matHeaderCellDef>Date</th>
-      <td [class.empty]="!task.categoryId" mat-cell *matCellDef="let task">
+      <td [class.empty]="!task.category" mat-cell *matCellDef="let task">
         {{ task.date | smartDate }}
       </td>
     </ng-container>
@@ -37,10 +37,10 @@
 
     <ng-container matColumnDef="category">
       <th mat-sort-header mat-header-cell *matHeaderCellDef>Category</th>
-      <td [class.empty]="!task.categoryId" mat-cell *matCellDef="let task">
-        <ng-container *ngIf="categories[task.categoryId]; else noCategory">
-          <span class="link" (click)="onCategorySelect(categories[task.categoryId])">
-            {{ categories[task.categoryId].name }}
+      <td [class.empty]="!task.category" mat-cell *matCellDef="let task">
+        <ng-container *ngIf="categories[task.category]; else noCategory">
+          <span class="link" (click)="onCategorySelect(categories[task.category])">
+            {{ categories[task.category].name }}
           </span>
         </ng-container>
         <ng-template #noCategory>

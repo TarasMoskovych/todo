@@ -58,7 +58,7 @@ export class TaskEditComponent implements OnInit {
   }
 
   private buildForm() {
-    const { name, completed, categoryId, priorityId, date } = this.task;
+    const { name, completed, category, priorityId, date } = this.task;
 
     this.taskForm = new FormGroup({
       name: new FormControl(name, [
@@ -66,7 +66,7 @@ export class TaskEditComponent implements OnInit {
         Validators.pattern(Constants.VALIDATION_PATTERN),
       ]),
       completed: new FormControl(completed),
-      categoryId: new FormControl(categoryId),
+      category: new FormControl(category),
       priorityId: new FormControl(priorityId),
       date: new FormControl(date),
     });

@@ -46,11 +46,16 @@ export function categoriesReducer(state = initialCategoriesState, action: Catego
 
     case CategoriesActionTypes.REMOVE_CATEGORY_SUCCESS: {
       const { [action.payload.id]: current, ...entities } = state.entities;
-
-      return {
+      const nextState = {
         ...state,
         entities,
       };
+
+      if (current.id === state.selected?.id) {
+        Object.assign(nextState, { selected: null });
+      }
+
+      return nextState;
     }
 
     case CategoriesActionTypes.SELECT_CATEGORY: {

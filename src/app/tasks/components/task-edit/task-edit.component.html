@@ -16,7 +16,7 @@
 
     <mat-form-field>
       <mat-label>Select Category</mat-label>
-      <mat-select formControlName="categoryId">
+      <mat-select formControlName="category">
         <mat-option>No category</mat-option>
         <ng-container *ngIf="categories$ | async | orderBy:'asc':'name' as categories">
           <mat-option *ngFor="let category of categories" [value]="category.id">

@@ -19,5 +19,5 @@ export const tasksSelector = createSelector(
   (entities: TaskEntity, category: Category) => Object
     .keys(entities)
     .map((id: string) => entities[id])
-    .filter((task: Task) => category ? task.categoryId === category.id : task)
+    .filter((task: Task) => category ? task.category === category.id : task)
 );
