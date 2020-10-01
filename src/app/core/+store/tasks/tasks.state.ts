@@ -1,4 +1,4 @@
-import { Task } from 'src/app/models';
+import { Task, TaskFilter } from 'src/app/models';
 
 export interface TaskEntity {
   [id: number]: Task;
@@ -6,6 +6,7 @@ export interface TaskEntity {
 
 export interface TasksState {
   entities: TaskEntity;
+  filter: TaskFilter;
   readonly loading: boolean;
   readonly loaded: boolean;
   readonly error: Error | string;
@@ -13,6 +14,7 @@ export interface TasksState {
 
 export const initialTasksState: TasksState = {
   entities: {},
+  filter: {},
   loading: false,
   loaded: false,
   error: null,

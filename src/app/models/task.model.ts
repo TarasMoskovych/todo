@@ -5,4 +5,11 @@ export interface Task {
   priorityId?: number;
   category?: number;
   date?: Date;
+  filter?: TaskFilter;
+}
+
+export interface TaskFilter {
+  query?: string;
+  status?: string;
+  priority?: number | string;
 }

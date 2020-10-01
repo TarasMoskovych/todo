@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { Category, Priority, Task } from 'src/app/models';
 import { CategoryEntity } from 'src/app/core/+store';
+import { Constants } from 'src/app/shared';
 
 @Component({
   selector: 'app-tasks-table',
@@ -23,6 +24,7 @@ export class TasksTableComponent implements OnChanges, AfterViewInit {
   @ViewChild(MatSort) private sort: MatSort;
   @ViewChild(MatPaginator) private paginator: MatPaginator;
 
+  pageSizeOptions = Constants.PAGE_SIZE_OPTIONS;
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = [
     'color',
@@ -36,6 +38,7 @@ export class TasksTableComponent implements OnChanges, AfterViewInit {
 
   ngOnChanges() {
     this.dataSource.data = this.tasks;
+    setTimeout(() => this.dataSource.paginator = this.paginator, 0);
   }
 
   ngAfterViewInit() {

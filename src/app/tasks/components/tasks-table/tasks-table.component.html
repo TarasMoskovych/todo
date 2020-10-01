@@ -1,4 +1,4 @@
-<ng-container *ngIf="tasks.length; else empty">
+<ng-container *ngIf="tasks?.length; else empty">
   <table mat-table matSort [dataSource]="dataSource" class="w-100">
 
     <ng-container matColumnDef="color">
@@ -80,7 +80,12 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns; let task" [class.completed]="task.completed"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 50, 100]" showFirstLastButtons></mat-paginator>
+  <mat-paginator
+    [class.hide-buttons]="tasks.length <= pageSizeOptions[0]"
+    [pageSizeOptions]="pageSizeOptions"
+    [hidePageSize]="tasks.length <= pageSizeOptions[0]"
+    showFirstLastButtons
+  ></mat-paginator>
 </ng-container>
 
 <ng-template #empty>

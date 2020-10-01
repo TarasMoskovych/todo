@@ -1,0 +1,63 @@
+<form [formGroup]="filtersForm">
+  <div class="row align-items-baseline">
+
+    <div class="col-3">
+      <mat-form-field>
+        <mat-label>Search in category</mat-label>
+        <input
+          matInput
+          placeholder="Search in category"
+          formControlName="query"
+          (keyup)="onKeyup()"
+        >
+        <app-reset-field
+          [form]="filtersForm"
+          (reset)="submit()"
+          matSuffix
+          control="query"
+        ></app-reset-field>
+      </mat-form-field>
+    </div>
+
+    <div class="col-3">
+      <mat-form-field>
+        <mat-label>Filter by status</mat-label>
+        <mat-select formControlName="status" (selectionChange)="submit()">
+          <mat-option>All statuses</mat-option>
+          <mat-option value="completed">Completed tasks</mat-option>
+          <mat-option value="uncompleted">Uncompleted tasks</mat-option>
+        </mat-select>
+        <app-reset-field
+          [form]="filtersForm"
+          (reset)="submit()"
+          matSuffix
+          control="status"
+        ></app-reset-field>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="priorities?.length" class="col-3">
+      <mat-form-field>
+        <mat-label>Filter by priorities</mat-label>
+        <mat-select formControlName="priority" (selectionChange)="submit()">
+          <mat-option>All priorities</mat-option>
+          <mat-option [value]="noPriority">Without priorities</mat-option>
+          <mat-option *ngFor="let priority of priorities" [value]="priority.id">
+            {{ priority.name }}
+          </mat-option>
+        </mat-select>
+        <app-reset-field
+          [form]="filtersForm"
+          (reset)="submit()"
+          matSuffix
+          control="priority"
+        ></app-reset-field>
+      </mat-form-field>
+    </div>
+
+    <div class="col-3" *ngIf="filtersForm.value.query || filtersForm.value.status || filtersForm.value.priority">
+      <button (click)="onReset()" mat-button>Clear</button>
+    </div>
+
+  </div>
+</form>

@@ -53,6 +53,15 @@ export function tasksReducer(state = initialTasksState, action: TasksActions): T
       };
     }
 
+    case TasksActionTypes.FILTER_TASK: {
+      const filter = action.payload;
+
+      return {
+        ...state,
+        filter,
+      };
+    }
+
     default:
       return state;
   }

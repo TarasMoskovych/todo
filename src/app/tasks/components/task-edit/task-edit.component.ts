@@ -49,10 +49,6 @@ export class TaskEditComponent implements OnInit {
       .subscribe((remove: boolean) => remove && this.closeEditDialog(this.task, remove));
   }
 
-  onDateReset() {
-    this.taskForm.patchValue({ date: null });
-  }
-
   onSubmit() {
     this.closeEditDialog({ ...this.task, ...this.taskForm.value });
   }

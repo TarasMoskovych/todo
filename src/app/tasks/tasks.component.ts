@@ -4,7 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { Category, Task } from '../models';
+import { Category, Task, TaskFilter } from '../models';
 import { TaskEditComponent } from './components';
 import {
   tasksSelector,
@@ -15,9 +15,11 @@ import {
   GetTasks,
   UpdateTask,
   RemoveTask,
+  FilterTask,
   SelectCategory,
   PriorityEntity,
   prioritiesEntitiesSelector,
+  prioritiesSelector,
 } from '../core/+store';
 import { ConfirmDialogComponent } from '../shared';
 
@@ -30,7 +32,8 @@ import { ConfirmDialogComponent } from '../shared';
 export class TasksComponent implements OnInit {
   categories$: Observable<CategoryEntity> = this.store.select(categoriesEntitiesSelector);
   loaded$: Observable<boolean>;
-  priorities$: Observable<PriorityEntity> = this.store.select(prioritiesEntitiesSelector);
+  priorityEntities$: Observable<PriorityEntity> = this.store.select(prioritiesEntitiesSelector);
+  priorities$: Observable<PriorityEntity> = this.store.select(prioritiesSelector);
   tasks$: Observable<Task[]>;
 
   constructor(
@@ -70,6 +73,10 @@ export class TasksComponent implements OnInit {
 
   onCategorySelect(category: Category) {
     this.store.dispatch(new SelectCategory(category));
+  }
+
+  onSetFilter(filter: TaskFilter) {
+    this.store.dispatch(new FilterTask(filter));
   }
 
   private getTasks() {

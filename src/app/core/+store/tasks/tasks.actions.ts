@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Task } from 'src/app/models';
+import { Task, TaskFilter } from 'src/app/models';
 
 export enum TasksActionTypes {
   GET_TASKS          = '[Tasks] GET_TASKS',
@@ -18,6 +18,8 @@ export enum TasksActionTypes {
   REMOVE_TASK         = '[Tasks] REMOVE_TASK',
   REMOVE_TASK_SUCCESS = '[Tasks] REMOVE_TASK_SUCCESS',
   REMOVE_TASK_ERROR   = '[Tasks] REMOVE_TASK_ERROR',
+
+  FILTER_TASK         = '[Tasks] FILTER_TASK',
 }
 
 export class GetTasks implements Action {
@@ -79,6 +81,11 @@ export class RemoveTaskError implements Action {
   constructor(public payload: Error | string) { }
 }
 
+export class FilterTask implements Action {
+  readonly type = TasksActionTypes.FILTER_TASK;
+  constructor(public payload: TaskFilter) { }
+}
+
 export type TasksActions
   = GetTasks
   | GetTasksSuccess
@@ -91,4 +98,5 @@ export type TasksActions
   | UpdateTaskError
   | RemoveTask
   | RemoveTaskSuccess
-  | RemoveTaskError;
+  | RemoveTaskError
+  | FilterTask;

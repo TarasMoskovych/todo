@@ -41,6 +41,12 @@ body {
   }
 }
 
+.hide-buttons {
+  .mat-paginator-range-actions button {
+    display: none;
+  }
+}
+
 mat-form-field {
   width: 100%;
 }

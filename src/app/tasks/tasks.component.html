@@ -1,3 +1,8 @@
+<app-tasks-filters
+  [priorities]="priorities$ | async"
+  (setFilter)="onSetFilter($event)"
+></app-tasks-filters>
+
 <div class="card" *ngIf="{ loaded: loaded$ | async } as state">
   <div class="card-header card-header-warning">
     <h4 class="card-title">Tasks</h4>
@@ -6,7 +11,7 @@
     <app-tasks-table
       *ngIf="state.loaded; else loader"
       [categories]="categories$ | async"
-      [priorities]="priorities$ | async"
+      [priorities]="priorityEntities$ | async"
       [tasks]="tasks$ | async"
       (taskEdit)="onTaskEdit($event)"
       (taskRemove)="onTaskRemove($event)"

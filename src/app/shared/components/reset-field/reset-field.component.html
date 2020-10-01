@@ -1,0 +1,10 @@
+<ng-container *ngIf="form && control">
+  <button
+    *ngIf="(value$ | async) || form.get(control).value"
+    mat-icon-button
+    type="button"
+    [attr.aria-label]="'Clear ' + control"
+    (click)="onReset($event)"
+  ><mat-icon>clear</mat-icon>
+  </button>
+</ng-container>
