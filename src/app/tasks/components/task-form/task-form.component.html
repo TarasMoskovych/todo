@@ -63,7 +63,7 @@
       <button mat-dialog-close type="button" mat-raised-button>Cancel</button>
     </div>
 
-    <div *ngIf="task" class="d-flex align-items-center">
+    <div class="d-flex align-items-center">
       <ng-container *ngIf="taskForm.get('completed') as completed">
         <mat-slide-toggle
           [checked]="completed.value"
@@ -71,7 +71,7 @@
           (toggleChange)="onChange()"
         ></mat-slide-toggle>
       </ng-container>
-      <button (click)="onRemove()" class="ml-1" type="button" mat-button color="warn">Remove</button>
+      <button *ngIf="task" (click)="onRemove()" class="ml-1" type="button" mat-button color="warn">Remove</button>
     </div>
   </mat-dialog-actions>
 </form>

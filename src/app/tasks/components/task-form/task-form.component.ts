@@ -4,18 +4,18 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { AppState, categoriesSelector, prioritiesSelector } from 'src/app/core/+store';
+import { AppState, categoriesSelectedSelector, categoriesSelector, prioritiesSelector } from 'src/app/core/+store';
 
 import { Category, Priority, Task } from 'src/app/models';
 import { Constants, ConfirmDialogComponent } from 'src/app/shared';
 
 @Component({
-  selector: 'app-task-edit',
-  templateUrl: './task-edit.component.html',
-  styleUrls: ['./task-edit.component.scss'],
+  selector: 'app-task-form',
+  templateUrl: './task-form.component.html',
+  styleUrls: ['./task-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TaskEditComponent implements OnInit {
+export class TaskFormComponent implements OnInit {
   categories$: Observable<Category[]> = this.store.select(categoriesSelector);
   priorities$: Observable<Priority[]> = this.store.select(prioritiesSelector);
   taskForm: FormGroup;
@@ -23,12 +23,13 @@ export class TaskEditComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public task: Task,
     private dialog: MatDialog,
-    private dialogRef: MatDialogRef<TaskEditComponent>,
+    private dialogRef: MatDialogRef<TaskFormComponent>,
     private store: Store<AppState>,
   ) { }
 
   ngOnInit(): void {
     this.buildForm();
+    this.getSelectedCategory();
   }
 
   onChange() {
@@ -54,14 +55,14 @@ export class TaskEditComponent implements OnInit {
   }
 
   private buildForm() {
-    const { name, completed, category, priorityId, date } = this.task;
+    const { name, completed, category, priorityId, date } = this.task || {};
 
     this.taskForm = new FormGroup({
       name: new FormControl(name, [
         Validators.required,
         Validators.pattern(Constants.VALIDATION_PATTERN),
       ]),
-      completed: new FormControl(completed),
+      completed: new FormControl(!!completed),
       category: new FormControl(category),
       priorityId: new FormControl(priorityId),
       date: new FormControl(date),
@@ -70,6 +71,14 @@ export class TaskEditComponent implements OnInit {
 
   private closeEditDialog(task: Task, remove = false) {
     this.dialogRef.close({ task, remove });
+  }
+
+  private getSelectedCategory() {
+    if (this.task) { return; }
+
+    this.store.select(categoriesSelectedSelector)
+      .pipe(take(1))
+      .subscribe((category: Category) => this.taskForm.patchValue({ category: category?.id }));
   }
 
 }

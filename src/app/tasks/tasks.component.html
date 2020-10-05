@@ -1,7 +1,12 @@
-<app-tasks-filters
-  [priorities]="priorities$ | async"
-  (setFilter)="onSetFilter($event)"
-></app-tasks-filters>
+<div class="d-flex align-items-baseline justify-content-between">
+  <app-tasks-filters
+    [priorities]="priorities$ | async"
+    (setFilter)="onSetFilter($event)"
+  ></app-tasks-filters>
+  <div>
+    <button (click)="onTaskAdd()" mat-raised-button color="primary">Add</button>
+  </div>
+</div>
 
 <div class="card" *ngIf="{ loaded: loaded$ | async } as state">
   <div class="card-header card-header-warning">

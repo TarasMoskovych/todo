@@ -33,6 +33,20 @@ export class TasksEffects {
   );
 
   @Effect()
+  create$: Observable<Action> = this.actions$.pipe(
+    ofType<tasksActions.CreateTask>(TasksActionTypes.CREATE_TASK),
+    pluck('payload'),
+    switchMap((task: Task) => {
+      return this.tasksService
+        .create(task)
+        .pipe(
+          map((task: Task) => new tasksActions.CreateTaskSuccess(task)),
+          catchError((err: any) => of(new tasksActions.CreateTaskError(err)))
+        )
+    })
+  );
+
+  @Effect()
   update$: Observable<Action> = this.actions$.pipe(
     ofType<tasksActions.UpdateTask>(TasksActionTypes.UPDATE_TASK),
     pluck('payload'),

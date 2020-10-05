@@ -8,13 +8,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from '../shared/shared.module';
 import { TasksEffects, tasksReducer } from '../core/+store'
 import { TasksComponent } from './tasks.component';
-import { TaskEditComponent, TasksTableComponent, TasksFiltersComponent } from './components';
+import { TaskFormComponent, TasksTableComponent, TasksFiltersComponent } from './components';
 import { CUSTOM_DATE_FORMATS } from '../shared';
 
 @NgModule({
   declarations: [
     TasksComponent,
-    TaskEditComponent,
+    TaskFormComponent,
     TasksTableComponent,
     TasksFiltersComponent,
   ],
@@ -29,7 +29,7 @@ import { CUSTOM_DATE_FORMATS } from '../shared';
     SharedModule,
   ],
   entryComponents: [
-    TaskEditComponent,
+    TaskFormComponent,
   ],
   exports: [
     TasksComponent,

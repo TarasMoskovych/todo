@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { Category, Task, TaskFilter } from '../models';
-import { TaskEditComponent } from './components';
+import { TaskFormComponent } from './components';
 import {
   tasksSelector,
   tasksLoadedSelector,
@@ -13,6 +13,7 @@ import {
   AppState,
   CategoryEntity,
   GetTasks,
+  CreateTask,
   UpdateTask,
   RemoveTask,
   FilterTask,
@@ -45,12 +46,17 @@ export class TasksComponent implements OnInit {
     this.getTasks();
   }
 
-  onTaskEdit({ task, openModal }: { task: Task, openModal: boolean }) {
-    let dialogRef: MatDialogRef<TaskEditComponent>;
+  onTaskAdd() {
+    this.dialog.open(TaskFormComponent, { width: '50%' })
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe(({ task } = {}) => task && this.createTask(task));
+  }
 
+  onTaskEdit({ task, openModal }: { task: Task, openModal: boolean }) {
     if (openModal) {
-      dialogRef = this.dialog.open(TaskEditComponent, { data: task, width: '50%' });
-      dialogRef.afterClosed()
+      this.dialog.open(TaskFormComponent, { data: task, width: '50%' })
+        .afterClosed()
         .pipe(take(1))
         .subscribe(({ task, remove } = {}) => task && this[remove ? 'removeTask' : 'updateTask'](task));
     } else {
@@ -83,6 +89,10 @@ export class TasksComponent implements OnInit {
     this.loaded$ = this.store.select(tasksLoadedSelector);
     this.tasks$ = this.store.select(tasksSelector);
     this.store.dispatch(new GetTasks());
+  }
+
+  private createTask(task: Task) {
+    this.store.dispatch(new CreateTask(task));
   }
 
   private updateTask(task: Task) {

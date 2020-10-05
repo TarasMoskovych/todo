@@ -20,6 +20,12 @@ export abstract class AbstractService<T> {
       .pipe(catchError((error: any) => throwError(error)));
   }
 
+  create(payload: T): Observable<T> {
+    return this.http
+      .post<T>(`${this.url}`, payload)
+      .pipe(catchError((error: any) => throwError(error)));
+  }
+
   update<T extends IPayload>(payload: T): Observable<T> {
     return this.http
       .put<T>(`${this.url}/${payload.id}`, payload)
