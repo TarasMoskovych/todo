@@ -12,10 +12,16 @@ export class CategoriesListComponent {
   @Input() categories: Category[];
   @Input() selected: Category;
   @Output() sortByCategory = new EventEmitter<Category>();
+  @Output() categoryAdd = new EventEmitter<void>();
   @Output() categoryEdit = new EventEmitter<Category>();
 
   onSortByCategory(category: Category) {
     this.sortByCategory.emit(category);
+  }
+
+  onCategoryAdd(e: MouseEvent) {
+    e.stopPropagation();
+    this.categoryAdd.emit();
   }
 
   onCategoryEdit(e: MouseEvent, category: Category) {

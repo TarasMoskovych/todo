@@ -33,6 +33,20 @@ export class CategoriesEffects {
   );
 
   @Effect()
+  create$: Observable<Action> = this.actions$.pipe(
+    ofType<categoriesActions.CreateCategory>(CategoriesActionTypes.CREATE_CATEGORY),
+    pluck('payload'),
+    switchMap((category: Category) => {
+      return this.categoriesService
+        .create(category)
+        .pipe(
+          map((category: Category) => new categoriesActions.CreateCategorySuccess(category)),
+          catchError((err: any) => of(new categoriesActions.CreateCategoryError(err)))
+        )
+    })
+  );
+
+  @Effect()
   update$: Observable<Action> = this.actions$.pipe(
     ofType<categoriesActions.UpdateCategory>(CategoriesActionTypes.UPDATE_CATEGORY),
     pluck('payload'),

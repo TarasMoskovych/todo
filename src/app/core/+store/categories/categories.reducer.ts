@@ -34,7 +34,16 @@ export function categoriesReducer(state = initialCategoriesState, action: Catego
       };
     }
 
-    case CategoriesActionTypes.CREATE_CATEGORY_SUCCESS:
+    case CategoriesActionTypes.CREATE_CATEGORY_SUCCESS: {
+      const entities = { ...state.entities, [action.payload.id]: action.payload };
+
+      return {
+        ...state,
+        entities,
+        selected: action.payload,
+      };
+    }
+
     case CategoriesActionTypes.UPDATE_CATEGORY_SUCCESS: {
       const entities = { ...state.entities, [action.payload.id]: action.payload };
 

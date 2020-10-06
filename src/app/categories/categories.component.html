@@ -9,6 +9,7 @@
       [categories]="categories$ | async"
       [selected]="selected.value"
       (sortByCategory)="onSortByCategory($event)"
+      (categoryAdd)="onCategoryAdd()"
       (categoryEdit)="onCategoryEdit($event)"
     ></app-categories-list>
   </div>

@@ -8,6 +8,7 @@ import { Category } from '../models';
 import {
   GetCategories,
   SelectCategory,
+  CreateCategory,
   UpdateCategory,
   RemoveCategory,
   categoriesSelector,
@@ -36,16 +37,23 @@ export class CategoriesComponent implements OnInit {
     this.getSelected();
   }
 
+  onCategoryAdd() {
+    this.dialog.open(FormDialogComponent, {
+      width: '50%',
+      data: { title: 'Add category' },
+    }).afterClosed()
+      .pipe(take(1))
+      .subscribe(({ name } = {}) => name && this.createCategory({ id: null, name }));
+  }
+
   onCategoryEdit(category: Category) {
-    const dialogRef = this.dialog.open(FormDialogComponent, {
+    this.dialog.open(FormDialogComponent, {
       width: '50%',
       data: {
         name: category.name,
         title: 'Edit category',
       },
-    });
-
-    dialogRef.afterClosed()
+    }).afterClosed()
       .pipe(take(1))
       .subscribe(({ name, remove } = {}) => name && this[remove ? 'removeCategory' : 'updateCategory']({ ...category, name }));
   }
@@ -61,6 +69,10 @@ export class CategoriesComponent implements OnInit {
 
   private getSelected() {
     this.selected$ = this.store.pipe(select(categoriesSelectedSelector));
+  }
+
+  private createCategory(category: Category) {
+    this.store.dispatch(new CreateCategory(category));
   }
 
   private updateCategory(category: Category) {
