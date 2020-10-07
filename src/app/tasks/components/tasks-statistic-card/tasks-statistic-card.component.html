@@ -1,0 +1,21 @@
+<div *ngIf="statistic" class="card card-stats" [class]="statistic.wrapperClass">
+  <div class="card-header card-header-icon" [class]="'card-header-' + statistic.statusClass">
+    <div class="card-icon">
+      <i class="material-icons">{{ statistic.icon }}</i>
+    </div>
+    <p class="card-category"></p>
+    <h3 class="card-title">
+      <ng-container *ngIf="statistic.percent; else value">
+        {{ statistic.value | percent }}
+      </ng-container>
+      <ng-template #value>
+        {{ statistic.value }}
+      </ng-template>
+    </h3>
+  </div>
+  <div class="card-footer">
+    <div class="stats">
+      <p class="stat-card-title">{{ statistic.title }}</p>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { TasksState, TaskEntity } from './';
 import { categoriesSelectedSelector } from '../categories';
-import { Task, Category, TaskFilter } from 'src/app/models';
+import { Task, Category, TaskFilter, TasksStatistics } from 'src/app/models';
 import { Constants } from 'src/app/shared';
 
 const getEntities = (state: TasksState) => state.entities;
@@ -18,14 +18,22 @@ export const tasksLoadedSelector = createSelector(getTasksState, getLoaded);
 export const tasksLoadingSelector = createSelector(getTasksState, getLoading);
 export const tasksSelector = createSelector(
   tasksEntitiesSelector,
+  (entities: TaskEntity) => Object.keys(entities).map((id: string) => entities[id])
+);
+export const tasksCategorySelector = createSelector(
+  tasksSelector,
   categoriesSelectedSelector,
+  (tasks: Task[], category: Category) => tasks.filter((task: Task) => category ? task.category === category.id : task)
+);
+export const tasksCategoryCompletedSelector = createSelector(
+  tasksCategorySelector,
+  (tasks: Task[]) => tasks.filter((task: Task) => task.completed)
+);
+export const tasksFilteredSelector = createSelector(
+  tasksCategorySelector,
   tasksFilterSelector,
-  (entities: TaskEntity, category: Category, filter: TaskFilter) => Object
-    .keys(entities)
-    .map((id: string) => entities[id])
+  (tasks: Task[], filter: TaskFilter) => tasks
     .filter((task: Task) => {
-      // Filter in selected category
-      if (category && category.id !== task.category ) { return false; }
       // Filter by status
       if (filter.status && (filter.status === 'completed' && !task.completed || filter.status === 'uncompleted' && task.completed)) { return false; }
       // Filter by query
@@ -35,3 +43,20 @@ export const tasksSelector = createSelector(
       return true;
     })
 );
+export const tasksStatisticsSelector = createSelector(
+  tasksCategorySelector,
+  tasksCategoryCompletedSelector,
+  (tasks: Task[], completedTasks: Task[]): TasksStatistics => {
+    const count = tasks.length;
+    const completed = completedTasks.length;
+    const uncompleted = tasks.length - completed;
+
+    return {
+      count,
+      completed,
+      completedValue: completed / count,
+      uncompleted,
+      uncompletedValue: uncompleted / count,
+    };
+  }
+)

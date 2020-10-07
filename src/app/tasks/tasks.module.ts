@@ -8,7 +8,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from '../shared/shared.module';
 import { TasksEffects, tasksReducer } from '../core/+store'
 import { TasksComponent } from './tasks.component';
-import { TaskFormComponent, TasksTableComponent, TasksFiltersComponent } from './components';
+import {
+  TaskFormComponent,
+  TasksTableComponent,
+  TasksFiltersComponent,
+  TasksStatisticComponent,
+  TasksStatisticCardComponent,
+} from './components';
 import { CUSTOM_DATE_FORMATS } from '../shared';
 
 @NgModule({
@@ -17,6 +23,8 @@ import { CUSTOM_DATE_FORMATS } from '../shared';
     TaskFormComponent,
     TasksTableComponent,
     TasksFiltersComponent,
+    TasksStatisticComponent,
+    TasksStatisticCardComponent,
   ],
   providers: [
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },

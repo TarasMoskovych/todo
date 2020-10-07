@@ -1,13 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { Category, Task, TaskFilter } from '../models';
 import { TaskFormComponent } from './components';
 import {
-  tasksSelector,
+  tasksFilteredSelector,
   tasksLoadedSelector,
   categoriesEntitiesSelector,
   AppState,
@@ -87,7 +87,7 @@ export class TasksComponent implements OnInit {
 
   private getTasks() {
     this.loaded$ = this.store.select(tasksLoadedSelector);
-    this.tasks$ = this.store.select(tasksSelector);
+    this.tasks$ = this.store.select(tasksFilteredSelector);
     this.store.dispatch(new GetTasks());
   }
 

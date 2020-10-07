@@ -1,0 +1,9 @@
+<ng-container *ngIf="statistics$ | async as statistics">
+  <div class="row">
+    <app-tasks-statistic-card
+      *ngFor="let statistic of statistics"
+      class="col-3"
+      [statistic]="statistic"
+    ></app-tasks-statistic-card>
+  </div>
+</ng-container>

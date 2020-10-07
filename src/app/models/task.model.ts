@@ -10,6 +10,14 @@ export interface Task {
   filter?: TaskFilter;
 }
 
+export interface TasksStatistics {
+  count: number;
+  completed: number;
+  completedValue: number;
+  uncompleted: number;
+  uncompletedValue: number;
+}
+
 export interface TaskFilter extends Filter {
   status?: string;
   priority?: number | string;
