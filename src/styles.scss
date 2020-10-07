@@ -21,6 +21,11 @@ body {
   }
 }
 
+.sidebar-overlay {
+  position: relative;
+  z-index: 4;
+}
+
 .w-auto {
   width: auto !important;
 }

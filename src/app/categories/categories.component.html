@@ -1,10 +1,10 @@
-<div class="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
+<div class="sidebar" data-color="purple" data-background-color="white">
   <div class="logo">
     <a href="http://www.creative-tim.com" class="simple-text logo-normal" target="_blank" rel="noopener">
       Creative Tim
     </a>
   </div>
-  <div class="mt-2 px-3">
+  <div class="sidebar-overlay mt-2 px-3">
     <app-filter
       labelText="Search categories"
       (setFilter)="onSetFilter($event)"
@@ -20,4 +20,5 @@
       (categoryEdit)="onCategoryEdit($event)"
     ></app-categories-list>
   </div>
+  <div class="sidebar-background" style="background-image: url(../assets/img/sidebar-1.jpg)"></div>
 </div>

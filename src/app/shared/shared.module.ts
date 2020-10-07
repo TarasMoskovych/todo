@@ -9,6 +9,8 @@ import {
   FormDialogComponent,
   ResetFieldComponent,
   FilterComponent,
+  FooterComponent,
+  HeaderComponent,
 } from './components';
 import { OrderByPipe, SmartDatePipe } from './pipes';
 
@@ -19,6 +21,8 @@ import { OrderByPipe, SmartDatePipe } from './pipes';
     LoaderComponent,
     ResetFieldComponent,
     FilterComponent,
+    FooterComponent,
+    HeaderComponent,
     OrderByPipe,
     SmartDatePipe,
   ],
@@ -37,6 +41,8 @@ import { OrderByPipe, SmartDatePipe } from './pipes';
     LoaderComponent,
     ResetFieldComponent,
     FilterComponent,
+    FooterComponent,
+    HeaderComponent,
     OrderByPipe,
     SmartDatePipe,
   ],
