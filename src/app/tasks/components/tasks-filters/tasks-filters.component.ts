@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Priority, TaskFilter } from 'src/app/models';
-import { Constants, Debounce } from 'src/app/shared';
+import { Constants, FilterComponent } from 'src/app/shared';
 
 @Component({
   selector: 'app-tasks-filters',
@@ -9,19 +9,15 @@ import { Constants, Debounce } from 'src/app/shared';
   styleUrls: ['./tasks-filters.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TasksFiltersComponent implements OnInit {
+export class TasksFiltersComponent extends FilterComponent {
   @Input() priorities: Priority[];
   @Output() setFilter = new EventEmitter<TaskFilter>();
 
-  filtersForm: FormGroup;
+  protected controls = [...this.controls, 'status', 'priority'];
   noPriority = Constants.WITHOUT_PRIORITY;
 
-  ngOnInit(): void {
-    this.buildForm();
-  }
-
-  @Debounce(300)
-  onKeyup() {
+  onSetQuery(control: FormControl) {
+    this.filtersForm.patchValue(control);
     this.submit();
   }
 
@@ -33,13 +29,4 @@ export class TasksFiltersComponent implements OnInit {
   submit() {
     this.setFilter.emit(this.filtersForm.value);
   }
-
-  private buildForm() {
-    this.filtersForm = new FormGroup({
-      query: new FormControl(),
-      status: new FormControl(),
-      priority: new FormControl(),
-    });
-  }
-
 }

@@ -16,7 +16,7 @@ import {
   CreateTask,
   UpdateTask,
   RemoveTask,
-  FilterTask,
+  FilterTasks,
   SelectCategory,
   PriorityEntity,
   prioritiesEntitiesSelector,
@@ -82,7 +82,7 @@ export class TasksComponent implements OnInit {
   }
 
   onSetFilter(filter: TaskFilter) {
-    this.store.dispatch(new FilterTask(filter));
+    this.store.dispatch(new FilterTasks(filter));
   }
 
   private getTasks() {

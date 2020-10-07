@@ -1,0 +1,20 @@
+<form [formGroup]="filtersForm">
+  <div class="row align-items-baseline">
+    <div [class]="wrapperClass">
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="query"
+          [placeholder]="labelText"
+          (keyup)="onKeyup()"
+        ><app-reset-field
+          [form]="filtersForm"
+          (reset)="submit()"
+          matSuffix
+          control="query"
+        ></app-reset-field>
+      </mat-form-field>
+    </div>
+    <ng-content></ng-content>
+  </div>
+</form>

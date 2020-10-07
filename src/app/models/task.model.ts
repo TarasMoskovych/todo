@@ -1,3 +1,5 @@
+import { Filter } from './filter.model';
+
 export interface Task {
   id: number;
   name: string;
@@ -8,8 +10,7 @@ export interface Task {
   filter?: TaskFilter;
 }
 
-export interface TaskFilter {
-  query?: string;
+export interface TaskFilter extends Filter {
   status?: string;
   priority?: number | string;
 }

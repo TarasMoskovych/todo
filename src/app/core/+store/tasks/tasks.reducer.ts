@@ -53,7 +53,7 @@ export function tasksReducer(state = initialTasksState, action: TasksActions): T
       };
     }
 
-    case TasksActionTypes.FILTER_TASK: {
+    case TasksActionTypes.FILTER_TASKS: {
       const filter = action.payload;
 
       return {

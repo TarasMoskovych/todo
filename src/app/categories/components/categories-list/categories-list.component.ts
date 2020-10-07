@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
-import { Category } from 'src/app/models';
+import { Category, Filter } from 'src/app/models';
 
 @Component({
   selector: 'app-categories-list',
@@ -10,6 +10,7 @@ import { Category } from 'src/app/models';
 })
 export class CategoriesListComponent {
   @Input() categories: Category[];
+  @Input() filter: Filter;
   @Input() selected: Category;
   @Output() sortByCategory = new EventEmitter<Category>();
   @Output() categoryAdd = new EventEmitter<void>();

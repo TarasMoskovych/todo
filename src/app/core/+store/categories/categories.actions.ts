@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Category } from 'src/app/models';
+import { Category, Filter } from 'src/app/models';
 
 export enum CategoriesActionTypes {
   GET_CATEGORIES          = '[Categories] GET_CATEGORIES',
@@ -20,6 +20,7 @@ export enum CategoriesActionTypes {
   REMOVE_CATEGORY_ERROR   = '[Categories] REMOVE_CATEGORY_ERROR',
 
   SELECT_CATEGORY         = '[Categories] SELECT_CATEGORY',
+  FILTER_CATEGORIES       = '[Categories] FILTER_CATEGORIES',
 }
 
 export class GetCategories implements Action {
@@ -86,6 +87,11 @@ export class SelectCategory implements Action {
   constructor(public payload: Category) { }
 }
 
+export class FilterCategories implements Action {
+  readonly type = CategoriesActionTypes.FILTER_CATEGORIES;
+  constructor(public payload: Filter) { }
+}
+
 export type CategoriesActions
   = GetCategories
   | GetCategoriesSuccess
@@ -99,4 +105,5 @@ export type CategoriesActions
   | RemoveCategory
   | RemoveCategorySuccess
   | RemoveCategoryError
-  | SelectCategory;
+  | SelectCategory
+  | FilterCategories;

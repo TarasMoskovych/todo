@@ -1,4 +1,4 @@
-<ul class="nav">
+<ul class="nav mt-1">
   <li class="nav-item mb-3" [class.active]="!selected" (click)="onSortByCategory(null)">
     <a class="nav-link d-flex align-items-center justify-content-between">
       <p>All</p>
@@ -30,3 +30,7 @@
     </a>
   </li>
 </ul>
+
+<p *ngIf="filter?.query && !categories.length" class="mt-3 text-center">
+  No categories found
+</p>

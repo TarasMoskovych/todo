@@ -73,7 +73,16 @@ export function categoriesReducer(state = initialCategoriesState, action: Catego
       return {
         ...state,
         selected,
-      }
+      };
+    }
+
+    case CategoriesActionTypes.FILTER_CATEGORIES: {
+      const filter = action.payload;
+
+      return {
+        ...state,
+        filter,
+      };
     }
 
     default:

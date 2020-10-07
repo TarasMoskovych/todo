@@ -1,4 +1,4 @@
-import { Category } from 'src/app/models';
+import { Category, Filter } from 'src/app/models';
 
 export interface CategoryEntity {
   [id: number]: Category;
@@ -6,6 +6,7 @@ export interface CategoryEntity {
 
 export interface CategoriesState {
   entities: CategoryEntity;
+  filter: Filter;
   selected: Category;
   readonly loading: boolean;
   readonly loaded: boolean;
@@ -14,6 +15,7 @@ export interface CategoriesState {
 
 export const initialCategoriesState: CategoriesState = {
   entities: {},
+  filter: {},
   selected: null,
   loading: false,
   loaded: false,

@@ -3,7 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
-import { ConfirmDialogComponent, LoaderComponent, FormDialogComponent, ResetFieldComponent } from './components';
+import {
+  ConfirmDialogComponent,
+  LoaderComponent,
+  FormDialogComponent,
+  ResetFieldComponent,
+  FilterComponent,
+} from './components';
 import { OrderByPipe, SmartDatePipe } from './pipes';
 
 @NgModule({
@@ -12,6 +18,7 @@ import { OrderByPipe, SmartDatePipe } from './pipes';
     FormDialogComponent,
     LoaderComponent,
     ResetFieldComponent,
+    FilterComponent,
     OrderByPipe,
     SmartDatePipe,
   ],
@@ -29,6 +36,7 @@ import { OrderByPipe, SmartDatePipe } from './pipes';
     FormDialogComponent,
     LoaderComponent,
     ResetFieldComponent,
+    FilterComponent,
     OrderByPipe,
     SmartDatePipe,
   ],

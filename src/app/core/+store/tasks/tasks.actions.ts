@@ -19,7 +19,7 @@ export enum TasksActionTypes {
   REMOVE_TASK_SUCCESS = '[Tasks] REMOVE_TASK_SUCCESS',
   REMOVE_TASK_ERROR   = '[Tasks] REMOVE_TASK_ERROR',
 
-  FILTER_TASK         = '[Tasks] FILTER_TASK',
+  FILTER_TASKS        = '[Tasks] FILTER_TASKS',
 }
 
 export class GetTasks implements Action {
@@ -81,8 +81,8 @@ export class RemoveTaskError implements Action {
   constructor(public payload: Error | string) { }
 }
 
-export class FilterTask implements Action {
-  readonly type = TasksActionTypes.FILTER_TASK;
+export class FilterTasks implements Action {
+  readonly type = TasksActionTypes.FILTER_TASKS;
   constructor(public payload: TaskFilter) { }
 }
 
@@ -99,4 +99,4 @@ export type TasksActions
   | RemoveTask
   | RemoveTaskSuccess
   | RemoveTaskError
-  | FilterTask;
+  | FilterTasks;

@@ -4,14 +4,16 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { Category } from '../models';
+import { Category, Filter } from '../models';
 import {
   GetCategories,
   SelectCategory,
   CreateCategory,
   UpdateCategory,
   RemoveCategory,
-  categoriesSelector,
+  FilterCategories,
+  categoriesFilteredSelector,
+  categoriesFilterSelector,
   categoriesSelectedSelector,
   AppState,
 } from '../core/+store';
@@ -25,6 +27,7 @@ import { FormDialogComponent } from '../shared';
 })
 export class CategoriesComponent implements OnInit {
   categories$: Observable<Category[]>;
+  filter$: Observable<Filter>;
   selected$: Observable<Category>;
 
   constructor(
@@ -35,6 +38,7 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
     this.getSelected();
+    this.getFilter();
   }
 
   onCategoryAdd() {
@@ -58,17 +62,25 @@ export class CategoriesComponent implements OnInit {
       .subscribe(({ name, remove } = {}) => name && this[remove ? 'removeCategory' : 'updateCategory']({ ...category, name }));
   }
 
+  onSetFilter(filter: Filter) {
+    this.store.dispatch(new FilterCategories(filter));
+  }
+
   onSortByCategory(category: Category) {
     this.store.dispatch(new SelectCategory(category));
   }
 
   private getCategories() {
-    this.categories$ = this.store.pipe(select(categoriesSelector));
+    this.categories$ = this.store.pipe(select(categoriesFilteredSelector));
     this.store.dispatch(new GetCategories());
   }
 
   private getSelected() {
     this.selected$ = this.store.pipe(select(categoriesSelectedSelector));
+  }
+
+  protected getFilter() {
+    this.filter$ = this.store.select(categoriesFilterSelector);
   }
 
   private createCategory(category: Category) {
