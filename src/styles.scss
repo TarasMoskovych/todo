@@ -32,6 +32,10 @@ body {
   }
 }
 
+.scale-0 {
+  transform: scale(0) !important;
+}
+
 .w-auto {
   width: auto !important;
 }

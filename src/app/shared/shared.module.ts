@@ -13,6 +13,7 @@ import {
   HeaderComponent,
 } from './components';
 import { OrderByPipe, SmartDatePipe } from './pipes';
+import { ClickOutsideDirective } from './directives';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { OrderByPipe, SmartDatePipe } from './pipes';
     HeaderComponent,
     OrderByPipe,
     SmartDatePipe,
+    ClickOutsideDirective,
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,7 @@ import { OrderByPipe, SmartDatePipe } from './pipes';
     HeaderComponent,
     OrderByPipe,
     SmartDatePipe,
+    ClickOutsideDirective,
   ],
   entryComponents: [
     ConfirmDialogComponent,
