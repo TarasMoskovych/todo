@@ -62,6 +62,15 @@ export function tasksReducer(state = initialTasksState, action: TasksActions): T
       };
     }
 
+    case TasksActionTypes.TOGGLE_STATISTIC: {
+      const statistic = action.payload;
+
+      return {
+        ...state,
+        statistic,
+      };
+    }
+
     default:
       return state;
   }

@@ -6,7 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 import { Category, Priority, Task } from 'src/app/models';
 import { CategoryEntity } from 'src/app/core/+store';
-import { Constants } from 'src/app/shared';
+import { Constants } from 'src/app/shared/classes';
 
 @Component({
   selector: 'app-tasks-table',

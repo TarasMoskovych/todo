@@ -2,17 +2,19 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { TasksState, TaskEntity } from './';
 import { categoriesSelectedSelector } from '../categories';
 import { Task, Category, TaskFilter, TasksStatistics } from 'src/app/models';
-import { Constants } from 'src/app/shared';
+import { Constants } from 'src/app/shared/classes';
 
-const getEntities = (state: TasksState) => state.entities;
-const getFilter   = (state: TasksState) => state.filter;
-const getError    = (state: TasksState) => state.error;
-const getLoaded   = (state: TasksState) => state.loaded;
-const getLoading  = (state: TasksState) => state.loading;
+const getEntities  = (state: TasksState) => state.entities;
+const getFilter    = (state: TasksState) => state.filter;
+const getStatistic = (state: TasksState) => state.statistic;
+const getError     = (state: TasksState) => state.error;
+const getLoaded    = (state: TasksState) => state.loaded;
+const getLoading   = (state: TasksState) => state.loading;
 
 export const getTasksState = createFeatureSelector<TasksState>('tasks');
 export const tasksEntitiesSelector = createSelector(getTasksState, getEntities);
 export const tasksFilterSelector = createSelector(getTasksState, getFilter);
+export const tasksShowStatisticSelector = createSelector(getTasksState, getStatistic);
 export const tasksErrorSelector = createSelector(getTasksState, getError);
 export const tasksLoadedSelector = createSelector(getTasksState, getLoaded);
 export const tasksLoadingSelector = createSelector(getTasksState, getLoading);

@@ -6,7 +6,7 @@
     <p class="card-category"></p>
     <h3 class="card-title">
       <ng-container *ngIf="statistic.percent; else value">
-        {{ statistic.value | percent }}
+        {{ (statistic.value | percent) || '0%' }}
       </ng-container>
       <ng-template #value>
         {{ statistic.value }}

@@ -1,7 +1,8 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Priority, TaskFilter } from 'src/app/models';
-import { Constants, FilterComponent } from 'src/app/shared';
+import { FilterComponent } from 'src/app/shared/components';
+import { Constants } from 'src/app/shared/classes';
 
 @Component({
   selector: 'app-tasks-filters',

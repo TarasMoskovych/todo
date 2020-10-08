@@ -3,9 +3,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AppState, tasksStatisticsSelector } from 'src/app/core/+store';
+import { AppState, tasksStatisticsSelector, tasksShowStatisticSelector } from 'src/app/core/+store';
 import { Statistic, StatisticData, TasksStatistics } from 'src/app/models';
-import { Constants } from 'src/app/shared';
+import { Constants } from 'src/app/shared/classes';
 
 @Component({
   selector: 'app-tasks-statistic',
@@ -15,6 +15,7 @@ import { Constants } from 'src/app/shared';
 })
 export class TasksStatisticComponent implements OnInit {
   statistics$: Observable<Statistic[]>;
+  showStatistic$: Observable<boolean>;
 
   constructor(
     private store: Store<AppState>,
@@ -25,6 +26,7 @@ export class TasksStatisticComponent implements OnInit {
   }
 
   private getStatistics() {
+    this.showStatistic$ = this.store.select(tasksShowStatisticSelector);
     this.statistics$ = this.store.select(tasksStatisticsSelector)
       .pipe(
         map((tasksStatistics: TasksStatistics) => Constants.STATISTICS_DATA.reduce((acc: Statistic[], statistic: StatisticData) => {

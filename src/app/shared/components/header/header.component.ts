@@ -1,4 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { AppState, tasksShowStatisticSelector, ToggleStatistic, categoriesSelectedSelector } from 'src/app/core/+store';
+import { Category } from 'src/app/models';
 
 @Component({
   selector: 'app-header',
@@ -6,11 +11,16 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  selectedCategory$: Observable<Category> = this.store.select(categoriesSelectedSelector);
+  statistic$: Observable<boolean> = this.store.select(tasksShowStatisticSelector);
 
-  constructor() { }
+  constructor(
+    private store: Store<AppState>,
+  ) { }
 
-  ngOnInit(): void {
+  onToggleStatistic(e: MouseEvent, toggler: boolean) {
+    e.preventDefault();
+    this.store.dispatch(new ToggleStatistic(toggler));
   }
-
 }

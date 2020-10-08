@@ -7,7 +7,8 @@ import { take } from 'rxjs/operators';
 import { AppState, categoriesSelectedSelector, categoriesSelector, prioritiesSelector } from 'src/app/core/+store';
 
 import { Category, Priority, Task } from 'src/app/models';
-import { Constants, ConfirmDialogComponent } from 'src/app/shared';
+import { Constants } from 'src/app/shared/classes';
+import { ConfirmDialogComponent } from 'src/app/shared/components';
 
 @Component({
   selector: 'app-task-form',

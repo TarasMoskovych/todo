@@ -26,6 +26,12 @@ body {
   z-index: 4;
 }
 
+.text-underline-hover {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .w-auto {
   width: auto !important;
 }

@@ -22,7 +22,7 @@ import {
   prioritiesEntitiesSelector,
   prioritiesSelector,
 } from '../core/+store';
-import { ConfirmDialogComponent } from '../shared';
+import { ConfirmDialogComponent } from '../shared/components';
 
 @Component({
   selector: 'app-tasks',
@@ -32,10 +32,10 @@ import { ConfirmDialogComponent } from '../shared';
 })
 export class TasksComponent implements OnInit {
   categories$: Observable<CategoryEntity> = this.store.select(categoriesEntitiesSelector);
-  loaded$: Observable<boolean>;
+  loaded$: Observable<boolean> = this.store.select(tasksLoadedSelector);
   priorityEntities$: Observable<PriorityEntity> = this.store.select(prioritiesEntitiesSelector);
   priorities$: Observable<PriorityEntity> = this.store.select(prioritiesSelector);
-  tasks$: Observable<Task[]>;
+  tasks$: Observable<Task[]> = this.store.select(tasksFilteredSelector);
 
   constructor(
     private dialog: MatDialog,
@@ -86,8 +86,6 @@ export class TasksComponent implements OnInit {
   }
 
   private getTasks() {
-    this.loaded$ = this.store.select(tasksLoadedSelector);
-    this.tasks$ = this.store.select(tasksFilteredSelector);
     this.store.dispatch(new GetTasks());
   }
 

@@ -20,6 +20,7 @@ export enum TasksActionTypes {
   REMOVE_TASK_ERROR   = '[Tasks] REMOVE_TASK_ERROR',
 
   FILTER_TASKS        = '[Tasks] FILTER_TASKS',
+  TOGGLE_STATISTIC    = '[Tasks] TOGGLE_STATISTIC',
 }
 
 export class GetTasks implements Action {
@@ -86,6 +87,11 @@ export class FilterTasks implements Action {
   constructor(public payload: TaskFilter) { }
 }
 
+export class ToggleStatistic implements Action {
+  readonly type = TasksActionTypes.TOGGLE_STATISTIC;
+  constructor(public payload: boolean) { }
+}
+
 export type TasksActions
   = GetTasks
   | GetTasksSuccess
@@ -99,4 +105,5 @@ export type TasksActions
   | RemoveTask
   | RemoveTaskSuccess
   | RemoveTaskError
-  | FilterTasks;
+  | FilterTasks
+  | ToggleStatistic;

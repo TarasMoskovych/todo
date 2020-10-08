@@ -15,7 +15,7 @@ import {
   TasksStatisticComponent,
   TasksStatisticCardComponent,
 } from './components';
-import { CUSTOM_DATE_FORMATS } from '../shared';
+import { CUSTOM_DATE_FORMATS } from '../shared/classes';
 
 @NgModule({
   declarations: [

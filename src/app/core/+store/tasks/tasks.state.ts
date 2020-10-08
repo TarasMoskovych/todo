@@ -7,6 +7,7 @@ export interface TaskEntity {
 export interface TasksState {
   entities: TaskEntity;
   filter: TaskFilter;
+  statistic: boolean;
   readonly loading: boolean;
   readonly loaded: boolean;
   readonly error: Error | string;
@@ -15,6 +16,7 @@ export interface TasksState {
 export const initialTasksState: TasksState = {
   entities: {},
   filter: {},
+  statistic: true,
   loading: false,
   loaded: false,
   error: null,

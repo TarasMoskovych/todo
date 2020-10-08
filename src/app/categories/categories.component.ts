@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -17,7 +17,7 @@ import {
   categoriesSelectedSelector,
   AppState,
 } from '../core/+store';
-import { FormDialogComponent } from '../shared';
+import { FormDialogComponent } from '../shared/components';
 
 @Component({
   selector: 'app-categories',
@@ -26,9 +26,9 @@ import { FormDialogComponent } from '../shared';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoriesComponent implements OnInit {
-  categories$: Observable<Category[]>;
-  filter$: Observable<Filter>;
-  selected$: Observable<Category>;
+  categories$: Observable<Category[]> = this.store.select(categoriesFilteredSelector);
+  selected$: Observable<Category> = this.store.select(categoriesSelectedSelector);
+  filter$: Observable<Filter> = this.store.select(categoriesFilterSelector);
 
   constructor(
     private store: Store<AppState>,
@@ -37,8 +37,6 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
-    this.getSelected();
-    this.getFilter();
   }
 
   onCategoryAdd() {
@@ -71,16 +69,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   private getCategories() {
-    this.categories$ = this.store.pipe(select(categoriesFilteredSelector));
     this.store.dispatch(new GetCategories());
-  }
-
-  private getSelected() {
-    this.selected$ = this.store.pipe(select(categoriesSelectedSelector));
-  }
-
-  protected getFilter() {
-    this.filter$ = this.store.select(categoriesFilterSelector);
   }
 
   private createCategory(category: Category) {
