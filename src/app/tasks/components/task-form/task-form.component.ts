@@ -56,7 +56,7 @@ export class TaskFormComponent implements OnInit {
   }
 
   private buildForm() {
-    const { name, completed, category, priorityId, date } = this.task || {};
+    const { name, completed, category, priority, date } = this.task || {};
 
     this.taskForm = new FormGroup({
       name: new FormControl(name, [
@@ -65,7 +65,7 @@ export class TaskFormComponent implements OnInit {
       ]),
       completed: new FormControl(!!completed),
       category: new FormControl(category),
-      priorityId: new FormControl(priorityId),
+      priority: new FormControl(priority),
       date: new FormControl(date),
     });
   }

@@ -31,4 +31,18 @@ export class PrioritiesEffects {
         )
     })
   );
+
+  @Effect()
+  remove$: Observable<Action> = this.actions$.pipe(
+    ofType<prioritiesActions.RemovePriority>(PrioritiesActionTypes.REMOVE_PRIORITY),
+    pluck('payload'),
+    switchMap((priority: Priority) => {
+      return this.prioritiesService
+        .remove(priority)
+        .pipe(
+          map((priority: Priority) => new prioritiesActions.RemovePrioritySuccess(priority)),
+          catchError((err: any) => of(new prioritiesActions.RemovePriorityError(err)))
+        )
+    })
+  );
 }

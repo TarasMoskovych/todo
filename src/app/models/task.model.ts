@@ -4,7 +4,7 @@ export interface Task {
   id: number;
   name: string;
   completed: boolean;
-  priorityId?: number;
+  priority?: number;
   category?: number;
   date?: Date;
   filter?: TaskFilter;

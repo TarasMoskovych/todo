@@ -41,7 +41,7 @@ export const tasksFilteredSelector = createSelector(
       // Filter by query
       if (filter.query && task.name.search(new RegExp(filter.query, 'i')) === -1) { return false; }
       // Filter by priorities
-      if (filter.priority && (filter.priority !== task.priorityId && filter.priority !== Constants.WITHOUT_PRIORITY || filter.priority === Constants.WITHOUT_PRIORITY && task.priorityId)) { return false; }
+      if (filter.priority && (filter.priority !== task.priority && filter.priority !== Constants.WITHOUT_PRIORITY || filter.priority === Constants.WITHOUT_PRIORITY && task.priority)) { return false; }
       return true;
     })
 );

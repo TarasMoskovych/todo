@@ -50,7 +50,7 @@ export class TasksTableComponent implements OnChanges, AfterViewInit {
       switch (sortHeaderId) {
         case 'name': return task.name;
         case 'date': return task.date;
-        case 'priority': return task.priorityId;
+        case 'priority': return task.priority;
         case 'category': return task.category;
       }
     };

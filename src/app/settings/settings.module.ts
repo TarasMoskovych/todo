@@ -6,10 +6,18 @@ import { EffectsModule } from '@ngrx/effects';
 import { settingsEffects, settingsReducers } from '../core/+store';
 import { SharedModule } from '../shared/shared.module';
 import { SettingsComponent } from './settings.component';
+import {
+  PrioritiesDialogComponent,
+  PrioritiesTableComponent,
+  SettingsDialogComponent
+} from './components';
 
 @NgModule({
   declarations: [
-    SettingsComponent
+    SettingsComponent,
+    SettingsDialogComponent,
+    PrioritiesDialogComponent,
+    PrioritiesTableComponent,
   ],
   imports: [
     CommonModule,

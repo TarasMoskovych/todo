@@ -36,6 +36,10 @@ body {
   transform: scale(0) !important;
 }
 
+.w-10 {
+  width: 10%;
+}
+
 .w-auto {
   width: auto !important;
 }
@@ -60,6 +64,14 @@ body {
   .mat-paginator-range-actions button {
     display: none;
   }
+}
+
+.edit {
+  color: #9a9a9a;
+}
+
+.remove {
+  color: #ea6561;
 }
 
 mat-form-field {

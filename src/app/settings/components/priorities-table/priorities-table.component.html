@@ -1,0 +1,47 @@
+<div class="table-responsive" *ngIf="priorities?.length; else empty">
+  <table class="table table-hover">
+    <thead class="text-primary">
+      <tr class="text-center">
+        <th class="w-10"></th>
+        <th>Name</th>
+        <th>Color</th>
+        <th class="w-10"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let priority of priorities; let idx = index">
+        <td class="text-primary" [style.background-color]="priority.color">
+          {{ idx + 1 }}
+        </td>
+        <td>
+          {{ priority.name }}
+        </td>
+        <td [style.color]="priority.color">
+          {{ priority.color }}
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+            <button
+              class="edit w-auto mr-2"
+              (click)="null"
+              mat-icon-button
+              [attr.aria-label]="'Edit ' + priority.name"
+            ><mat-icon>edit</mat-icon>
+            </button>
+            <button
+              class="remove w-auto"
+              (click)="onPriorityRemove(priority)"
+              mat-icon-button
+              [attr.aria-label]="'Remove ' + priority.name"
+              ><mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #empty>
+  <p>Priorities list is empty</p>
+</ng-template>

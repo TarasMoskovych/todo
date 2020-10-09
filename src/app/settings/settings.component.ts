@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { AppState } from '../core/+store';
-import { GetPriorities } from '../core/+store/settings';
-import { themesShowDialogSelector, ToggleThemesDialog } from '../core/+store';
+
+import { AppState, GetPriorities, themesShowDialogSelector, ToggleThemesDialog } from '../core/+store';
+import { PrioritiesDialogComponent } from './components';
 
 @Component({
   selector: 'app-settings',
@@ -15,6 +16,7 @@ export class SettingsComponent implements OnInit {
   showDialog$: Observable<boolean> = this.store.select(themesShowDialogSelector);
 
   constructor(
+    private dialog: MatDialog,
     private store: Store<AppState>,
   ) { }
 
@@ -22,17 +24,16 @@ export class SettingsComponent implements OnInit {
     this.getPriorities();
   }
 
-  onCloseDialog(show: boolean) {
-    show && this.toggleDialog(false);
+  onPrioritiesDialogOpen() {
+    this.onToggleDialog(false);
+
+    this.dialog.open(PrioritiesDialogComponent, { width: '50%' });
   }
 
-  onDialogToggle(e: MouseEvent, toggler: boolean) {
-    e.preventDefault();
-    this.toggleDialog(toggler);
-  }
+  onToggleDialog(toggler: boolean) {
+    // this.store.dispatch(new ToggleThemesDialog(toggler));
 
-  private toggleDialog(toggler: boolean) {
-    this.store.dispatch(new ToggleThemesDialog(toggler));
+    this.dialog.open(PrioritiesDialogComponent, { width: '50%' });
   }
 
   private getPriorities() {

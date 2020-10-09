@@ -34,7 +34,7 @@
 
     <mat-form-field>
       <mat-label>Select Priority</mat-label>
-      <mat-select formControlName="priorityId">
+      <mat-select formControlName="priority">
         <mat-option>No priority</mat-option>
         <ng-container *ngIf="priorities$ | async | orderBy:'asc':'id' as priorities">
           <mat-option *ngFor="let priority of priorities" [value]="priority.id">
@@ -42,7 +42,7 @@
           </mat-option>
         </ng-container>
       </mat-select>
-      <app-reset-field [form]="taskForm" matSuffix control="priorityId"></app-reset-field>
+      <app-reset-field [form]="taskForm" matSuffix control="priority"></app-reset-field>
     </mat-form-field>
 
     <mat-form-field>
