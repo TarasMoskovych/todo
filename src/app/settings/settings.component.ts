@@ -31,9 +31,7 @@ export class SettingsComponent implements OnInit {
   }
 
   onToggleDialog(toggler: boolean) {
-    // this.store.dispatch(new ToggleThemesDialog(toggler));
-
-    this.dialog.open(PrioritiesDialogComponent, { width: '50%' });
+    this.store.dispatch(new ToggleThemesDialog(toggler));
   }
 
   private getPriorities() {

@@ -33,6 +33,34 @@ export class PrioritiesEffects {
   );
 
   @Effect()
+  create$: Observable<Action> = this.actions$.pipe(
+    ofType<prioritiesActions.CreatePriority>(PrioritiesActionTypes.CREATE_PRIORITY),
+    pluck('payload'),
+    switchMap((priority: Priority) => {
+      return this.prioritiesService
+        .create(priority)
+        .pipe(
+          map((priority: Priority) => new prioritiesActions.CreatePrioritySuccess(priority)),
+          catchError((err: any) => of(new prioritiesActions.CreatePriorityError(err)))
+        )
+    })
+  );
+
+  @Effect()
+  update$: Observable<Action> = this.actions$.pipe(
+    ofType<prioritiesActions.UpdatePriority>(PrioritiesActionTypes.UPDATE_PRIORITY),
+    pluck('payload'),
+    switchMap((priority: Priority) => {
+      return this.prioritiesService
+        .update(priority)
+        .pipe(
+          map((priority: Priority) => new prioritiesActions.UpdatePrioritySuccess(priority)),
+          catchError((err: any) => of(new prioritiesActions.UpdatePriorityError(err)))
+        )
+    })
+  );
+
+  @Effect()
   remove$: Observable<Action> = this.actions$.pipe(
     ofType<prioritiesActions.RemovePriority>(PrioritiesActionTypes.REMOVE_PRIORITY),
     pluck('payload'),

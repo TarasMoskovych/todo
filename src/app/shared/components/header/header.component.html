@@ -3,7 +3,7 @@
     {{ (selectedCategory$ | async)?.name || 'All' }}
   </a>
   <ng-container *ngIf="{value: statistic$ | async} as statistic">
-    <a class="navbar-brand pointer text-underline-hover" href="#" (click)="onToggleStatistic($event, !statistic.value)">
+    <a class="navbar-brand pointer link" href="#" (click)="onToggleStatistic($event, !statistic.value)">
       {{ statistic.value ? 'Hide statistic' : 'Show statistic' }}
     </a>
   </ng-container>

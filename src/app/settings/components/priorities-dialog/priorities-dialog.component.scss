@@ -1,0 +1,13 @@
+.add-priority {
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.card-title {
+  &:hover {
+    .add-priority {
+      display: inline-block;
+      opacity: 1;
+    }
+  }
+}

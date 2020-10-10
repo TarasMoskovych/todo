@@ -9,7 +9,12 @@ import { Priority } from 'src/app/models';
 })
 export class PrioritiesTableComponent {
   @Input() priorities: Priority[];
+  @Output() priorityEdit = new EventEmitter<Priority>();
   @Output() priorityRemove = new EventEmitter<Priority>();
+
+  onPriorityEdit(priority: Priority) {
+    this.priorityEdit.emit(priority);
+  }
 
   onPriorityRemove(priority: Priority) {
     this.priorityRemove.emit(priority);

@@ -34,6 +34,16 @@ export function prioritiesReducer(state = initialPrioritiesState, action: Priori
       };
     }
 
+    case PrioritiesActionTypes.CREATE_PRIORITY_SUCCESS:
+    case PrioritiesActionTypes.UPDATE_PRIORITY_SUCCESS: {
+      const entities = { ...state.entities, [action.payload.id]: action.payload };
+
+      return {
+        ...state,
+        entities,
+      };
+    }
+
     case PrioritiesActionTypes.REMOVE_PRIORITY_SUCCESS: {
       const { [action.payload.id]: current, ...entities } = state.entities;
 

@@ -1,0 +1,31 @@
+<form [formGroup]="priorityForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <p mat-dialog-title>{{ priority ? 'Edit priority' : 'Add priority' }}</p>
+
+    <mat-form-field *ngIf="priorityForm.get('name') as name">
+      <mat-label>Name (required*)</mat-label>
+      <input matInput placeholder="Name" formControlName="name">
+      <app-reset-field [form]="priorityForm" matSuffix control="name"></app-reset-field>
+      <mat-error *ngIf="name.invalid">
+        Please enter valid Name
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="priorityForm.get('color') as color">
+      <input matInput [ngxMatColorPicker]="picker" [formControl]="color">
+      <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+      <ngx-mat-color-picker #picker></ngx-mat-color-picker>
+      <mat-error *ngIf="color.invalid">
+        Please enter valid Color
+      </mat-error>
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <div>
+      <button class="mr-1" mat-raised-button color="primary" [disabled]="priorityForm.invalid">Save</button>
+      <button mat-dialog-close type="button" mat-raised-button>Cancel</button>
+    </div>
+  </mat-dialog-actions>
+</form>

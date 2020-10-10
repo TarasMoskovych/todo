@@ -4,9 +4,10 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { AppState, prioritiesSelector, RemovePriority } from 'src/app/core/+store';
+import { AppState, prioritiesSelector, UpdatePriority, RemovePriority, CreatePriority } from 'src/app/core/+store';
 import { Priority } from 'src/app/models';
 import { ConfirmDialogComponent } from 'src/app/shared/components';
+import { PriorityFormComponent } from '../priority-form/priority-form.component';
 
 @Component({
   selector: 'app-priorities-dialog',
@@ -22,6 +23,14 @@ export class PrioritiesDialogComponent {
     private store: Store<AppState>,
   ) { }
 
+  onPriorityAdd() {
+    this.openFormDialog(false);
+  }
+
+  onPriorityEdit(priority: Priority) {
+    this.openFormDialog(true, priority);
+  }
+
   onPriorityRemove(priority: Priority) {
     this.dialog.open(ConfirmDialogComponent, {
       data: {
@@ -33,4 +42,16 @@ export class PrioritiesDialogComponent {
       .subscribe((remove: boolean) => remove && this.store.dispatch(new RemovePriority(priority)));
   }
 
+  private openFormDialog(edit: boolean, priority?: Priority) {
+    this.dialog.open(PriorityFormComponent, {
+      data: priority,
+      width: '40%',
+    }).afterClosed()
+      .pipe(take(1))
+      .subscribe((payload: Priority) => {
+        if (payload) {
+          this.store.dispatch(edit ? new UpdatePriority(payload) : new CreatePriority(payload));
+        }
+      });
+  }
 }
