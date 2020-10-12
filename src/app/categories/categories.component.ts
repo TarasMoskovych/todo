@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { Category, Filter } from '../models';
+import { Category, Filter, TasksUncompletedCount } from '../models';
 import {
   GetCategories,
   SelectCategory,
@@ -15,6 +15,7 @@ import {
   categoriesFilteredSelector,
   categoriesFilterSelector,
   categoriesSelectedSelector,
+  tasksUncompletedCountSelector,
   AppState,
 } from '../core/+store';
 import { FormDialogComponent } from '../shared/components';
@@ -29,6 +30,7 @@ export class CategoriesComponent implements OnInit {
   categories$: Observable<Category[]> = this.store.select(categoriesFilteredSelector);
   selected$: Observable<Category> = this.store.select(categoriesSelectedSelector);
   filter$: Observable<Filter> = this.store.select(categoriesFilterSelector);
+  tasksUncompletedCount$: Observable<TasksUncompletedCount> = this.store.select(tasksUncompletedCountSelector);
 
   constructor(
     private store: Store<AppState>,

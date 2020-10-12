@@ -18,6 +18,15 @@ export interface TasksStatistics {
   uncompletedValue: number;
 }
 
+export interface TaskCountEntity {
+  [name: string]: number;
+}
+
+export interface TasksUncompletedCount {
+  count: number;
+  entities: TaskCountEntity,
+}
+
 export interface TaskFilter extends Filter {
   status?: string;
   priority?: number | string;

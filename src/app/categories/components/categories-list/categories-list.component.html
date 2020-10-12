@@ -2,13 +2,16 @@
   <li class="nav-item mb-3" [class.active]="!selected" (click)="onSortByCategory(null)">
     <a class="nav-link d-flex align-items-center justify-content-between">
       <p>All</p>
-      <button
-        (click)="onCategoryAdd($event)"
-        class="edit-category w-auto h-auto lh-initial"
-        mat-icon-button
-        aria-label="Add new category"
-      ><mat-icon>add</mat-icon>
-      </button>
+      <div class="d-flex">
+        <button
+          (click)="onCategoryAdd($event)"
+          class="edit-category w-auto h-auto lh-initial mr-2"
+          mat-icon-button
+          aria-label="Add new category"
+        ><mat-icon>add</mat-icon>
+        </button>
+        <span class="uncompleted-count">{{ tasksUncompletedCount.count || 0 }}</span>
+      </div>
     </a>
   </li>
   <mat-divider></mat-divider>
@@ -20,13 +23,16 @@
 
     <a class="nav-link d-flex align-items-center justify-content-between">
       <p>{{ category.name }}</p>
-      <button
-        (click)="onCategoryEdit($event, category)"
-        class="edit-category w-auto h-auto lh-initial"
-        mat-icon-button
-        [attr.aria-label]="'Edit ' + category.name"
-      ><mat-icon>edit</mat-icon>
-      </button>
+      <div class="d-flex">
+        <button
+          (click)="onCategoryEdit($event, category)"
+          class="edit-category w-auto h-auto lh-initial mr-2"
+          mat-icon-button
+          [attr.aria-label]="'Edit ' + category.name"
+        ><mat-icon>edit</mat-icon>
+        </button>
+        <span class="uncompleted-count">{{ tasksUncompletedCount.entities[category.id] || 0 }}</span>
+      </div>
     </a>
   </li>
 </ul>

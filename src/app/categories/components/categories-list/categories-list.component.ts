@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
-import { Category, Filter } from 'src/app/models';
+import { Category, Filter, TasksUncompletedCount } from 'src/app/models';
 
 @Component({
   selector: 'app-categories-list',
@@ -12,6 +12,7 @@ export class CategoriesListComponent {
   @Input() categories: Category[];
   @Input() filter: Filter;
   @Input() selected: Category;
+  @Input() tasksUncompletedCount: TasksUncompletedCount;
   @Output() sortByCategory = new EventEmitter<Category>();
   @Output() categoryAdd = new EventEmitter<void>();
   @Output() categoryEdit = new EventEmitter<Category>();

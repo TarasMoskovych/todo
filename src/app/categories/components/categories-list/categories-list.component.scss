@@ -5,6 +5,12 @@
 }
 
 .nav-item {
+  &:not(.active):hover {
+    .uncompleted-count {
+      background-color: #dadada;
+    }
+  }
+
   &.active {
     .edit-category {
       color: #dadada;
@@ -17,4 +23,15 @@
       opacity: 1;
     }
   }
+}
+
+.uncompleted-count {
+  background-color: #eaeaea;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: black;
+  min-width: 35px;
+  padding: 5px;
+  text-align: center;
+  transition: .3s;
 }

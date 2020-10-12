@@ -15,6 +15,7 @@
       [categories]="categories$ | async"
       [filter]="filter$ | async"
       [selected]="selected.value"
+      [tasksUncompletedCount]="tasksUncompletedCount$ | async"
       (sortByCategory)="onSortByCategory($event)"
       (categoryAdd)="onCategoryAdd()"
       (categoryEdit)="onCategoryEdit($event)"
