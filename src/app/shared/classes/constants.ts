@@ -64,6 +64,7 @@ export class Constants {
       element: '#step1',
       intro: 'Here you can search some category, create new one, select, edit and remove current. Each category displays count of uncompleted tasks',
       scrollTo: 'tooltip',
+      position: 'right',
     },
     {
       element: '#step2',

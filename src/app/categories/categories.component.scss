@@ -1,0 +1,9 @@
+.sidebar {
+  position: static;
+  transform: none;
+
+  &-wrapper {
+    height: calc(100vh - 140px);
+    padding-bottom: 20px;
+  }
+}

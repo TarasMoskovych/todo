@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -13,6 +13,9 @@ import { Category } from 'src/app/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
+  @Input() sidenavOpened: boolean = true;
+  @Output() toggleSidenav = new EventEmitter<void>();
+
   selectedCategory$: Observable<Category> = this.store.select(categoriesSelectedSelector);
   statistic$: Observable<boolean> = this.store.select(tasksShowStatisticSelector);
 
@@ -20,6 +23,10 @@ export class HeaderComponent {
     private store: Store<AppState>,
     private tutorialService: TutorialService,
   ) { }
+
+  onToggleSidenav() {
+    this.toggleSidenav.emit();
+  }
 
   onToggleStatistic(e: MouseEvent, toggler: boolean) {
     e.preventDefault();

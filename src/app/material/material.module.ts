@@ -16,6 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [],
@@ -39,6 +40,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatNativeDateModule,
     MatIconModule,
     MatDividerModule,
+    MatSidenavModule,
   ]
 })
 export class MaterialModule { }

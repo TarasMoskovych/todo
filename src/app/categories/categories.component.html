@@ -4,24 +4,22 @@
       Creative Tim
     </a>
   </div>
-  <div id="step1">
-    <div class="sidebar-overlay mt-2 px-3">
-      <app-filter
-        labelText="Search categories"
-        (setFilter)="onSetFilter($event)"
-      ></app-filter>
-    </div>
-    <div class="sidebar-wrapper" *ngIf="{value: selected$ | async} as selected" >
-      <app-categories-list
-        [categories]="categories$ | async"
-        [filter]="filter$ | async"
-        [selected]="selected.value"
-        [tasksUncompletedCount]="tasksUncompletedCount$ | async"
-        (sortByCategory)="onSortByCategory($event)"
-        (categoryAdd)="onCategoryAdd()"
-        (categoryEdit)="onCategoryEdit($event)"
-      ></app-categories-list>
-    </div>
+  <div class="sidebar-overlay mt-2 px-3">
+    <app-filter
+      labelText="Search categories"
+      (setFilter)="onSetFilter($event)"
+    ></app-filter>
+  </div>
+  <div class="sidebar-wrapper" *ngIf="{value: selected$ | async} as selected" >
+    <app-categories-list
+      [categories]="categories$ | async"
+      [filter]="filter$ | async"
+      [selected]="selected.value"
+      [tasksUncompletedCount]="tasksUncompletedCount$ | async"
+      (sortByCategory)="onSortByCategory($event)"
+      (categoryAdd)="onCategoryAdd()"
+      (categoryEdit)="onCategoryEdit($event)"
+    ></app-categories-list>
   </div>
   <div class="sidebar-background" style="background-image: url(../assets/img/sidebar-1.jpg)"></div>
 </div>

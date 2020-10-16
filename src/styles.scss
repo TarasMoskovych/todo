@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/css/material-dashboard.min.css';
+@import 'assets/scss/material-dashboard.custom.scss';
 
 html,
 body {
@@ -11,20 +12,8 @@ body {
   margin: 0;
 }
 
-.nav-item,
-.pointer {
-  cursor: pointer;
-}
-
-.checkbox--no-margins {
-  .mat-checkbox-layout {
-    margin: 0;
-  }
-}
-
-.sidebar-overlay {
-  position: relative;
-  z-index: 4;
+.checkbox--no-margins .mat-checkbox-layout {
+  margin: 0;
 }
 
 .scale-0 {
@@ -47,22 +36,8 @@ body {
   line-height: initial !important;
 }
 
-.link {
-  &:hover {
-    cursor: pointer;
-    filter: brightness(0.5);
-    text-decoration: underline;
-  }
-}
-
-.hide-buttons {
-  .mat-paginator-range-actions button {
-    display: none;
-  }
-}
-
-.navbar.navbar-absolute {
-  z-index: 1;
+.hide-buttons .mat-paginator-range-actions button {
+  display: none;
 }
 
 .edit {
@@ -73,41 +48,24 @@ body {
   color: #ea6561;
 }
 
-.fixed-plugin {
-  .dropdown .dropdown-menu {
-    top: 0 !important;
-
-    &::after {
-      border: 12px solid black;
-      box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.05);
-      border-color: transparent white white transparent;
-      right: -10.5px;
-      top: 12px;
-      transform: rotate(-45deg);
-    }
-
-    &::before {
-      display: none;
-    }
-  }
-}
-
-.introjs-fixParent {
-  position: absolute !important;
-}
-
 .overflow-hidden {
   overflow: hidden;
+}
+
+mat-sidenav {
+  box-shadow: 0 0 13px rgba(0, 0, 0, 0.4);
+
+  .mat-drawer-inner-container {
+    overflow: hidden;
+  }
 }
 
 mat-form-field {
   width: 100%;
 }
 
-ngx-mat-color-palette {
-  .row {
-    display: block;
-    margin-left: 0;
-    margin-right: 0;
-  }
+ngx-mat-color-palette .row {
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
 }
