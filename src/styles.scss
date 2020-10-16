@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/css/material-dashboard.min.css';
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -49,7 +50,7 @@ body {
 .link {
   &:hover {
     cursor: pointer;
-    filter: brightness(.5);
+    filter: brightness(0.5);
     text-decoration: underline;
   }
 }
@@ -70,6 +71,33 @@ body {
 
 .remove {
   color: #ea6561;
+}
+
+.fixed-plugin {
+  .dropdown .dropdown-menu {
+    top: 0 !important;
+
+    &::after {
+      border: 12px solid black;
+      box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.05);
+      border-color: transparent white white transparent;
+      right: -10.5px;
+      top: 12px;
+      transform: rotate(-45deg);
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.introjs-fixParent {
+  position: absolute !important;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 mat-form-field {

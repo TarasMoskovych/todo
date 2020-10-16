@@ -59,4 +59,35 @@ export class Constants {
     },
   ];
 
+  public static TUTORIAL_STEPS = [
+    {
+      element: '#step1',
+      intro: 'Here you can search some category, create new one, select, edit and remove current. Each category displays count of uncompleted tasks',
+      scrollTo: 'tooltip',
+    },
+    {
+      element: '#step2',
+      intro: 'Here you can customize main theme, and open priorities management modal',
+      position: 'left',
+    },
+    {
+      element: '#step3',
+      intro: 'Here you can check tasks statistic for all and each category',
+      position: 'top',
+    },
+    {
+      element: '#step4',
+      intro: 'Here you can add new task and search current task by text, status and priority',
+      position: 'bottom',
+    },
+    {
+      element: '#step5',
+      intro: 'Here you can check tasks details and have an ability to edit and remove current task',
+      position: 'left',
+    },
+    {
+      element: '#step6',
+      intro: 'Here you can change tasks count displayed per page',
+    },
+  ];
 }

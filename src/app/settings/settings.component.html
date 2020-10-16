@@ -1,4 +1,4 @@
-<div class="fixed-plugin" *ngIf="{value: showDialog$ | async} as showDialog">
+<div id="step2" class="fixed-plugin" *ngIf="{value: showDialog$ | async} as showDialog">
   <app-settings-dialog
     (openPrioritiesDialog)="onPrioritiesDialogOpen()"
     (toggleDialog)="onToggleDialog($event)"

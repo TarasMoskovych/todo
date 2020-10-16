@@ -77,15 +77,17 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns; let task" [class.completed]="task.completed"></tr>
+    <tr [attr.id]="idx === 0 ? 'step5' : null" mat-row *matRowDef="let row; columns: displayedColumns; let task; let idx = index" [class.completed]="task.completed">{{ idx }}</tr>
   </table>
 
-  <mat-paginator
-    [class.hide-buttons]="tasks.length <= pageSizeOptions[0]"
-    [pageSizeOptions]="pageSizeOptions"
-    [hidePageSize]="tasks.length <= pageSizeOptions[0]"
-    showFirstLastButtons
-  ></mat-paginator>
+  <div id="step6">
+    <mat-paginator
+      [class.hide-buttons]="tasks.length <= pageSizeOptions[0]"
+      [pageSizeOptions]="pageSizeOptions"
+      [hidePageSize]="tasks.length <= pageSizeOptions[0]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
 </ng-container>
 
 <ng-template #empty>

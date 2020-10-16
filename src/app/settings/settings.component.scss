@@ -1,6 +1,11 @@
 .fixed-plugin {
   background: rgba(0, 0, 0, 0.2);
+  top: 8px;
   transition: 0.3s;
+
+  .dropdown .dropdown-menu {
+    top: 0 !important;
+  }
 
   &:hover {
     background: rgba(0, 0, 0, 0.3);

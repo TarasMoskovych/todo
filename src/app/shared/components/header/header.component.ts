@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { AppState, tasksShowStatisticSelector, ToggleStatistic, categoriesSelectedSelector } from 'src/app/core/+store';
+import { TutorialService } from 'src/app/core/services';
 import { Category } from 'src/app/models';
 
 @Component({
@@ -17,10 +18,15 @@ export class HeaderComponent {
 
   constructor(
     private store: Store<AppState>,
+    private tutorialService: TutorialService,
   ) { }
 
   onToggleStatistic(e: MouseEvent, toggler: boolean) {
     e.preventDefault();
     this.store.dispatch(new ToggleStatistic(toggler));
+  }
+
+  onStartTutorial() {
+    this.tutorialService.start();
   }
 }
