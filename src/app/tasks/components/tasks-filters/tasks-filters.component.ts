@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Priority, TaskFilter } from 'src/app/models';
 import { FilterComponent } from 'src/app/shared/components';
@@ -13,6 +13,7 @@ import { Constants } from 'src/app/shared/classes';
 export class TasksFiltersComponent extends FilterComponent {
   @Input() priorities: Priority[];
   @Output() setFilter = new EventEmitter<TaskFilter>();
+  @ViewChild(FilterComponent) filter: FilterComponent;
 
   protected controls = [...this.controls, 'status', 'priority'];
   noPriority = Constants.WITHOUT_PRIORITY;
@@ -23,6 +24,7 @@ export class TasksFiltersComponent extends FilterComponent {
   }
 
   onReset() {
+    this.filter.filtersForm.reset();
     this.filtersForm.reset();
     this.submit();
   }

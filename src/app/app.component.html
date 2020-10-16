@@ -1,5 +1,5 @@
-<mat-sidenav-container>
-  <mat-sidenav id="step1" #drawer mode="side" opened fixedInViewport>
+<mat-sidenav-container [class.mobile]="isMobile">
+  <mat-sidenav id="step1" #drawer [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile" fixedInViewport>
     <app-categories></app-categories>
   </mat-sidenav>
   <mat-sidenav-content>

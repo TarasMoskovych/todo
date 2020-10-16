@@ -52,6 +52,13 @@ body {
   overflow: hidden;
 }
 
+.cdk-overlay-pane {
+  @media (max-width: 576px) {
+    max-width: 95vw !important;
+    width: 100% !important;
+  }
+}
+
 mat-sidenav {
   box-shadow: 0 0 13px rgba(0, 0, 0, 0.4);
 
@@ -68,4 +75,14 @@ ngx-mat-color-palette .row {
   display: block;
   margin-left: 0;
   margin-right: 0;
+}
+
+.mobile {
+  app-categories .edit-category {
+    opacity: 1;
+  }
+
+  .tutorial-button {
+    display: none;
+  }
 }

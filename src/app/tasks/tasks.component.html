@@ -1,14 +1,13 @@
 <app-tasks-statistic></app-tasks-statistic>
 
-<div id="step4" class="d-flex align-items-baseline justify-content-between">
+<div id="step4">
   <app-tasks-filters
     class="w-100"
     [priorities]="priorities$ | async"
-    (setFilter)="onSetFilter($event)"
-  ></app-tasks-filters>
-  <div>
+    (setFilter)="onSetFilter($event)">
+
     <button (click)="onTaskAdd()" mat-raised-button color="primary">Add</button>
-  </div>
+  </app-tasks-filters>
 </div>
 
 <div class="card" *ngIf="{ loaded: loaded$ | async } as state">

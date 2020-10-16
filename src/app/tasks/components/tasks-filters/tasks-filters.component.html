@@ -1,5 +1,5 @@
-<app-filter (setFilter)="onSetQuery($event)" labelText="Search in category" wrapperClass="col-3">
-  <div class="col-3">
+<app-filter (setFilter)="onSetQuery($event)" labelText="Search in category" wrapperClass="col-sm-6 col-md-3">
+  <div class="col-sm-6 col-md-3">
     <mat-form-field [formGroup]="filtersForm">
       <mat-label>Filter by status</mat-label>
       <mat-select formControlName="status" (selectionChange)="submit()">
@@ -16,7 +16,7 @@
     </mat-form-field>
   </div>
 
-  <div *ngIf="priorities?.length" class="col-3">
+  <div *ngIf="priorities?.length" class="col-sm-6 col-md-3">
     <mat-form-field [formGroup]="filtersForm">
       <mat-label>Filter by priorities</mat-label>
       <mat-select formControlName="priority" (selectionChange)="submit()">
@@ -35,7 +35,10 @@
     </mat-form-field>
   </div>
 
-  <div class="col-3" *ngIf="filtersForm.value.query || filtersForm.value.status || filtersForm.value.priority">
-    <button (click)="onReset()" mat-button>Clear</button>
+  <div class="col-sm-6 col-md-3 d-flex justify-content-end">
+    <div *ngIf="filtersForm.value.query || filtersForm.value.status || filtersForm.value.priority">
+      <button class="mr-2" (click)="onReset()" mat-button>Clear</button>
+    </div>
+    <ng-content></ng-content>
   </div>
 </app-filter>

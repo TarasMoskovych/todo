@@ -61,6 +61,11 @@
   .dropdown .dropdown-menu {
     top: 0 !important;
 
+    @media (max-width: 400px) {
+      top: 70px !important;
+      left: -235px !important;
+    }
+
     &::after {
       border: 12px solid black;
       box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.05);
@@ -68,6 +73,12 @@
       right: -10.5px;
       top: 12px;
       transform: rotate(-45deg);
+
+      @media (max-width: 400px) {
+        right: 12px;
+        top: -12px;
+        transform: rotate(-135deg);
+      }
     }
 
     &::before {
