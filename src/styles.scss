@@ -59,6 +59,11 @@ body {
   }
 }
 
+.cdk-global-scrollblock {
+  position: initial;
+  width: initial;
+}
+
 mat-sidenav {
   box-shadow: 0 0 13px rgba(0, 0, 0, 0.4);
 

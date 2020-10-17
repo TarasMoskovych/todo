@@ -14,6 +14,7 @@ import {
   TasksFiltersComponent,
   TasksStatisticComponent,
   TasksStatisticCardComponent,
+  TasksCardsComponent,
 } from './components';
 import { CUSTOM_DATE_FORMATS } from '../shared/classes';
 
@@ -25,6 +26,7 @@ import { CUSTOM_DATE_FORMATS } from '../shared/classes';
     TasksFiltersComponent,
     TasksStatisticComponent,
     TasksStatisticCardComponent,
+    TasksCardsComponent,
   ],
   providers: [
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },

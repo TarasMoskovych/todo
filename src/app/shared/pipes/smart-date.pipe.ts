@@ -7,8 +7,8 @@ import * as moment from 'moment'
 })
 export class SmartDatePipe extends DatePipe implements PipeTransform {
 
-  transform(value: string, format: string = 'mediumDate'): string {
-    if (!value) { return '-'; }
+  transform(value: string, format: string = 'mediumDate', noValue: string = '-'): string {
+    if (!value) { return noValue; }
 
     const today = moment();
     const yesterday = moment().subtract(1, 'day');

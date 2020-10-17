@@ -1,12 +1,12 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, ViewChild, OnChanges, AfterViewInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Output, EventEmitter, ViewChild, OnChanges, AfterViewInit } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
-import { Category, Priority, Task } from 'src/app/models';
-import { CategoryEntity } from 'src/app/core/+store';
+import { Task } from 'src/app/models';
 import { Constants } from 'src/app/shared/classes';
+import { AbstractTasksListComponent } from '../abstract.tasks-list.component';
 
 @Component({
   selector: 'app-tasks-table',
@@ -14,13 +14,8 @@ import { Constants } from 'src/app/shared/classes';
   styleUrls: ['./tasks-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TasksTableComponent implements OnChanges, AfterViewInit {
-  @Input() categories: CategoryEntity = {};
-  @Input() priorities: Priority[];
-  @Input() tasks: Task[];
-  @Output() taskEdit = new EventEmitter<{ task: Task, openModal: boolean }>();
+export class TasksTableComponent extends AbstractTasksListComponent implements OnChanges, AfterViewInit {
   @Output() taskRemove = new EventEmitter<Task>();
-  @Output() categorySelect = new EventEmitter<Category>();
   @ViewChild(MatSort) private sort: MatSort;
   @ViewChild(MatPaginator) private paginator: MatPaginator;
 
@@ -56,24 +51,12 @@ export class TasksTableComponent implements OnChanges, AfterViewInit {
     };
   }
 
-  onTaskEdit(task: Task) {
-    this.dispatchEdit(task, true);
-  }
-
   onTaskRemove(task: Task) {
     this.taskRemove.emit(task);
   }
 
   onTaskCheck({ checked }: MatCheckboxChange, task: Task) {
     this.dispatchEdit({ ...task, completed: checked });
-  }
-
-  onCategorySelect(category: Category) {
-    this.categorySelect.emit(category);
-  }
-
-  private dispatchEdit(task: Task, openModal = false) {
-    this.taskEdit.emit({ task, openModal });
   }
 
 }

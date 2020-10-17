@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { DeviceService } from './core/services';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +9,5 @@ import { DeviceService } from './core/services';
 export class AppComponent {
   isMobile: boolean = this.deviceService.isMobile();
 
-  constructor(private deviceService: DeviceService) { }
+  constructor(private deviceService: DeviceDetectorService) { }
 }

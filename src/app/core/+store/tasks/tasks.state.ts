@@ -16,7 +16,7 @@ export interface TasksState {
 export const initialTasksState: TasksState = {
   entities: {},
   filter: {},
-  statistic: true,
+  statistic: false,
   loading: false,
   loaded: false,
   error: null,

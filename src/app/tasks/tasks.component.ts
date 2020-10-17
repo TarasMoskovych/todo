@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 import { Category, Task, TaskFilter } from '../models';
 import { TaskFormComponent } from './components';
@@ -21,6 +22,7 @@ import {
   PriorityEntity,
   prioritiesEntitiesSelector,
   prioritiesSelector,
+  ToggleStatistic,
 } from '../core/+store';
 import { ConfirmDialogComponent } from '../shared/components';
 
@@ -31,6 +33,7 @@ import { ConfirmDialogComponent } from '../shared/components';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TasksComponent implements OnInit {
+  isMobile: boolean = this.deviceService.isMobile();
   categories$: Observable<CategoryEntity> = this.store.select(categoriesEntitiesSelector);
   loaded$: Observable<boolean> = this.store.select(tasksLoadedSelector);
   priorityEntities$: Observable<PriorityEntity> = this.store.select(prioritiesEntitiesSelector);
@@ -40,10 +43,12 @@ export class TasksComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private store: Store<AppState>,
+    private deviceService: DeviceDetectorService,
   ) { }
 
   ngOnInit(): void {
     this.getTasks();
+    this.toggleStatistic();
   }
 
   onTaskAdd() {
@@ -87,6 +92,10 @@ export class TasksComponent implements OnInit {
 
   private getTasks() {
     this.store.dispatch(new GetTasks());
+  }
+
+  private toggleStatistic() {
+    this.store.dispatch(new ToggleStatistic(!this.isMobile));
   }
 
   private createTask(task: Task) {

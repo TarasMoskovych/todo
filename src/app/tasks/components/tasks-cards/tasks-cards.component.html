@@ -1,0 +1,45 @@
+<div class="tasks-cards">
+  <ng-container *ngIf="tasks?.length; else empty">
+    <div
+      *ngFor="let task of tasks"
+      (click)="onTaskEdit(task)"
+      [class.tasks-cards__card--completed]="task.completed"
+      class="card tasks-cards__card">
+      <div
+        class="tasks-cards__card--top"
+        [style.background-color]="task.completed && '#94ada7' || priorities[task.priority]?.color || '#DFDFDF'"
+      ></div>
+      <div class="d-flex justify-content-between align-items-center pl-3 pr-4 py-3">
+        <div>
+          <div class="tasks-cards__text tasks-cards__text--big mb-2">
+            {{ task.name }}
+          </div>
+          <div class="d-flex align-items-baseline flex-wrap">
+            <div (click)="onCategorySelect(categories[task.category], $event)" class="tasks-cards__text tasks-cards__text--badge mr-2" [ngClass]="{ 'tasks-cards__text--dark-background tasks-cards__text--extra-paddings' : categories[task.category] }">
+              {{ categories[task.category]?.name || 'No category' }}
+            </div>
+            <div
+              *ngIf="priorities[task.priority] as priority"
+              [style.background-color]="task.completed && '#94ada7' || priority?.color || '#DFDFDF'" class="tasks-cards__text tasks-cards__text--badge tasks-cards__text--extra-paddings mr-2">
+              {{ priority.name }}
+            </div>
+            <div class="tasks-cards__text">
+              {{ task.date | smartDate:'mediumDate':'No date' }}
+            </div>
+          </div>
+        </div>
+        <button mat-icon-button (click)="onTaskStatusEdit($event, task)">
+          <mat-icon class="tasks-cards__icon">
+            {{ task.completed ? 'check_circle' : 'check_circle_outline' }}
+          </mat-icon>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #empty>
+    <h4 class="mt-3 text-center">
+      Task list is empty
+    </h4>
+  </ng-template>
+</div>
