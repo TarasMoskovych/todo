@@ -1,7 +1,7 @@
 import { Category, Filter } from 'src/app/models';
 
 export interface CategoryEntity {
-  [id: number]: Category;
+  [id: string]: Category;
 }
 
 export interface CategoriesState {

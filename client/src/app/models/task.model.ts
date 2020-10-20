@@ -1,11 +1,11 @@
 import { Filter } from './filter.model';
 
 export interface Task {
-  id: number;
+  id: string;
   name: string;
   completed: boolean;
-  priority?: number;
-  category?: number;
+  priority?: string;
+  category?: string;
   date?: Date;
   filter?: TaskFilter;
 }

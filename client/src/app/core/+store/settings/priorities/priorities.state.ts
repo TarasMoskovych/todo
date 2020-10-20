@@ -1,7 +1,7 @@
 import { Priority } from 'src/app/models';
 
 export interface PriorityEntity {
-  [id: number]: Priority;
+  [id: string]: Priority;
 }
 
 export interface PrioritiesState {

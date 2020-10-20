@@ -1,7 +1,7 @@
 {
-  "name": "todo-heroku",
+  "name": "todo-app",
   "version": "1.0.0",
-  "description": "Configuration heroku build for Todo app",
+  "description": "Configuration for Todo app",
   "scripts": {
     "start": "npm run start --prefix server",
     "heroku-postbuild": "npm install --prefix client && npm run build --prefix client && npm install --prefix server && npm run build --prefix server"

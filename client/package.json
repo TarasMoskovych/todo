@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open --proxy-config proxy.conf.json",
-    "dev": "concurrently --kill-others \"npm run start\" \"json-server --watch db.json\"",
+    "start": "ng serve --open",
+    "dev": "ng s --proxy-config proxy.conf.json",
+    "dev:json-server": "concurrently --kill-others \"ng s --proxy-config proxy.conf.json-server.json\" \"json-server --watch db.json\"",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",

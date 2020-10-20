@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 interface IPayload {
-  id: number;
+  id: string;
 }
 
 export abstract class AbstractService<T> {

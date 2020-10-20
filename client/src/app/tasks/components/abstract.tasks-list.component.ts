@@ -1,13 +1,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { CategoryEntity } from 'src/app/core/+store';
-import { Category, Priority, Task } from 'src/app/models';
+import { CategoryEntity, PriorityEntity } from 'src/app/core/+store';
+import { Category, Task } from 'src/app/models';
 
 @Component({ template: '' })
 export abstract class AbstractTasksListComponent {
   @Input() tasks: Task[];
   @Input() categories: CategoryEntity = {};
-  @Input() priorities: Priority[];
+  @Input() priorities: PriorityEntity = {};
   @Output() taskEdit = new EventEmitter<{ task: Task, openModal: boolean }>();
   @Output() categorySelect = new EventEmitter<Category>();
 

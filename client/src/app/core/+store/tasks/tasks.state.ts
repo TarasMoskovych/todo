@@ -1,7 +1,7 @@
 import { Task, TaskFilter } from 'src/app/models';
 
 export interface TaskEntity {
-  [id: number]: Task;
+  [id: string]: Task;
 }
 
 export interface TasksState {
