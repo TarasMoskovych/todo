@@ -8,7 +8,7 @@ export class TasksController {
   constructor(private tasksService: TasksService) { }
 
   @Get()
-  get(@Query() filter: TaskFilter): Task[] {
+  get(@Query(ValidationPipe) filter: TaskFilter): Task[] {
     return this.tasksService.get(filter);
   }
 

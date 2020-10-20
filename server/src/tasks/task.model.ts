@@ -1,4 +1,4 @@
-import { IsBoolean, IsDateString, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsBoolean, IsBooleanString, IsDateString, IsNotEmpty, IsOptional } from 'class-validator';
 import { TrimValidator } from 'src/validators';
 
 export class Task {
@@ -20,8 +20,11 @@ export class Task {
   date?: Date;
 }
 
-export interface TaskFilter {
+export class TaskFilter {
+  @IsOptional()
+  @IsBooleanString()
   completed?: string;
+
   priority?: string;
   query?: string;
 }

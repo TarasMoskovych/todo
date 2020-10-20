@@ -13,11 +13,11 @@ export class TasksService extends AbstractLowDbService<Task> {
     return this.getAll()
       .filter((task: Task) => {
         // Filter by status
-        if (filter.completed && (filter.completed === 'true' && !task.completed || filter.completed === 'fase' && task.completed)) { return false; }
+        if (filter.completed && (JSON.parse(filter.completed) && !task.completed || !JSON.parse(filter.completed) && task.completed)) { return false; }
         // Filter by query
-        if (filter.query && task.name.search(new RegExp(filter.query, 'i')) === -1) { return false; }
+        if (filter.query?.trim().length && task.name.search(new RegExp(filter.query, 'i')) === -1) { return false; }
         // Filter by priorities
-        if (filter.priority && (filter.priority !== task.priority && filter.priority !== 'null' || filter.priority === 'null' && task.priority)) { return false; }
+        if (filter.priority !== undefined && (filter.priority !== task.priority && filter.priority !== '0' || filter.priority === '0' && task.priority)) { return false; }
         return true;
       });
   }

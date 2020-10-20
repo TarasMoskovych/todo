@@ -17,6 +17,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -41,6 +42,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatIconModule,
     MatDividerModule,
     MatSidenavModule,
+    MatSnackBarModule,
   ]
 })
 export class MaterialModule { }

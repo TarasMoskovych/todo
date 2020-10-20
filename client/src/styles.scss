@@ -66,6 +66,7 @@ body {
 
 mat-sidenav {
   box-shadow: 0 0 13px rgba(0, 0, 0, 0.4);
+  min-width: 260px;
 
   .mat-drawer-inner-container {
     overflow: hidden;
