@@ -4,7 +4,7 @@
   "description": "Configuration for Todo app",
   "scripts": {
     "start": "npm run start:prod --prefix ./server",
-    "install-modules": "npm install && npm install --prefix ./server && npm install --prefix ./client",
+    "install-modules": "npm install && cd server && npm install && cd ../client && npm install",
     "dev": "concurrently --kill-others \"npm run dev --prefix ./client\" \"npm run start:dev --prefix ./server\"",
     "heroku-postbuild": "npm install --prefix ./client && npm run build --prefix ./client && npm install --prefix ./server && npm run build --prefix ./server"
   },

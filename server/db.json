@@ -74,7 +74,7 @@
       "priority": "3",
       "completed": false,
       "category": "10",
-      "date": "2001-01-10T22:00:00.000Z"
+      "date": "2020-04-10T20:00:00.000Z"
     },
     {
       "id": "2",
@@ -97,7 +97,7 @@
       "priority": "2",
       "completed": false,
       "category": "2",
-      "date": "2020-08-15T21:00:00.000Z"
+      "date": "2020-08-17T20:00:00.000Z"
     },
     {
       "id": "5",
@@ -210,44 +210,6 @@
       "completed": false,
       "category": "5",
       "date": "2020-03-17T20:00:00.000Z"
-    },
-    {
-      "name": "asdasd",
-      "completed": false,
-      "priority": null,
-      "date": "2020-10-19T21:00:00.000Z",
-      "id": "3cc19c90-12ee-11eb-921d-9d501ded11dc"
-    },
-    {
-      "name": "wer",
-      "completed": false,
-      "priority": null,
-      "date": "2020-10-19T21:00:00.000Z",
-      "id": "5b536300-12ee-11eb-921d-9d501ded11dc"
-    },
-    {
-      "name": "sdf",
-      "completed": false,
-      "priority": null,
-      "date": "2020-10-19T21:00:00.000Z",
-      "id": "76ff2080-12ee-11eb-921d-9d501ded11dc",
-      "category": null
-    },
-    {
-      "name": "asd",
-      "completed": false,
-      "priority": null,
-      "date": "2005-01-20T22:00:00.000Z",
-      "id": "ccf9a000-12ee-11eb-bf05-01bcf6c8c9d8",
-      "category": null
-    },
-    {
-      "name": "asdasd",
-      "completed": false,
-      "priority": null,
-      "date": "2010-01-19T22:00:00.000Z",
-      "id": "eb9ca480-12ee-11eb-847d-071bd06df304",
-      "category": null
     }
   ]
 }
