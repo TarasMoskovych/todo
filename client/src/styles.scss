@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'assets/css/material-dashboard.min.css';
+@import 'assets/scss/material-dashboard.custom.scss';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
+
+.checkbox--no-margins .mat-checkbox-layout {
+  margin: 0;
+}
+
+.scale-0 {
+  transform: scale(0) !important;
+}
+
+.w-10 {
+  width: 10%;
+}
+
+.w-auto {
+  width: auto !important;
+}
+
+.h-auto {
+  height: auto !important;
+}
+
+.lh-initial {
+  line-height: initial !important;
+}
+
+.hide-buttons .mat-paginator-range-actions button {
+  display: none;
+}
+
+.edit {
+  color: #9a9a9a;
+}
+
+.remove {
+  color: #ea6561;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.cdk-overlay-pane {
+  @media (max-width: 576px) {
+    max-width: 95vw !important;
+    width: 100% !important;
+  }
+}
+
+.cdk-global-scrollblock {
+  position: initial;
+  width: initial;
+}
+
+mat-sidenav {
+  box-shadow: 0 0 13px rgba(0, 0, 0, 0.4);
+  min-width: 260px;
+
+  .mat-drawer-inner-container {
+    overflow: hidden;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+ngx-mat-color-palette .row {
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.mobile {
+  app-categories .edit-category {
+    opacity: 1;
+  }
+
+  .tutorial-button {
+    display: none;
+  }
+}
