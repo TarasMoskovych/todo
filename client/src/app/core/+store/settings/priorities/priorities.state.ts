@@ -5,7 +5,7 @@ export interface PriorityEntity {
 }
 
 export interface PrioritiesState {
-  entities: PriorityEntity;
+  readonly entities: PriorityEntity;
   readonly loading: boolean;
   readonly loaded: boolean;
   readonly error: Error | string;

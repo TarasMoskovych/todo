@@ -1,23 +1,20 @@
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Category, Filter } from 'src/app/models';
 
-export interface CategoryEntity {
-  [id: string]: Category;
-}
+export const categoryAdapter: EntityAdapter<Category> = createEntityAdapter<Category>();
 
-export interface CategoriesState {
-  entities: CategoryEntity;
-  filter: Filter;
-  selected: Category;
+export interface CategoriesState extends EntityState<Category> {
+  readonly filter: Filter;
+  readonly selected: Category;
   readonly loading: boolean;
   readonly loaded: boolean;
   readonly error: Error | string;
 }
 
-export const initialCategoriesState: CategoriesState = {
-  entities: {},
+export const initialCategoriesState: CategoriesState = categoryAdapter.getInitialState({
   filter: {},
   selected: null,
   loading: false,
   loaded: false,
   error: null,
-};
+});

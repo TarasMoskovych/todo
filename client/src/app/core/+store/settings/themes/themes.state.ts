@@ -1,5 +1,5 @@
 export interface ThemesState {
-  showDialog: boolean;
+  readonly showDialog: boolean;
 }
 
 export const initialThemesState: ThemesState = {

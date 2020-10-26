@@ -12,7 +12,6 @@ import {
   tasksLoadingSelector,
   categoriesEntitiesSelector,
   AppState,
-  CategoryEntity,
   GetTasks,
   CreateTask,
   UpdateTask,
@@ -34,7 +33,7 @@ import { ConfirmDialogComponent } from '../shared/components';
 })
 export class TasksComponent implements OnInit {
   isMobile: boolean = this.deviceService.isMobile();
-  categories$: Observable<CategoryEntity> = this.store.select(categoriesEntitiesSelector);
+  categories$: Observable<{ [key: string]: Category }> = this.store.select(categoriesEntitiesSelector);
   loading$: Observable<boolean> = this.store.select(tasksLoadingSelector);
   priorityEntities$: Observable<PriorityEntity> = this.store.select(prioritiesEntitiesSelector);
   priorities$: Observable<Priority[]> = this.store.select(prioritiesSelector);

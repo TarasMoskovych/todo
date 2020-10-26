@@ -1,6 +1,5 @@
-import { Category } from 'src/app/models';
 import { CategoriesActionTypes, CategoriesActions } from './categories.actions';
-import { initialCategoriesState, CategoriesState, CategoryEntity, } from './categories.state';
+import { initialCategoriesState, CategoriesState, categoryAdapter, } from './categories.state';
 
 export function categoriesReducer(state = initialCategoriesState, action: CategoriesActions): CategoriesState {
 
@@ -13,16 +12,7 @@ export function categoriesReducer(state = initialCategoriesState, action: Catego
     }
 
     case CategoriesActionTypes.GET_CATEGORIES_SUCCESS: {
-      const entities = action.payload.reduce((acc: CategoryEntity, category: Category) => {
-        return { ...acc, [category.id]: category }
-      }, { ...state.entities });
-
-      return {
-        ...state,
-        entities,
-        loading: false,
-        loaded: true,
-      };
+      return categoryAdapter.setAll(action.payload, { ...state, loading: false, loaded: true });
     }
 
     case CategoriesActionTypes.GET_CATEGORIES_ERROR: {
@@ -35,36 +25,21 @@ export function categoriesReducer(state = initialCategoriesState, action: Catego
     }
 
     case CategoriesActionTypes.CREATE_CATEGORY_SUCCESS: {
-      const entities = { ...state.entities, [action.payload.id]: action.payload };
-
-      return {
-        ...state,
-        entities,
-        selected: action.payload,
-      };
+      return categoryAdapter.addOne(action.payload, { ...state, selected: action.payload });
     }
 
     case CategoriesActionTypes.UPDATE_CATEGORY_SUCCESS: {
-      const entities = { ...state.entities, [action.payload.id]: action.payload };
-
-      return {
-        ...state,
-        entities,
-      };
+      return categoryAdapter.updateOne({ id: action.payload.id, changes: action.payload }, state);
     }
 
     case CategoriesActionTypes.REMOVE_CATEGORY_SUCCESS: {
-      const { [action.payload.id]: current, ...entities } = state.entities;
-      const nextState = {
-        ...state,
-        entities,
-      };
+      const nextState = { ...state };
 
-      if (current.id === state.selected?.id) {
+      if (action.payload.id === state.selected?.id) {
         Object.assign(nextState, { selected: null });
       }
 
-      return nextState;
+      return categoryAdapter.removeOne(action.payload.id, nextState);
     }
 
     case CategoriesActionTypes.SELECT_CATEGORY: {

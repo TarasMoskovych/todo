@@ -1,6 +1,5 @@
-import { Task } from 'src/app/models';
 import { TasksActionTypes, TasksActions } from './tasks.actions';
-import { initialTasksState, TasksState, TaskEntity, } from './tasks.state';
+import { initialTasksState, TasksState, taskAdapter, } from './tasks.state';
 
 export function tasksReducer(state = initialTasksState, action: TasksActions): TasksState {
 
@@ -13,16 +12,7 @@ export function tasksReducer(state = initialTasksState, action: TasksActions): T
     }
 
     case TasksActionTypes.GET_TASKS_SUCCESS: {
-      const entities = action.payload.reduce((acc: TaskEntity, task: Task) => {
-        return { ...acc, [task.id]: task }
-      }, { ...state.entities });
-
-      return {
-        ...state,
-        entities,
-        loading: false,
-        loaded: true,
-      };
+      return taskAdapter.setAll(action.payload, { ...state, loading: false, loaded: true });
     }
 
     case TasksActionTypes.GET_TASKS_ERROR: {
@@ -34,23 +24,16 @@ export function tasksReducer(state = initialTasksState, action: TasksActions): T
       };
     }
 
-    case TasksActionTypes.CREATE_TASK_SUCCESS:
-    case TasksActionTypes.UPDATE_TASK_SUCCESS: {
-      const entities = { ...state.entities, [action.payload.id]: action.payload };
+    case TasksActionTypes.CREATE_TASK_SUCCESS: {
+      return taskAdapter.addOne(action.payload, state);
+    }
 
-      return {
-        ...state,
-        entities,
-      };
+    case TasksActionTypes.UPDATE_TASK_SUCCESS: {
+      return taskAdapter.updateOne({ id: action.payload.id, changes: action.payload }, state);
     }
 
     case TasksActionTypes.REMOVE_TASK_SUCCESS: {
-      const { [action.payload.id]: current, ...entities } = state.entities;
-
-      return {
-        ...state,
-        entities,
-      };
+      return taskAdapter.removeOne(action.payload.id, state);
     }
 
     case TasksActionTypes.FILTER_TASKS: {
