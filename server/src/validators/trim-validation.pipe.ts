@@ -10,7 +10,7 @@ export function TrimValidator(validationOptions?: ValidationOptions) {
       options: { ...validationOptions, message: `Shouldn't be empty` },
       validator: {
         validate(value: any, args: ValidationArguments) {
-          return value.trim().length;
+          return value?.trim().length;
         },
       },
     });

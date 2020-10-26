@@ -22,7 +22,7 @@ export const categoriesFilteredSelector = createSelector(
   (categories: Category[], filter: Filter) => categories
     .filter((category: Category) => {
       // Filter by query
-      if (filter.query && category.name.search(new RegExp(filter.query, 'i')) === -1) { return false; }
+      if (filter.q && category.name.search(new RegExp(filter.q, 'i')) === -1) { return false; }
       return true;
     })
 );

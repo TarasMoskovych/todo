@@ -26,5 +26,5 @@ export class TaskFilter {
   completed?: string;
 
   priority?: string;
-  query?: string;
+  q?: string;
 }

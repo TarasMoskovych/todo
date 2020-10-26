@@ -15,7 +15,7 @@ export abstract class AbstractLowDbService<T> {
   }
 
   getById(id: string): T {
-    const entity: any = this.getDataStore().find({ id }).value();
+    const entity: T = this.findByProp('id', id);
 
     if (!entity) {
       throw new NotFoundException(`${this.entity} with ID "${id}" not found`);
@@ -44,6 +44,10 @@ export abstract class AbstractLowDbService<T> {
 
   protected getDataStore(dataStore: string = this.dataStore) {
     return this.db.get(dataStore);
+  }
+
+  protected findByProp(key: string, value: any): T {
+    return this.getDataStore().find({ [key]: value }).value();
   }
 
   private initDatabase(dataStore: string): void {

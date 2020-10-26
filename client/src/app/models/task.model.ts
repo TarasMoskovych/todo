@@ -28,6 +28,6 @@ export interface TasksUncompletedCount {
 }
 
 export interface TaskFilter extends Filter {
-  status?: string;
-  priority?: number | string;
+  completed: boolean;
+  priority: string;
 }

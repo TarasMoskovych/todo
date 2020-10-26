@@ -15,7 +15,7 @@ export class TasksService extends AbstractLowDbService<Task> {
         // Filter by status
         if (filter.completed && (JSON.parse(filter.completed) && !task.completed || !JSON.parse(filter.completed) && task.completed)) { return false; }
         // Filter by query
-        if (filter.query?.trim().length && task.name.search(new RegExp(filter.query, 'i')) === -1) { return false; }
+        if (filter.q?.trim().length && task.name.search(new RegExp(filter.q, 'i')) === -1) { return false; }
         // Filter by priorities
         if (filter.priority !== undefined && (filter.priority !== task.priority && filter.priority !== '0' || filter.priority === '0' && task.priority)) { return false; }
         return true;

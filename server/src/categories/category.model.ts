@@ -10,5 +10,5 @@ export class Category {
 }
 
 export interface CategoryFilter {
-  query: string;
+  q: string;
 }

@@ -12,7 +12,11 @@ export interface TasksState extends EntityState<Task>  {
 }
 
 export const initialTasksState: TasksState = taskAdapter.getInitialState({
-  filter: {},
+  filter: {
+    completed: null,
+    priority: null,
+    q: null,
+  },
   statistic: false,
   loading: false,
   loaded: false,

@@ -2,68 +2,68 @@
   "categories": [
     {
       "id": "1",
-      "name": "Work"
+      "name": "work"
     },
     {
       "id": "2",
-      "name": "Family"
+      "name": "family"
     },
     {
       "id": "3",
-      "name": "Education"
+      "name": "education"
     },
     {
       "id": "4",
-      "name": "Vacation"
+      "name": "vacation"
     },
     {
       "id": "5",
-      "name": "Sport"
+      "name": "sport"
     },
     {
       "id": "6",
-      "name": "Food"
+      "name": "food"
     },
     {
       "id": "7",
-      "name": "Finance"
+      "name": "finance"
     },
     {
       "id": "8",
-      "name": "Devices"
+      "name": "devices"
     },
     {
       "id": "9",
-      "name": "Health"
+      "name": "health"
     },
     {
       "id": "10",
-      "name": "Car"
+      "name": "car"
     },
     {
       "id": "11",
-      "name": "Home"
+      "name": "home"
     }
   ],
   "priorities": [
     {
       "id": "1",
-      "name": "Low",
+      "name": "low",
       "color": "#e5e5e5"
     },
     {
       "id": "2",
-      "name": "Medium",
+      "name": "medium",
       "color": "#85D1B2"
     },
     {
       "id": "3",
-      "name": "High",
+      "name": "high",
       "color": "#F1828D"
     },
     {
       "id": "4",
-      "name": "Highest",
+      "name": "highest",
       "color": "#F1128D"
     }
   ],
@@ -193,7 +193,7 @@
       "priority": "4",
       "completed": false,
       "category": "9",
-      "date": "2020-12-11T20:00:00.000Z"
+      "date": "2019-12-11T20:00:00.000Z"
     },
     {
       "id": "19",
@@ -201,7 +201,7 @@
       "priority": "1",
       "completed": false,
       "category": "8",
-      "date": "2020-10-11T20:00:00.000Z"
+      "date": "2019-10-11T20:00:00.000Z"
     },
     {
       "id": "20",

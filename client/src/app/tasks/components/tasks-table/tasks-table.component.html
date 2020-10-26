@@ -1,5 +1,5 @@
 <ng-container *ngIf="tasks?.length; else empty">
-  <table mat-table matSort [dataSource]="dataSource" class="w-100">
+  <table mat-table matSort [dataSource]="dataSource" matSortActive="date" matSortDirection="desc" class="w-100">
 
     <ng-container matColumnDef="color">
       <th mat-header-cell *matHeaderCellDef></th>
@@ -25,7 +25,7 @@
 
     <ng-container matColumnDef="priority">
       <th mat-sort-header mat-header-cell *matHeaderCellDef>Priority</th>
-      <td [class.empty]="!task.priority" mat-cell *matCellDef="let task">
+      <td class="text-capitalize" [class.empty]="!task.priority" mat-cell *matCellDef="let task">
         <ng-container *ngIf="priorities[task.priority]; else noPriority">
           {{ priorities[task.priority].name }}
         </ng-container>
@@ -37,7 +37,7 @@
 
     <ng-container matColumnDef="category">
       <th mat-sort-header mat-header-cell *matHeaderCellDef>Category</th>
-      <td [class.empty]="!task.category" mat-cell *matCellDef="let task">
+      <td class="text-capitalize" [class.empty]="!task.category" mat-cell *matCellDef="let task">
         <ng-container *ngIf="categories[task.category]; else noCategory">
           <span class="link" (click)="onCategorySelect(categories[task.category])">
             {{ categories[task.category].name }}

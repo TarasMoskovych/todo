@@ -6,8 +6,6 @@ export class Constants {
 
   public static readonly PAGE_SIZE_OPTIONS = [5, 10, 50, 100];
 
-  public static readonly WITHOUT_PRIORITY = 'empty';
-
   public static readonly STATISTICS_DATA: StatisticData[] = [
     {
       key: 'completed',

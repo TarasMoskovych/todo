@@ -1,5 +1,5 @@
 <div class="navbar-wrapper">
-  <a class="navbar-brand">
+  <a class="navbar-brand text-capitalize">
     {{ (selectedCategory$ | async)?.name || 'All' }}
   </a>
   <ng-container *ngIf="{value: statistic$ | async} as statistic">

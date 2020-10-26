@@ -15,7 +15,7 @@ export class FilterComponent implements OnInit {
   @Input() wrapperClass = 'col-12';
   @Output() setFilter = new EventEmitter<Filter>();
 
-  protected controls = ['query'];
+  protected controls = ['q'];
   filtersForm: FormGroup;
 
   ngOnInit(): void {

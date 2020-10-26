@@ -12,7 +12,9 @@ export interface CategoriesState extends EntityState<Category> {
 }
 
 export const initialCategoriesState: CategoriesState = categoryAdapter.getInitialState({
-  filter: {},
+  filter: {
+    q: null,
+  },
   selected: null,
   loading: false,
   loaded: false,

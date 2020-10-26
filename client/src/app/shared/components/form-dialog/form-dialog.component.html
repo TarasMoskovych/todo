@@ -4,7 +4,7 @@
 
     <mat-form-field *ngIf="form.get('name') as name">
       <mat-label>Name (required*)</mat-label>
-      <input matInput placeholder="Name" formControlName="name">
+      <input class="text-capitalize" matInput placeholder="Name" formControlName="name">
       <mat-error *ngIf="name.invalid">
         Please enter valid Name
       </mat-error>

@@ -10,6 +10,7 @@ import { TasksModule } from './tasks/tasks.module';
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'client/dist/todo'),
+      exclude: ['/api*'],
     }),
     CategoriesModule,
     PrioritiesModule,

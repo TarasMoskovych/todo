@@ -1,6 +1,6 @@
 <ng-container *ngIf="form && control">
   <button
-    *ngIf="(value$ | async) || form.get(control).value"
+    *ngIf="(value$ | async) || form.get(control).value || form.get(control).value === false"
     mat-icon-button
     type="button"
     [attr.aria-label]="'Clear ' + control"

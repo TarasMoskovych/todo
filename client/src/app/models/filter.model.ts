@@ -1,3 +1,3 @@
 export interface Filter {
-  query?: string;
+  q: string;
 }

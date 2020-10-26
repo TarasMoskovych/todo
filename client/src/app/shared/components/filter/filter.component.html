@@ -4,14 +4,14 @@
       <mat-form-field>
         <input
           matInput
-          formControlName="query"
+          formControlName="q"
           [placeholder]="labelText"
           (keyup)="onKeyup()"
         ><app-reset-field
           [form]="filtersForm"
           (reset)="submit()"
           matSuffix
-          control="query"
+          control="q"
         ></app-reset-field>
       </mat-form-field>
     </div>

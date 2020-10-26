@@ -43,7 +43,7 @@ export abstract class AbstractService<T> {
       );
   }
 
-  private catchError(error: HttpErrorResponse): Observable<never> {
+  private catchError({ error }: HttpErrorResponse): Observable<never> {
     this.notificationService.showMessage(error?.message || 'Error during request');
     return throwError(error);
   }

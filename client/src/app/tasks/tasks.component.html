@@ -15,7 +15,7 @@
     *ngIf="isMobile; else tableView"
     [categories]="categories$ | async"
     [priorities]="priorityEntities$ | async"
-    [tasks]="tasks$ | async"
+    [tasks]="tasks$ | async | orderBy:'desc':'date'"
     (taskEdit)="onTaskEdit($event)"
     (categorySelect)="onCategorySelect($event)"
   ></app-tasks-cards>

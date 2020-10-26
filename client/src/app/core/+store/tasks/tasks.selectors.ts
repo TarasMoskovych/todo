@@ -41,11 +41,11 @@ export const tasksFilteredSelector = createSelector(
   (tasks: Task[], filter: TaskFilter) => tasks
     .filter((task: Task) => {
       // Filter by status
-      if (filter.status && (filter.status === 'completed' && !task.completed || filter.status === 'uncompleted' && task.completed)) { return false; }
+      if ((filter.completed || filter.completed === false) && (filter.completed && !task.completed || filter.completed === false && task.completed)) { return false; }
       // Filter by query
-      if (filter.query && task.name.search(new RegExp(filter.query, 'i')) === -1) { return false; }
+      if (filter.q && task.name.search(new RegExp(filter.q, 'i')) === -1) { return false; }
       // Filter by priorities
-      if (filter.priority && (filter.priority !== task.priority && filter.priority !== Constants.WITHOUT_PRIORITY || filter.priority === Constants.WITHOUT_PRIORITY && task.priority)) { return false; }
+      if (filter.priority && (filter.priority !== task.priority && filter.priority !== '0' || filter.priority === '0' && task.priority)) { return false; }
       return true;
     })
 );
