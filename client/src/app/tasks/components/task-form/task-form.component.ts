@@ -66,7 +66,7 @@ export class TaskFormComponent implements OnInit {
       completed: new FormControl(!!completed),
       category: new FormControl(category),
       priority: new FormControl(priority),
-      date: new FormControl(date),
+      date: new FormControl(date || new Date()),
     });
   }
 
