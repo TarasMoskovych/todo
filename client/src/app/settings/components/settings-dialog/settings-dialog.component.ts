@@ -1,4 +1,6 @@
+import { Color } from '@angular-material-components/color-picker';
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Constants } from 'src/app/shared/classes';
 
 @Component({
   selector: 'app-settings-dialog',
@@ -7,9 +9,16 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from 
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsDialogComponent {
+  @Input() color: Color;
+  @Input() image: string;
   @Input() showDialog: { value: boolean };
   @Output() toggleDialog = new EventEmitter<boolean>();
   @Output() openPrioritiesDialog = new EventEmitter<void>();
+  @Output() setColor = new EventEmitter<Color>();
+  @Output() setImage = new EventEmitter<string>();
+
+  readonly themeImages = Constants.THEME_IMAGES;
+  readonly themeColors = Constants.THEME_COLORS;
 
   onCloseDialog(show: boolean) {
     show && this.onToggleDialog(false);
@@ -22,6 +31,14 @@ export class SettingsDialogComponent {
 
   onPrioritiesDialogOpen() {
     this.openPrioritiesDialog.emit();
+  }
+
+  onSetColor(color: Color) {
+    this.setColor.emit(color);
+  }
+
+  onSetImage(src: string) {
+    this.setImage.emit(src);
   }
 
 }

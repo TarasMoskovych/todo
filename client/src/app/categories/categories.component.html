@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="purple" data-background-color="white">
+<div class="sidebar" [attr.data-color]="(color$ | async).value" data-background-color="white">
   <div class="logo">
     <a href="http://www.creative-tim.com" class="simple-text logo-normal" target="_blank" rel="noopener">
       Creative Tim
@@ -21,5 +21,5 @@
       (categoryEdit)="onCategoryEdit($event)"
     ></app-categories-list>
   </div>
-  <div class="sidebar-background" style="background-image: url(../assets/img/sidebar-1.jpg)"></div>
+  <div class="sidebar-background" [ngStyle]="{'background-image': 'url(../assets/img/' + (image$ | async) + ')'}"></div>
 </div>

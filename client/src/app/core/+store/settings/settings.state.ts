@@ -1,6 +1,6 @@
 import { ActionReducerMap } from '@ngrx/store';
 import { prioritiesReducer, PrioritiesState, PrioritiesEffects } from './priorities';
-import { themesReducer, ThemesState } from './themes';
+import { ThemesEffects, themesReducer, ThemesState } from './themes';
 
 export interface SettingsState {
   priorities: PrioritiesState;
@@ -14,4 +14,5 @@ export const settingsReducers: ActionReducerMap<SettingsState> = {
 
 export const settingsEffects = [
   PrioritiesEffects,
+  ThemesEffects,
 ];

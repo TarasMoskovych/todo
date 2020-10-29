@@ -2,6 +2,8 @@ import { StatisticData } from 'src/app/models';
 
 export class Constants {
 
+  public static readonly STORAGE_KEY = 'todo';
+
   public static readonly VALIDATION_PATTERN = new RegExp(['^([a-z0-9,().\'"?!-]+\\s)*', '[a-z0-9,().\'"?!-]+$'].join(''),'i');
 
   public static readonly PAGE_SIZE_OPTIONS = [5, 10, 50, 100];
@@ -38,7 +40,7 @@ export class Constants {
     },
   ];
 
-  public static FOOTER_LINKS = [
+  public static readonly FOOTER_LINKS = [
     {
       href: 'https://www.creative-tim.com',
       text: 'Creative Tim',
@@ -57,7 +59,7 @@ export class Constants {
     },
   ];
 
-  public static TUTORIAL_STEPS = [
+  public static readonly TUTORIAL_STEPS = [
     {
       element: '#step1',
       intro: 'Here you can search some category, create new one, select, edit and remove current. Each category displays count of uncompleted tasks',
@@ -87,6 +89,35 @@ export class Constants {
     {
       element: '#step6',
       intro: 'Here you can change tasks count displayed per page',
+    },
+  ];
+
+  public static readonly THEME_IMAGES = ['sidebar-1.jpg', 'sidebar-2.jpg', 'sidebar-3.jpg', 'sidebar-4.jpg'];
+
+  public static readonly THEME_COLORS = [
+    {
+      name: 'purple',
+      value: 'purple',
+    },
+    {
+      name: 'azure',
+      value: 'azure',
+    },
+    {
+      name: 'green',
+      value: 'green',
+    },
+    {
+      name: 'warning',
+      value: 'orange',
+    },
+    {
+      name: 'danger',
+      value: 'danger',
+    },
+    {
+      name: 'rose',
+      value: 'rose',
     },
   ];
 }

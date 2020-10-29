@@ -13,6 +13,34 @@ export function themesReducer(state = initialThemesState, action: ThemesActions)
       };
     }
 
+    case ThemesActionTypes.GET_THEME_SUCCESS: {
+      const { color, image } = action.payload;
+
+      return {
+        ...state,
+        color,
+        image,
+      };
+    }
+
+    case ThemesActionTypes.SET_COLOR: {
+      const color = action.payload;
+
+      return {
+        ...state,
+        color,
+      };
+    }
+
+    case ThemesActionTypes.SET_IMAGE: {
+      const image = action.payload;
+
+      return {
+        ...state,
+        image,
+      };
+    }
+
     default:
       return state;
   }

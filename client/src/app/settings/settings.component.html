@@ -1,6 +1,10 @@
 <div id="step2" class="fixed-plugin" *ngIf="{value: showDialog$ | async} as showDialog">
   <app-settings-dialog
     (openPrioritiesDialog)="onPrioritiesDialogOpen()"
+    (setColor)="onSetColor($event)"
+    (setImage)="onSetImage($event)"
+    [color]="color$ | async"
+    [image]="image$ | async"
     (toggleDialog)="onToggleDialog($event)"
     [showDialog]="showDialog"
   ></app-settings-dialog>

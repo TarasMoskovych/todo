@@ -10,7 +10,7 @@
     </thead>
     <tbody>
       <tr class="text-center" *ngFor="let priority of priorities; let idx = index">
-        <td class="text-primary" [style.background-color]="priority.color">
+        <td class="text-primary" [style.border-bottom]="'5px solid ' + priority.color">
           {{ idx + 1 }}
         </td>
         <td>

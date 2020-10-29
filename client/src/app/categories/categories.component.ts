@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { Category, Filter, TasksUncompletedCount } from '../models';
+import { Category, Color, Filter, TasksUncompletedCount } from '../models';
 import {
   GetCategories,
   SelectCategory,
@@ -17,6 +17,8 @@ import {
   categoriesSelectedSelector,
   tasksUncompletedCountSelector,
   AppState,
+  themesColorSelector,
+  themesImageSelector,
 } from '../core/+store';
 import { FormDialogComponent } from '../shared/components';
 
@@ -27,6 +29,8 @@ import { FormDialogComponent } from '../shared/components';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoriesComponent implements OnInit {
+  color$: Observable<Color> = this.store.select(themesColorSelector);
+  image$: Observable<string> = this.store.select(themesImageSelector);
   categories$: Observable<Category[]> = this.store.select(categoriesFilteredSelector);
   selected$: Observable<Category> = this.store.select(categoriesSelectedSelector);
   filter$: Observable<Filter> = this.store.select(categoriesFilterSelector);
