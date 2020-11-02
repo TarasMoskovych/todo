@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
+
+import { Operations } from 'src/app/models';
 import { NotificationService } from './notification.service';
 
 interface IPayload {
@@ -25,22 +26,33 @@ export abstract class AbstractService<T> {
   create(payload: T): Observable<T> {
     return this.http
       .post<T>(`${this.url}`, payload)
-      .pipe(catchError((error: HttpErrorResponse) => this.catchError(error)));
+      .pipe(
+        tap(() => this.showMessage(payload, Operations.CREATED)),
+        catchError((error: HttpErrorResponse) => this.catchError(error))
+      );
   }
 
   update<T extends IPayload>(payload: T): Observable<T> {
     return this.http
       .put<T>(`${this.url}/${payload.id}`, payload)
-      .pipe(catchError((error: HttpErrorResponse) => this.catchError(error)));
+      .pipe(
+        tap(() => this.showMessage(payload, Operations.UPDATED)),
+        catchError((error: HttpErrorResponse) => this.catchError(error))
+      );
   }
 
   remove<T extends IPayload>(payload: T): Observable<T> {
     return this.http
       .delete<T>(`${this.url}/${payload.id}`)
       .pipe(
+        tap(() => this.showMessage(payload, Operations.REMOVED)),
         map(() => payload),
         catchError((error: HttpErrorResponse) => this.catchError(error))
       );
+  }
+
+  private showMessage({ name }: any, action: string): void {
+    this.notificationService.showMessage(`"${name}" was ${action.toLowerCase()}!`);
   }
 
   private catchError({ error }: HttpErrorResponse): Observable<never> {

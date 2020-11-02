@@ -27,7 +27,7 @@ export class GetThemeSuccess implements Action {
 }
 
 export class GetThemeError implements Action {
-  readonly type = ThemesActionTypes.GET_THEME;
+  readonly type = ThemesActionTypes.GET_THEME_ERROR;
   constructor(public payload: any) { }
 }
 
