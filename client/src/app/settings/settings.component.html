@@ -4,7 +4,9 @@
     (setColor)="onSetColor($event)"
     (setImage)="onSetImage($event)"
     [color]="color$ | async"
+    [darkTheme]="darkTheme$ | async"
     [image]="image$ | async"
+    (toggleDarkTheme)="onToggleDarkTheme($event)"
     (toggleDialog)="onToggleDialog($event)"
     [showDialog]="showDialog"
   ></app-settings-dialog>

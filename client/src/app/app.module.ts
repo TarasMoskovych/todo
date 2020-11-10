@@ -25,7 +25,6 @@ import { AppComponent } from './app.component';
     TasksModule,
     SettingsModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

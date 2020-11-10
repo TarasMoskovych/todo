@@ -42,4 +42,11 @@ export class ThemesEffects {
     pluck('payload'),
     tap((image: string) => this.themesService.save('image', image))
   );
+
+  @Effect({ dispatch: false })
+  toggleDarkTheme$ = this.actions$.pipe(
+    ofType<themesActions.ToggleDarkTheme>(ThemesActionTypes.TOGGLE_DARK_THEME),
+    pluck('payload'),
+    tap((darkTheme: boolean) => this.themesService.save('darkTheme', darkTheme))
+  );
 }

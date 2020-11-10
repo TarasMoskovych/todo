@@ -11,7 +11,9 @@ import { Constants } from 'src/app/shared/classes';
 export class SettingsDialogComponent {
   @Input() color: Color;
   @Input() image: string;
+  @Input() darkTheme: boolean;
   @Input() showDialog: { value: boolean };
+  @Output() toggleDarkTheme = new EventEmitter<boolean>();
   @Output() toggleDialog = new EventEmitter<boolean>();
   @Output() openPrioritiesDialog = new EventEmitter<void>();
   @Output() setColor = new EventEmitter<Color>();
@@ -27,6 +29,10 @@ export class SettingsDialogComponent {
   onToggleDialog(toggler: boolean, event?: MouseEvent) {
     event?.preventDefault();
     this.toggleDialog.emit(toggler);
+  }
+
+  onToggleDarkTheme() {
+    this.toggleDarkTheme.emit(!this.darkTheme);
   }
 
   onPrioritiesDialogOpen() {

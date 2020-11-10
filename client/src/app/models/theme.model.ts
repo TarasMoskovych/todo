@@ -1,5 +1,6 @@
 export interface Theme {
   color: Color;
+  darkTheme: boolean;
   image: string;
 }
 

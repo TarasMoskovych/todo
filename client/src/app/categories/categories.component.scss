@@ -5,5 +5,10 @@
   &-wrapper {
     height: calc(100vh - 140px);
     padding-bottom: 20px;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

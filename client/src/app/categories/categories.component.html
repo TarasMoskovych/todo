@@ -1,4 +1,4 @@
-<div class="sidebar" [attr.data-color]="(color$ | async).value" data-background-color="white">
+<div class="sidebar" [attr.data-color]="(color$ | async).value" [attr.data-background-color]="(darkTheme$ | async) ? 'black' : 'white'">
   <div class="logo">
     <a href="http://www.creative-tim.com" class="simple-text logo-normal" target="_blank" rel="noopener">
       Creative Tim
@@ -10,7 +10,7 @@
       (setFilter)="onSetFilter($event)"
     ></app-filter>
   </div>
-  <div class="sidebar-wrapper" *ngIf="{value: selected$ | async} as selected" >
+  <div class="sidebar-wrapper" *ngIf="{value: selected$ | async} as selected">
     <app-categories-list
       [categories]="categories$ | async"
       [filter]="filter$ | async"

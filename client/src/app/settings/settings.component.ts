@@ -10,8 +10,10 @@ import {
   SetColor,
   SetImage,
   themesColorSelector,
+  themesDarkThemeSelector,
   themesImageSelector,
   themesShowDialogSelector,
+  ToggleDarkTheme,
   ToggleThemesDialog
 } from '../core/+store';
 import { PrioritiesDialogComponent } from './components';
@@ -25,6 +27,7 @@ import { Color } from '../models';
 })
 export class SettingsComponent implements OnInit {
   color$: Observable<Color> = this.store.select(themesColorSelector);
+  darkTheme$: Observable<boolean> = this.store.select(themesDarkThemeSelector);
   image$: Observable<string> = this.store.select(themesImageSelector);
   showDialog$: Observable<boolean> = this.store.select(themesShowDialogSelector);
 
@@ -54,6 +57,10 @@ export class SettingsComponent implements OnInit {
 
   onToggleDialog(toggler: boolean) {
     this.store.dispatch(new ToggleThemesDialog(toggler));
+  }
+
+  onToggleDarkTheme(toggler: boolean) {
+    this.store.dispatch(new ToggleDarkTheme(toggler));
   }
 
   private getPriorities() {

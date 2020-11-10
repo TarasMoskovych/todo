@@ -67,9 +67,11 @@
     }
 
     &::after {
+      @include themed() {
+        border-color: t($fixed-plugin-border-color);
+      }
       border: 12px solid black;
       box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.05);
-      border-color: transparent white white transparent;
       right: -10.5px;
       top: 12px;
       transform: rotate(-45deg);
@@ -170,5 +172,45 @@
   100% {
     bottom: 0px;
     transform: rotate(0);
+  }
+}
+
+.dark-edition {
+  .mat-table,
+  .mat-paginator,
+  .mat-drawer-container {
+    background-color: inherit;
+  }
+
+  .mat-cell {
+    color: inherit;
+  }
+
+  .mat-drawer-side {
+    border: 0;
+  }
+
+  .mat-dialog-container {
+    background-color: #202940;
+  }
+
+  .tasks-table {
+
+    &__priority {
+      filter: brightness(85%);
+    }
+
+    th[mat-header-cell] {
+      color: inherit !important;
+    }
+  }
+
+  .tasks-cards__text,
+  .mat-select-value {
+    color: #B3B5BC;
+  }
+
+  .remove {
+    color: #ea6561;
   }
 }

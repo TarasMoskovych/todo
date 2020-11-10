@@ -19,6 +19,7 @@ import {
   AppState,
   themesColorSelector,
   themesImageSelector,
+  themesDarkThemeSelector,
 } from '../core/+store';
 import { FormDialogComponent } from '../shared/components';
 
@@ -30,6 +31,7 @@ import { FormDialogComponent } from '../shared/components';
 })
 export class CategoriesComponent implements OnInit {
   color$: Observable<Color> = this.store.select(themesColorSelector);
+  darkTheme$: Observable<boolean> = this.store.select(themesDarkThemeSelector);
   image$: Observable<string> = this.store.select(themesImageSelector);
   categories$: Observable<Category[]> = this.store.select(categoriesFilteredSelector);
   selected$: Observable<Category> = this.store.select(categoriesSelectedSelector);

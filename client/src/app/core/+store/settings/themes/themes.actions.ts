@@ -3,6 +3,7 @@ import { Color, Theme } from 'src/app/models';
 
 export enum ThemesActionTypes {
   TOGGLE_THEMES_DIALOG = '[Themes] TOGGLE_THEMES_DIALOG',
+  TOGGLE_DARK_THEME    = '[Themes] TOGGLE_DARK_THEME',
 
   GET_THEME            = '[Themes] GET_THEME',
   GET_THEME_SUCCESS    = '[Themes] GET_THEME_SUCCESS',
@@ -14,6 +15,11 @@ export enum ThemesActionTypes {
 
 export class ToggleThemesDialog implements Action {
   readonly type = ThemesActionTypes.TOGGLE_THEMES_DIALOG;
+  constructor(public payload: boolean) { }
+}
+
+export class ToggleDarkTheme implements Action {
+  readonly type = ThemesActionTypes.TOGGLE_DARK_THEME;
   constructor(public payload: boolean) { }
 }
 
@@ -43,6 +49,7 @@ export class SetImage implements Action {
 
 export type ThemesActions
   = ToggleThemesDialog
+  | ToggleDarkTheme
   | GetTheme
   | GetThemeSuccess
   | GetThemeError

@@ -1,9 +1,9 @@
 <ng-container *ngIf="tasks?.length; else empty">
-  <table mat-table matSort [dataSource]="dataSource" matSortActive="date" matSortDirection="desc" class="w-100">
+  <table mat-table matSort [dataSource]="dataSource" matSortActive="date" matSortDirection="desc" class="tasks-table w-100">
 
     <ng-container matColumnDef="color">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let task" [style.background-color]="task.completed && '#F8F9FA' || priorities[task.priority]?.color || '#fff'"></td>
+      <td class="tasks-table__priority" mat-cell *matCellDef="let task" [style.background-color]="task.completed && '#F8F9FA' || priorities[task.priority]?.color || '#fff'"></td>
     </ng-container>
 
     <ng-container matColumnDef="id">

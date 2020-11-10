@@ -13,12 +13,22 @@ export function themesReducer(state = initialThemesState, action: ThemesActions)
       };
     }
 
+    case ThemesActionTypes.TOGGLE_DARK_THEME: {
+      const darkTheme = action.payload;
+
+      return {
+        ...state,
+        darkTheme,
+      };
+    }
+
     case ThemesActionTypes.GET_THEME_SUCCESS: {
-      const { color, image } = action.payload;
+      const { color, darkTheme, image } = action.payload;
 
       return {
         ...state,
         color,
+        darkTheme,
         image,
       };
     }
