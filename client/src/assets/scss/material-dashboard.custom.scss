@@ -182,7 +182,8 @@
     background-color: inherit;
   }
 
-  .mat-cell {
+  .mat-cell,
+  .introjs-button {
     color: inherit;
   }
 
@@ -212,5 +213,9 @@
 
   .remove {
     color: #ea6561;
+  }
+
+  .introjs-helperLayer {
+    background-color: rgba(255, 255, 255, 0.4);
   }
 }
