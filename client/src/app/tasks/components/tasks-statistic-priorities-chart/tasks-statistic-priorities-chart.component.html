@@ -1,0 +1,16 @@
+<div *ngIf="tasksPrioritiesCount$ | async" class="card card-chart">
+  <div class="card-header card-header-warning">
+    <canvas
+      baseChart
+      [data]="chartData"
+      [labels]="chartLabels"
+      [colors]="chartColors"
+      [options]="chartOptions"
+      chartType="bar"
+    ></canvas>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Tasks Priorities</h4>
+    <p class="card-category">Last Priorities chart</p>
+  </div>
+</div>

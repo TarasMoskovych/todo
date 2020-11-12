@@ -12,7 +12,7 @@ const getLoaded    = (state: TasksState) => state.loaded;
 const getLoading   = (state: TasksState) => state.loading;
 
 export const getTasksState = createFeatureSelector<TasksState>('tasks');
-export const { selectEntities: tasksEntitiesSelector, selectAll: tasksSelector } = taskAdapter.getSelectors(getTasksState);
+export const { selectEntities: tasksEntitiesSelector, selectAll: tasksSelector, selectTotal: tasksTotal } = taskAdapter.getSelectors(getTasksState);
 export const tasksFilterSelector = createSelector(getTasksState, getFilter);
 export const tasksShowStatisticSelector = createSelector(getTasksState, getStatistic);
 export const tasksErrorSelector = createSelector(getTasksState, getError);
@@ -22,6 +22,11 @@ export const tasksLoadingSelector = createSelector(getTasksState, getLoading);
 export const tasksUncompletedSelector = createSelector(
   tasksSelector,
   (tasks: Task[]) => tasks.filter((task: Task) => !task.completed)
+);
+
+export const tasksPrioritiesSelector = createSelector(
+  tasksSelector,
+  (tasks: Task[]) => tasks.filter((task: Task) => task.priority)
 );
 
 export const tasksCategorySelector = createSelector(
@@ -74,7 +79,14 @@ export const tasksUncompletedCountSelector = createSelector(
     return {
       count: tasks.length,
       entities: tasks.reduce((acc: TaskCountEntity, task: Task) => {
-        if (!task.category) { return acc; }
+        if (!task.category) {
+          if (acc['0']) {
+            acc['0']++;
+          } else {
+            acc['0'] = 1;
+          }
+          return acc;
+        }
 
         if (!acc[task.category]) {
           acc[task.category] = 1;
@@ -85,4 +97,17 @@ export const tasksUncompletedCountSelector = createSelector(
       }, {}),
     };
   }
+);
+
+export const tasksPrioritiesCountSelector = createSelector(
+  tasksPrioritiesSelector,
+  tasksTotal,
+  (tasks: Task[], total: number) => tasks.reduce((acc, task: Task) => {
+    if (!acc[task.priority]) {
+      acc[task.priority] = 1;
+    } else {
+      acc[task.priority]++;
+    }
+    return acc;
+  }, { '0': total - tasks.length })
 );

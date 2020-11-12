@@ -1,0 +1,16 @@
+<div *ngIf="tasksUncompletedCount$ | async" class="card card-chart">
+  <div class="card-header card-header-success">
+    <canvas
+      baseChart
+      [data]="chartData"
+      [labels]="chartLabels"
+      [colors]="chartColors"
+      [options]="chartOptions"
+      chartType="line"
+    ></canvas>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Tasks Categories</h4>
+    <p class="card-category">Uncompleted Categories chart</p>
+  </div>
+</div>

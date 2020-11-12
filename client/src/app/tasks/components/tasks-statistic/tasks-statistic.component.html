@@ -1,9 +1,19 @@
 <ng-container *ngIf="statistics$ | async as statistics">
-  <div id="step3" class="row" *ngIf="showStatistic$ | async">
-    <app-tasks-statistic-card
-      *ngFor="let statistic of statistics"
-      class="col-12 col-sm-6 col-lg-3"
-      [statistic]="statistic"
-    ></app-tasks-statistic-card>
+  <div [@.disabled]="!viewInit" @toggle id="step3" *ngIf="showStatistic$ | async">
+    <div class="row">
+      <app-tasks-statistic-card
+        *ngFor="let statistic of statistics"
+        class="col-12 col-sm-6 col-lg-3"
+        [statistic]="statistic"
+      ></app-tasks-statistic-card>
+    </div>
+    <div *ngIf="{value: darkTheme$ | async} as data" class="row">
+      <div class="col-md-6">
+        <app-tasks-statistic-categories-chart [darkTheme]="data.value"></app-tasks-statistic-categories-chart>
+      </div>
+      <div class="col-md-6">
+        <app-tasks-statistic-priorities-chart [darkTheme]="data.value"></app-tasks-statistic-priorities-chart>
+      </div>
+    </div>
   </div>
 </ng-container>
