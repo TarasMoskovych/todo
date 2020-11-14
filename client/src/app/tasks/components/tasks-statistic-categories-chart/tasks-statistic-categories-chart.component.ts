@@ -41,7 +41,7 @@ export class TasksStatisticCategoriesChartComponent extends AbstractTasksStatist
             this.chartData = [];
 
             if (entities['0']) {
-              this.chartLabels.push(this.transformToTitleCase('No Category'));
+              this.chartLabels.push('No Category');
               (this.chartData as number[]).push(entities['0']);
             }
 
