@@ -21,7 +21,7 @@
     </li>
     <li class="header-title">Sidebar Filters</li>
     <li class="adjustments-line">
-      <a class="switch-trigger active-color">
+      <a *ngIf="color" class="switch-trigger active-color">
         <div class="badge-colors ml-auto mr-auto">
           <span
             *ngFor="let themeColor of themeColors"

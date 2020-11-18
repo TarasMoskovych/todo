@@ -1,5 +1,8 @@
+import { TitleCasePipe } from '@angular/common';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { registerStore } from 'src/app/core/+store';
 import { TasksStatisticPrioritiesChartComponent } from './tasks-statistic-priorities-chart.component';
 
 describe('TasksStatisticPrioritiesChartComponent', () => {
@@ -8,7 +11,12 @@ describe('TasksStatisticPrioritiesChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TasksStatisticPrioritiesChartComponent ]
+      declarations: [ TasksStatisticPrioritiesChartComponent ],
+      imports: [
+        ...registerStore(),
+      ],
+      providers: [TitleCasePipe],
+      schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   }));

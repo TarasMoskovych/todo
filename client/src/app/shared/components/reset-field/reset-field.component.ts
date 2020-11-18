@@ -27,9 +27,11 @@ export class ResetFieldComponent implements OnInit {
   }
 
   private getControlValue() {
-    this.value$ = this.form.valueChanges.pipe(
-      map((form: FormGroup) => form[this.control])
-    );
+    if (this.form) {
+      this.value$ = this.form.valueChanges.pipe(
+        map((form: FormGroup) => form[this.control])
+      );
+    }
   }
 
 }

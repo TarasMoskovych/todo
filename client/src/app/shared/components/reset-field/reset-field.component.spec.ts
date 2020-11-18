@@ -1,5 +1,7 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { SharedModule } from '../../shared.module';
 import { ResetFieldComponent } from './reset-field.component';
 
 describe('ResetFieldComponent', () => {
@@ -8,7 +10,10 @@ describe('ResetFieldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResetFieldComponent ]
+      imports: [
+        SharedModule,
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   }));

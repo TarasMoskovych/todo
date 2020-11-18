@@ -1,5 +1,7 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { SharedModule } from 'src/app/shared/shared.module';
 import { TasksCardsComponent } from './tasks-cards.component';
 
 describe('TasksCardsComponent', () => {
@@ -8,7 +10,9 @@ describe('TasksCardsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TasksCardsComponent ]
+      declarations: [ TasksCardsComponent ],
+      imports: [SharedModule],
+      schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   }));

@@ -1,9 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { TasksState } from './';
 import { categoriesEntitiesSelector, categoriesSelectedSelector } from '../categories';
-import { Task, Category, TaskFilter, TasksStatistics, TasksUncompletedCount, TaskCountEntity, Priority } from 'src/app/models';
+import { Task, Category, TaskFilter, TasksStatistics, TasksUncompletedCount, TaskCountEntity, Priority, CategoryEntity } from 'src/app/models';
 import { taskAdapter } from './tasks.state';
-import { prioritiesEntitiesSelector } from '../settings';
+import { prioritiesEntitiesSelector, PriorityEntity } from '../settings';
 
 const getFilter    = (state: TasksState) => state.filter;
 const getStatistic = (state: TasksState) => state.statistic;
@@ -27,7 +27,7 @@ export const tasksUncompletedSelector = createSelector(
 export const tasksPrioritiesSelector = createSelector(
   tasksSelector,
   prioritiesEntitiesSelector,
-  (tasks: Task[], priorityEntities: { [key: string]: Priority }) => tasks.filter((task: Task) => {
+  (tasks: Task[], priorityEntities: PriorityEntity) => tasks.filter((task: Task) => {
     return task.priority && priorityEntities[task.priority];
   })
 );
@@ -36,7 +36,7 @@ export const tasksCategorySelector = createSelector(
   tasksSelector,
   categoriesSelectedSelector,
   categoriesEntitiesSelector,
-  (tasks: Task[], category: Category, categoryEntities: { [key: string]: Category }) => tasks.filter((task: Task) => {
+  (tasks: Task[], category: Category, categoryEntities: CategoryEntity) => tasks.filter((task: Task) => {
     if (!category || !category.id && !categoryEntities[task.category] || category && task.category === category.id && categoryEntities[task.category]) {
       return task;
     }
@@ -52,7 +52,7 @@ export const tasksFilteredSelector = createSelector(
   tasksCategorySelector,
   tasksFilterSelector,
   prioritiesEntitiesSelector,
-  (tasks: Task[], filter: TaskFilter, priorityEntities: { [key: string]: Priority }) => tasks
+  (tasks: Task[], filter: TaskFilter, priorityEntities: PriorityEntity) => tasks
     .filter((task: Task) => {
       // Filter by status
       if ((filter.completed || filter.completed === false) && (filter.completed && !task.completed || filter.completed === false && task.completed)) { return false; }
@@ -85,7 +85,7 @@ export const tasksStatisticsSelector = createSelector(
 export const tasksUncompletedCountSelector = createSelector(
   tasksUncompletedSelector,
   categoriesEntitiesSelector,
-  (tasks: Task[], categoryEntities: { [key: string]: Category }): TasksUncompletedCount => {
+  (tasks: Task[], categoryEntities: CategoryEntity): TasksUncompletedCount => {
     return {
       count: tasks.length,
       entities: tasks.reduce((acc: TaskCountEntity, task: Task) => {

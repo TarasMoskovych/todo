@@ -10,14 +10,14 @@
           aria-label="Add new category"
         ><mat-icon>add</mat-icon>
         </button>
-        <span class="uncompleted-count">{{ tasksUncompletedCount.count || 0 }}</span>
+        <span class="uncompleted-count">{{ tasksUncompletedCount?.count || 0 }}</span>
       </div>
     </a>
   </li>
   <li class="nav-item mb-3" [class.active]="selected && !selected.id" (click)="onSortByCategory({})">
     <a class="nav-link d-flex align-items-center justify-content-between">
       <p>Without category</p>
-      <span class="uncompleted-count">{{ tasksUncompletedCount.entities[0] || 0 }}</span>
+      <span class="uncompleted-count">{{ tasksUncompletedCount?.entities[0] || 0 }}</span>
     </a>
   </li>
   <mat-divider></mat-divider>
@@ -37,7 +37,7 @@
           [attr.aria-label]="'Edit ' + category.name"
         ><mat-icon>edit</mat-icon>
         </button>
-        <span class="uncompleted-count">{{ tasksUncompletedCount.entities[category.id] || 0 }}</span>
+        <span class="uncompleted-count">{{ tasksUncompletedCount?.entities[category.id] || 0 }}</span>
       </div>
     </a>
   </li>

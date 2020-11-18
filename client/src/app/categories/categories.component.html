@@ -1,4 +1,4 @@
-<div class="sidebar" [attr.data-color]="(color$ | async).value" [attr.data-background-color]="(darkTheme$ | async) ? 'black' : 'white'">
+<div class="sidebar" [attr.data-color]="(color$ | async)?.value" [attr.data-background-color]="(darkTheme$ | async) ? 'black' : 'white'">
   <div class="logo">
     <a href="http://www.creative-tim.com" class="simple-text logo-normal" target="_blank" rel="noopener">
       Creative Tim

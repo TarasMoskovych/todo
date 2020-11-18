@@ -1,5 +1,13 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { DeviceDetectorService } from 'ngx-device-detector';
+
 import { AppComponent } from './app.component';
+import { ThemesService, TutorialService } from './core/services';
+import { SharedModule } from './shared/shared.module';
+import { registerStore } from './core/+store';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -7,6 +15,17 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [
+        NoopAnimationsModule,
+        SharedModule,
+        ...registerStore(),
+      ],
+      providers: [
+        ThemesService,
+        DeviceDetectorService,
+        TutorialService,
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 
@@ -14,18 +33,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'todo'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('todo');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('todo app is running!');
   });
 });

@@ -10,6 +10,10 @@ export interface Task {
   filter?: TaskFilter;
 }
 
+export interface TaskEntity {
+  [key: string]: Task;
+}
+
 export interface TasksStatistics {
   count: number;
   completed: number;

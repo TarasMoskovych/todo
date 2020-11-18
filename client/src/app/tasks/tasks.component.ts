@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
-import { Category, Priority, Task, TaskFilter } from '../models';
+import { Category, CategoryEntity, Priority, Task, TaskFilter } from '../models';
 import { TaskFormComponent } from './components';
 import {
   tasksFilteredSelector,
@@ -33,7 +33,7 @@ import { ConfirmDialogComponent } from '../shared/components';
 })
 export class TasksComponent implements OnInit {
   isMobile: boolean = this.deviceService.isMobile();
-  categories$: Observable<{ [key: string]: Category }> = this.store.select(categoriesEntitiesSelector);
+  categories$: Observable<CategoryEntity> = this.store.select(categoriesEntitiesSelector);
   loading$: Observable<boolean> = this.store.select(tasksLoadingSelector);
   priorityEntities$: Observable<PriorityEntity> = this.store.select(prioritiesEntitiesSelector);
   priorities$: Observable<Priority[]> = this.store.select(prioritiesSelector);

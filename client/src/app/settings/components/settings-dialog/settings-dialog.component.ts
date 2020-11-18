@@ -12,7 +12,7 @@ export class SettingsDialogComponent {
   @Input() color: Color;
   @Input() image: string;
   @Input() darkTheme: boolean;
-  @Input() showDialog: { value: boolean };
+  @Input() showDialog: { value: boolean } = { value: false };
   @Output() toggleDarkTheme = new EventEmitter<boolean>();
   @Output() toggleDialog = new EventEmitter<boolean>();
   @Output() openPrioritiesDialog = new EventEmitter<void>();

@@ -1,5 +1,8 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { registerStore } from 'src/app/core/+store';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { PrioritiesTableComponent } from './priorities-table.component';
 
 describe('PrioritiesTableComponent', () => {
@@ -8,7 +11,12 @@ describe('PrioritiesTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrioritiesTableComponent ]
+      declarations: [ PrioritiesTableComponent ],
+      imports: [
+        SharedModule,
+        ...registerStore(),
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   }));

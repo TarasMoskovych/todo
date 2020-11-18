@@ -1,5 +1,9 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { registerStore } from 'src/app/core/+store';
+import { SharedModule } from '../../shared.module';
 import { FilterComponent } from './filter.component';
 
 describe('FilterComponent', () => {
@@ -8,7 +12,13 @@ describe('FilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FilterComponent ]
+      declarations: [ FilterComponent ],
+      imports: [
+        NoopAnimationsModule,
+        SharedModule,
+        ...registerStore(),
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   }));
