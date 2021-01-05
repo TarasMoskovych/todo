@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 
-import { Priority } from 'src/app/models';
+import { Priority, TestData } from 'src/app/models';
 
 import { AppState, registerStore } from '../../app.state';
 import { PriorityEntity } from './priorities.state';
@@ -14,34 +14,10 @@ import {
   prioritiesLoadingSelector
 } from './priorities.selectors';
 
+const { priorities, prioritiesEntities: entities } = TestData.data;
+
 describe('Categories Selectors', () => {
   let store$: Store<AppState>;
-  const priorities: Priority[] = [
-    {
-      id: '1',
-      name: 'low',
-      color: '#e5e5e5'
-    },
-    {
-      id: '2',
-      name: 'medium',
-      color: '#85D1B2'
-    },
-    {
-      id: '3',
-      name: 'high',
-      color: '#F1828D'
-    },
-    {
-      id: '4',
-      name: 'highest',
-      color: '#F1128D'
-    },
-  ];
-  const entities: PriorityEntity = priorities.reduce((acc: PriorityEntity, priority: Priority) => {
-    return { ...acc, [priority.id]: priority };
-  }, {});
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [

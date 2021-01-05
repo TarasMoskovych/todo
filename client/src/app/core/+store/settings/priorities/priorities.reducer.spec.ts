@@ -1,4 +1,4 @@
-import { Priority } from 'src/app/models';
+import { Priority, TestData } from 'src/app/models';
 import { prioritiesReducer } from './priorities.reducer';
 import { initialPrioritiesState, PriorityEntity } from './priorities.state';
 import {
@@ -10,33 +10,9 @@ import {
   UpdatePrioritySuccess
 } from './priorities.actions';
 
-describe('PrioritiesReducer', () => {
-  const priorities: Priority[] = [
-    {
-      id: '1',
-      name: 'low',
-      color: '#e5e5e5'
-    },
-    {
-      id: '2',
-      name: 'medium',
-      color: '#85D1B2'
-    },
-    {
-      id: '3',
-      name: 'high',
-      color: '#F1828D'
-    },
-    {
-      id: '4',
-      name: 'highest',
-      color: '#F1128D'
-    },
-  ];
-  const entities: PriorityEntity = priorities.reduce((acc: PriorityEntity, priority: Priority) => {
-    return { ...acc, [priority.id]: priority };
-  }, {});
+const { priorities, prioritiesEntities: entities } = TestData.data;
 
+describe('PrioritiesReducer', () => {
   describe('undefined action', () => {
     it('should return the default state', () => {
       const state = prioritiesReducer(undefined, {} as any);

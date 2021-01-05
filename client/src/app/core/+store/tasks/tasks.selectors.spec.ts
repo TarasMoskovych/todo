@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 
-import { Category, Priority, Task, TaskEntity, TaskFilter, TasksStatistics, TasksUncompletedCount } from 'src/app/models';
-
+import { Category, Task, TaskEntity, TaskFilter, TasksStatistics, TasksUncompletedCount, TestData } from 'src/app/models';
 import { AppState, registerStore } from '../app.state';
 import { GetCategoriesSuccess, SelectCategory } from '../categories';
 import { GetPrioritiesSuccess } from '../settings';
@@ -26,85 +25,10 @@ import {
   tasksPrioritiesCountSelector,
 } from './tasks.selectors';
 
+const { tasks, tasksEntities: entities, priorities, categories } = TestData.data;
+
 describe('Tasks Selectors', () => {
   let store$: Store<AppState>;
-  const tasks: Task[] = [
-    {
-      id: '1',
-      name: 'Fill the gasoline tank full',
-      priority: '3',
-      completed: false,
-      category: '10',
-      date: new Date('2020-04-10'),
-    },
-    {
-      id: '2',
-      name: 'Submit reports to the head of department',
-      priority: '1',
-      completed: false,
-      category: '1',
-      date: new Date('2020-04-11'),
-    },
-    {
-      id: '3',
-      name: 'Clean up the room, water the plants',
-      priority: '3',
-      completed: true,
-      category: '2'
-    },
-    {
-      id: '4',
-      name: 'Go to the park with the family, invite friends',
-      priority: '2',
-      completed: false,
-      category: '2',
-      date: new Date('2020-08-17'),
-    },
-    {
-      id: '5',
-      name: 'Find and learn a quantum physics textbook',
-      completed: true,
-    },
-  ];
-  const entities: TaskEntity = tasks.reduce((acc: TaskEntity, task: Task) => {
-    return { ...acc, [task.id]: task };
-  }, {});
-  const priorities: Priority[] = [
-    {
-      id: '1',
-      name: 'low',
-      color: '#e5e5e5'
-    },
-    {
-      id: '2',
-      name: 'medium',
-      color: '#85D1B2'
-    },
-    {
-      id: '3',
-      name: 'high',
-      color: '#F1828D'
-    },
-    {
-      id: '4',
-      name: 'highest',
-      color: '#F1128D'
-    },
-  ];
-  const categories: Category[] = [
-    {
-      id: '1',
-      name: 'work',
-    },
-    {
-      id: '2',
-      name: 'family',
-    },
-    {
-      id: '3',
-      name: 'education',
-    },
-  ];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -241,7 +165,7 @@ describe('Tasks Selectors', () => {
         .subscribe((tasks: Task[]) => result = tasks);
 
       store$.dispatch(new GetTasksSuccess(tasks));
-      expect(result).toEqual([tasks[0], tasks[1], tasks[3]]);
+      expect(result).toEqual([tasks[0], tasks[1], tasks[3], tasks[4]]);
     });
   });
 
@@ -277,7 +201,7 @@ describe('Tasks Selectors', () => {
       expect(result).toEqual(tasks);
 
       store$.dispatch(new SelectCategory({} as Category));
-      expect(result).toEqual([tasks[0], tasks[4]]);
+      expect(result).toEqual([tasks[0]]);
     });
   });
 
@@ -291,13 +215,13 @@ describe('Tasks Selectors', () => {
 
       store$.dispatch(new GetTasksSuccess(tasks));
       store$.dispatch(new GetCategoriesSuccess(categories));
-      expect(result).toEqual([tasks[2], tasks[4]]);
+      expect(result).toEqual([tasks[2]]);
 
       store$.dispatch(new SelectCategory(categories[1]));
       expect(result).toEqual([tasks[2]]);
 
       store$.dispatch(new SelectCategory({} as Category));
-      expect(result).toEqual([tasks[4]]);
+      expect(result).toEqual([]);
 
       store$.dispatch(new UpdateTaskSuccess({ ...tasks[4], completed: false }));
       expect(result).toEqual([]);
@@ -318,10 +242,10 @@ describe('Tasks Selectors', () => {
       expect(result).toEqual(tasks);
 
       store$.dispatch(new FilterTasks({ completed: true, q: null, priority: null }));
-      expect(result).toEqual([tasks[2], tasks[4]]);
+      expect(result).toEqual([tasks[2]]);
 
       store$.dispatch(new FilterTasks({ completed: true, q: null, priority: '0' }));
-      expect(result).toEqual([tasks[4]]);
+      expect(result).toEqual([]);
 
       store$.dispatch(new FilterTasks({ completed: false, q: 'to', priority: null }));
       expect(result).toEqual([tasks[1], tasks[3]]);
@@ -344,10 +268,10 @@ describe('Tasks Selectors', () => {
 
       expect(result).toEqual({
         count: tasks.length,
-        completed: 2,
-        uncompleted: 3,
-        completedValue: 2 / tasks.length,
-        uncompletedValue: 3 / tasks.length,
+        completed: 1,
+        uncompleted: 4,
+        completedValue: 1 / tasks.length,
+        uncompletedValue: 4 / tasks.length,
       });
 
       store$.dispatch(new SelectCategory(categories[1]));
@@ -374,21 +298,23 @@ describe('Tasks Selectors', () => {
       store$.dispatch(new GetCategoriesSuccess(categories));
 
       expect(result).toEqual({
-        count: 3,
+        count: 4,
         entities: {
           0: 1,
           1: 1,
           2: 1,
+          3: 1,
         },
       });
 
       store$.dispatch(new UpdateTaskSuccess({ ...tasks[3], category: '1' }));
 
       expect(result).toEqual({
-        count: 3,
+        count: 4,
         entities: {
           0: 1,
           1: 2,
+          3: 1,
         },
       });
     });

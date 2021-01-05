@@ -1,4 +1,4 @@
-import { Category, CategoryEntity, Filter } from 'src/app/models';
+import { Category, CategoryEntity, TestData } from 'src/app/models';
 import { categoriesReducer } from './categories.reducer';
 import { initialCategoriesState } from './categories.state';
 import {
@@ -12,34 +12,9 @@ import {
   UpdateCategorySuccess
 } from './categories.actions';
 
-describe('CategoriesReducer', () => {
-  const categories: Category[] = [
-    {
-      id: '1',
-      name: 'work',
-    },
-    {
-      id: '2',
-      name: 'family',
-    },
-    {
-      id: '3',
-      name: 'education',
-    },
-    {
-      id: '4',
-      name: 'vacation'
-    },
-    {
-      id: '5',
-      name: 'sport',
-    },
-  ];
-  const filter: Filter = { q: 'CaT' };
-  const entities: CategoryEntity = categories.reduce((acc: CategoryEntity, category: Category) => {
-    return { ...acc, [category.id]: category };
-  }, {});
+const { categories, filter, categoriesEntities: entities } = TestData.data;
 
+describe('CategoriesReducer', () => {
   describe('undefined action', () => {
     it('should return the default state', () => {
       const state = categoriesReducer(undefined, {} as any);
@@ -107,7 +82,7 @@ describe('CategoriesReducer', () => {
 
   describe('REMOVE_CATEGORY_SUCCESS action', () => {
     it('should remove the category', () => {
-      const state = categoriesReducer({ ...initialCategoriesState, entities }, new RemoveCategorySuccess(categories[0]));
+      const state = categoriesReducer({ ...initialCategoriesState, entities, selected: categories[0] }, new RemoveCategorySuccess(categories[0]));
 
       expect(state.entities).toEqual({
         2: categories[1],
@@ -115,6 +90,7 @@ describe('CategoriesReducer', () => {
         4: categories[3],
         5: categories[4],
       });
+      expect(state.selected).toBeNull();
     });
   });
 

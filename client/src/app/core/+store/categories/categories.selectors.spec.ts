@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 
-import { Category, CategoryEntity, Filter } from 'src/app/models';
+import { Category, CategoryEntity, Filter, TestData } from 'src/app/models';
 import { AppState, registerStore } from '../app.state';
 import {
   FilterCategories,
@@ -22,26 +22,10 @@ import {
   categoriesSelector
 } from './categories.selectors';
 
+const { categories, filter, categoriesEntities: entities } = TestData.data;
+
 describe('Categories Selectors', () => {
   let store$: Store<AppState>;
-  const categories: Category[] = [
-    {
-      id: '1',
-      name: 'work',
-    },
-    {
-      id: '2',
-      name: 'family',
-    },
-    {
-      id: '3',
-      name: 'education',
-    },
-  ];
-  const filter: Filter = { q: 'CaT' };
-  const entities: CategoryEntity = categories.reduce((acc: CategoryEntity, category: Category) => {
-    return { ...acc, [category.id]: category };
-  }, {});
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -183,7 +167,7 @@ describe('Categories Selectors', () => {
       expect(result).toEqual([]);
 
       store$.dispatch(new FilterCategories({ q: 'i' }));
-      expect(result).toEqual([categories[1], categories[2]]);
+      expect(result).toEqual([categories[1], categories[2], categories[3]]);
     });
   });
 });

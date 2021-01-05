@@ -4,19 +4,16 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TasksService } from './tasks.service';
 import { NotificationService } from './notification.service';
 
-export class NotificationServiceMock {
-  showMessage(msg: string) {}
-}
-
 describe('TasksService', () => {
   let service: TasksService;
+  let notificationSpy = jasmine.createSpyObj('NotificationService', ['showMessage']);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
         TasksService,
-        { provide: NotificationService, useClass: NotificationServiceMock }
+        { provide: NotificationService, useValue: notificationSpy },
       ],
     });
     service = TestBed.inject(TasksService);

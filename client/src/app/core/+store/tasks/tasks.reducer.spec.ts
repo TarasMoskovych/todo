@@ -1,4 +1,4 @@
-import { TaskEntity, Task, TaskFilter } from 'src/app/models';
+import { TaskEntity, Task, TaskFilter, TestData } from 'src/app/models';
 import { tasksReducer } from './tasks.reducer';
 import { initialTasksState } from './tasks.state';
 import {
@@ -11,50 +11,9 @@ import {
   UpdateTaskSuccess
 } from './tasks.actions';
 
-describe('TasksReducer', () => {
-  const tasks: Task[] = [
-    {
-      id: '1',
-      name: 'Fill the gasoline tank full',
-      priority: '3',
-      completed: false,
-      category: '10',
-      date: new Date('2020-04-10'),
-    },
-    {
-      id: '2',
-      name: 'Submit reports to the head of department',
-      priority: '1',
-      completed: false,
-      category: '1',
-      date: new Date('2020-04-11'),
-    },
-    {
-      id: '3',
-      name: 'Clean up the room, water the plants',
-      priority: '3',
-      completed: true,
-      category: '2'
-    },
-    {
-      id: '4',
-      name: 'Go to the park with the family, invite friends',
-      priority: '2',
-      completed: false,
-      category: '2',
-      date: new Date('2020-08-17'),
-    },
-    {
-      id: '5',
-      name: 'Find and learn a quantum physics textbook',
-      completed: false,
-      category: '3'
-    },
-  ];
-  const entities: TaskEntity = tasks.reduce((acc: TaskEntity, task: Task) => {
-    return { ...acc, [task.id]: task };
-  }, {});
+const { tasks, tasksEntities: entities } = TestData.data;
 
+describe('TasksReducer', () => {
   describe('undefined action', () => {
     it('should return the default state', () => {
       const state = tasksReducer(undefined, {} as any);

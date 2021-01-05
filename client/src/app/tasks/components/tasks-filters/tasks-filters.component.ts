@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Priority, TaskFilter } from 'src/app/models';
 import { FilterComponent } from 'src/app/shared/components';
 
@@ -16,8 +15,8 @@ export class TasksFiltersComponent extends FilterComponent {
 
   protected controls = [...this.controls, 'completed', 'priority'];
 
-  onSetQuery(control: FormControl) {
-    this.filtersForm.patchValue(control);
+  onSetQuery(filter: TaskFilter) {
+    this.filtersForm.patchValue(filter);
     this.submit();
   }
 
