@@ -31,9 +31,8 @@ export abstract class AbstractLowDbService<T> {
   }
 
   update(id: string, payload: T): T {
-    const entity: T = this.getById(id);
-    this.getDataStore().find({ id  }).assign(payload).write();
-    return entity;
+    this.getDataStore().find({ id }).assign(payload).write();
+    return payload;
   }
 
   delete(id: string): T {
@@ -54,7 +53,7 @@ export abstract class AbstractLowDbService<T> {
     const adapter = new FileSync('db.json');
     this.db = lowdb(adapter);
 
-    if (!this.db.get(dataStore).value()) {
+    if (!this.db.get(dataStore).value() && dataStore) {
       this.db.set(dataStore, []).write();
     }
   }

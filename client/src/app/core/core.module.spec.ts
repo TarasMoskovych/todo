@@ -7,12 +7,6 @@ describe('CoreModule', () => {
   });
 
   it('should create module with error', () => {
-    let module: CoreModule;
-
-    try {
-      module = new CoreModule({});
-    } catch(e) {}
-
-    expect(module).toBeUndefined();
+    expect(() => new CoreModule({})).toThrowError('CoreModule is already loaded. Import it in the AppModule only.');
   });
 });

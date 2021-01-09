@@ -24,7 +24,7 @@
   "homepage": "https://github.com/TarasMoskovych/todo#readme",
   "husky": {
     "hooks": {
-      "pre-push": "cd client && npm run test:pre-push"
+      "pre-push": "cd server && npm run test:cov && cd ../client && npm run test:pre-push"
     }
   },
   "devDependencies": {

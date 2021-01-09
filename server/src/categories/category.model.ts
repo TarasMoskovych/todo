@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { TrimValidator } from 'src/validators';
+import { TrimValidator } from '../validators';
 
 export class Category {
   id: string;

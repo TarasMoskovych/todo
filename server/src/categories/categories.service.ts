@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { AbstractLowDbService } from 'src/database';
+import { AbstractLowDbService } from '../database';
 import { Category, CategoryFilter } from './category.model';
 
 @Injectable()

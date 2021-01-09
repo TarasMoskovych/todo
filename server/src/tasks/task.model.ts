@@ -1,5 +1,5 @@
 import { IsBoolean, IsBooleanString, IsDateString, IsNotEmpty, IsOptional } from 'class-validator';
-import { TrimValidator } from 'src/validators';
+import { TrimValidator } from '../validators';
 
 export class Task {
   id: string;

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AbstractLowDbService } from 'src/database';
+import { AbstractLowDbService } from '../database';
 import { Task, TaskFilter } from './task.model';
 
 @Injectable()
