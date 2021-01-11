@@ -23,7 +23,12 @@ export class ThemesEffects {
       return of(this.themesService
         .get())
         .pipe(
-          map((theme: Theme) => new themesActions.GetThemeSuccess(theme)),
+          map((theme: Theme) => {
+            if (!theme) {
+              throw new Error('Theme is not defined');
+            }
+            return new themesActions.GetThemeSuccess(theme)
+          }),
           catchError((err: any) => of(new themesActions.GetThemeError(err)))
         )
     })

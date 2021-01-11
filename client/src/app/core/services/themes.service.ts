@@ -24,7 +24,13 @@ export class ThemesService {
   }
 
   get(): Theme {
-    return JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || { color: this.defaultColor, image: this.defaultImage };
+    let theme: Theme = null;
+
+    try {
+      theme = JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || { color: this.defaultColor, image: this.defaultImage };
+    } catch(e) {}
+
+    return theme;
   }
 
   toggleDarkTheme(darkTheme: boolean) {

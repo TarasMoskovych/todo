@@ -55,7 +55,7 @@ export class CategoriesEffects {
         .update(category)
         .pipe(
           map((category: Category) => new categoriesActions.UpdateCategorySuccess(category)),
-          catchError((err: any) => of(new categoriesActions.UpdateCategorySuccess(err)))
+          catchError((err: any) => of(new categoriesActions.UpdateCategoryError(err)))
         )
     })
   );

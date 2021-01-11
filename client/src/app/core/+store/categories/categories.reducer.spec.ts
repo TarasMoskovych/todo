@@ -81,7 +81,7 @@ describe('CategoriesReducer', () => {
   });
 
   describe('REMOVE_CATEGORY_SUCCESS action', () => {
-    it('should remove the category', () => {
+    it('should remove the category and unselect it if target is selected', () => {
       const state = categoriesReducer({ ...initialCategoriesState, entities, selected: categories[0] }, new RemoveCategorySuccess(categories[0]));
 
       expect(state.entities).toEqual({
@@ -91,6 +91,30 @@ describe('CategoriesReducer', () => {
         5: categories[4],
       });
       expect(state.selected).toBeNull();
+    });
+
+    it('should remove the category and check if target is equal to all', () => {
+      const state = categoriesReducer({ ...initialCategoriesState, entities, selected: null }, new RemoveCategorySuccess(categories[0]));
+
+      expect(state.entities).toEqual({
+        2: categories[1],
+        3: categories[2],
+        4: categories[3],
+        5: categories[4],
+      });
+      expect(state.selected).toBeNull();
+    });
+
+    it('should remove the category and check if target is equal to another category', () => {
+      const state = categoriesReducer({ ...initialCategoriesState, entities, selected: categories[0] }, new RemoveCategorySuccess(categories[1]));
+
+      expect(state.entities).toEqual({
+        1: categories[0],
+        3: categories[2],
+        4: categories[3],
+        5: categories[4],
+      });
+      expect(state.selected).toEqual(categories[0]);
     });
   });
 
